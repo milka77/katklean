@@ -1,52 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  @vite('resources/css/app.css')
-  <title>{{ config('app.name', 'Laravel') }}</title>
-</head>
-<body>
-  <nav class="h-[70px] relative w-full px-6 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between z-30 bg-gradient-to-r from-cyan-500 to-cyan-900 transition-all sticky top-0">
-    <a href="https://katklean.co.uk">
-        <img  width="157" height="40" src="{{ URL::asset('/images/logo.png') }}" alt="katkelan_logo.png" srcset="">
-    </a>
+<x-layout>
+  @section('content')
 
-    <!-- Menu options -->
-    <ul class="text-white md:flex hidden items-center gap-10">
-        <li><a class="hover:text-white/70 transition" href="#">Home</a></li>
-        <li><a class="hover:text-white/70 transition" href="#about">About Us</a></li>
-        <li><a class="hover:text-white/70 transition" href="#services">Services</a></li>            
-        <li><a class="hover:text-white/70 transition" href="#faq">F.A.Q.s</a></li>
-        <li><a class="hover:text-white/70 transition" href="#contact">Contact Us</a></li>
-    </ul>
-    <!-- End of Menu options -->
-
-    <button type="button" class="bg-cyan-900 text-gray-300 border-2 border-cyan-400 md:inline hidden text-sm hover:opacity-75 hover:bg-cyan-700 hover:text-gray-900 active:scale-95 transition-all w-40 h-11 rounded-full">
-        Book now
-    </button>
-
-
-    <button aria-label="menu-btn" type="button" class="menu-btn inline-block md:hidden active:scale-90 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="#fff">
-            <path d="M3 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2z"/>
-        </svg>
-    </button>
-
-    <div class="mobile-menu absolute top-[70px] left-0 w-full bg-gradient-to-r from-cyan-500 to-cyan-900 p-6 hidden md:hidden">
-        <ul class="flex flex-col space-y-4 text-white text-lg">
-            <li><a href="#" class="text-sm">Home</a></li>
-            <li><a href="#about" class="text-sm">About Us</a></li>
-            <li><a href="#services" class="text-sm">Services</a></li>
-            <li><a href="#faq" class="text-sm">F.A.Q.s</a></li>
-            <li><a href="#contact" class="text-sm">Contact Us</a></li>
-        </ul>
-        <button type="button" class="bg-white text-gray-700 mt-6 inline md:hidden text-sm hover:opacity-90 active:scale-95 transition-all w-40 h-11 rounded-full">
-            Book now
-        </button>
-    </div>
-  </nav>
 
   <!-- About Us -->
   <div id="about" class="md:mx-20 lg:mx-50 pb-5">
@@ -116,15 +70,7 @@
   <!-- End of Services -->
 
   <!-- FAQ -->
-  <div id="faq" class="max-w-xl mx-5 md:mx-auto flex flex-col items-center justify-center px-4 md:px-0 py-5">
-    <p class="text-cyan-500 text-sm font-semibold">FAQ's</p>
-    <h1 class="text-3xl font-semibold text-center text-slate-900 ">Looking for answer?</h1>
-    <p class="text-sm text-slate-500 mt-2 pb-4 text-center">
-        Can't find an answer on your question? — Please use one of the options to contact us.
-    </p>
-    <!-- FAQ Items -->
-    <div id="faqContainer"></div>
-  </div>
+  <x-site.faqs/>
   <!-- End of FAQ -->
 
   <!-- Contact Us -->
@@ -152,122 +98,5 @@
   </div>
   <!-- Contact Us -->
 
-  <!-- Footer -->
-  <footer class="px-6 md:px-16 lg:px-24 xl:px-32 bg-gradient-to-r from-cyan-500 to-cyan-900 transition-all">
-    <div class="flex flex-col md:flex-row items-start justify-between gap-10 py-10 border-b border-gray-300/50 text-gray-200">
-      <div>
-        <img  width="157" height="40" src="{{ URL::asset('/images/logo.png') }}" alt="katkelan_logo.png">
-        <p class="max-w-[410px] mt-6">Cleaning solution for your home.</p>
-      </div>
-      <div class="flex flex-wrap justify-between w-full md:w-[45%] gap-5">
-        <div>
-          <h3 class="font-semibold text-base text-gray-200 md:mb-5 mb-2">Quick Links</h3>
-          <ul class="text-sm space-y-1">
-            <li><a href="#" class="hover:text-white/70 transition">Home</a></li>
-            <li><a href="#" class="hover:text-white/70 transition">Contact Us</a></li>
-            <li><a href="#" class="hover:text-white/70 transition">FAQs</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold text-base text-gray-200 md:mb-5 mb-2">Covered Areas</h3>
-          <ul class="text-sm space-y-1">
-            <li><i class="fa-solid fa-location-dot"></i> Preston (main)</li>
-            <li><i class="fa-solid fa-location-dot"></i> Bamber Bridge</li>
-            <li><i class="fa-solid fa-location-dot"></i> Pentwotham</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold text-base text-gray-200 md:mb-5 mb-2">Contact Us</h3>
-          <ul class="text-sm space-y-1">
-            <li><i class="fa-solid fa-mobile-screen"></i> 07456517365</li>
-            <li><i class="fa-solid fa-at"></i> <a href="mailto:info@katklean.co.uk" class="hover:text-white/70 transition">info@katklean.co.uk</a></li>
-            <li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/profile.php?id=61585973942630" target="_blank" class="hover:text-white/70 transition">Facebook</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <p class="py-4 text-center text-sm md:text-base text-gray-200">
-      Copyright 2026 © {{ config('app.name'), 'KatKlean' }}. All Right Reserved.
-    </p>
-  </footer>
-  <!-- End of Footer -->
-
-
-</body>
-<script src="https://kit.fontawesome.com/b6c120cd7f.js" crossorigin="anonymous"></script>
-<script>
-    const menuButtons = document.querySelectorAll('.menu-btn');
-    const mobileMenus = document.querySelectorAll('.mobile-menu');
-    menuButtons.forEach((btn, index) => {
-        btn.addEventListener('click', () => {
-            mobileMenus[index].classList.toggle('hidden');
-        });
-    });
-</script>
-<script>
-
-    const faqs = [
-        {
-            question: "How can our customer pay?",
-            answer: "Customers can pay with cash or bank transfer, which one they preffer more.",
-        },
-        {
-            question: "Can I trust KatKlean?",
-            answer: "Yes, you can trust us. All of our cleaners are DBS checked.",
-        },
-        {
-            question: "Which areas are covered?",
-            answer: "We are based in Preston. Covering Preston and the surrounding areas.",
-        },
-        {
-            question: "Are there any callout or travel fees?",
-            answer: "No these is no callout fee, may a small travel fee applies depending on the distance. Please contact us.",
-        },
-    ];
-    const container = document.getElementById("faqContainer");
-    container.className = 'w-full'
-    faqs.forEach((faq, index) => {
-        const wrapper = document.createElement("div");
-        wrapper.className = "border-b border-slate-200 py-4 cursor-pointer w-full";
-        const header = document.createElement("div");
-        header.className = "flex items-center justify-between";
-        header.innerHTML = `
-        <h3 class="text-base font-medium">${faq.question}</h3>
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="transition-all duration-500 ease-in-out icon">
-            <path d="m4.5 7.2 3.793 3.793a1 1 0 0 0 1.414 0L13.5 7.2"
-                stroke="#1D293D" stroke-width="1.5"
-                stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `;
-        const answer = document.createElement("p");
-        answer.className = "text-sm text-slate-500 transition-all duration-500 ease-in-out max-w-md opacity-0 max-h-0 -translate-y-2 pt-0 answer";
-        answer.textContent = faq.answer;
-        wrapper.appendChild(header);
-        wrapper.appendChild(answer);
-        container.appendChild(wrapper);
-        header.addEventListener("click", () => {
-            const allAnswers = document.querySelectorAll(".answer");
-            const allIcons = document.querySelectorAll(".icon");
-            allAnswers.forEach((el, i) => {
-                if (i === index) {
-                    const isOpen = el.classList.contains("opacity-100");
-                    el.classList.toggle("opacity-100", !isOpen);
-                    el.classList.toggle("max-h-[300px]", !isOpen);
-                    el.classList.toggle("translate-y-0", !isOpen);
-                    el.classList.toggle("pt-4", !isOpen);
-                    el.classList.toggle("opacity-0", isOpen);
-                    el.classList.toggle("max-h-0", isOpen);
-                    el.classList.toggle("-translate-y-2", isOpen);
-                    allIcons[i].classList.toggle("rotate-180", !isOpen);
-                } else {
-                    el.classList.remove("opacity-100", "max-h-[300px]", "translate-y-0", "pt-4");
-                    el.classList.add("opacity-0", "max-h-0", "-translate-y-2");
-                    allIcons[i].classList.remove("rotate-180");
-                }
-            });
-        });
-    });
-</script>
-</html>
+@endsection
+</x-layout>
