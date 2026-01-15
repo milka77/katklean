@@ -32,6 +32,6 @@ class ContactController extends Controller
 
         Mail::to('evo3gt@gmail.com')->send(new ContactMail($content));
         
-        return back()->with('success', "Thank you for your message!");
+        return back()->with('success', "Thank you for your message! We will be in touch with you shortly.");
     }
 }

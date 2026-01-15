@@ -27,7 +27,7 @@
         <ul class="text-sm space-y-1">
           <li><i class="fa-solid fa-mobile-screen"></i> 07456517365</li>
           <li><i class="fa-solid fa-at"></i> <a href="mailto:info@katklean.co.uk" class="hover:text-white/70 transition">info@katklean.co.uk</a></li>
-          <li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/profile.php?id=61585973942630" target="_blank" class="hover:text-white/70 transition">Facebook</a></li>
+          <li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/KatKlean.uk/" target="_blank" class="hover:text-white/70 transition">Facebook</a></li>
         </ul>
       </div>
     </div>

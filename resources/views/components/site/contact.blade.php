@@ -15,7 +15,7 @@
         @endif
 
         @if (session()->has('success'))
-          <div class="m-3 p-2 border-2 border-green-500 rounded bg-green-200 w-[350px] md:w-[700px]">
+          <div class="mx-auto m-3 p-2 border-2 border-green-500 rounded bg-green-200 w-[350px] md:w-[700px]">
             {{ session()->get('success') }}
           </div>          
         @endif
