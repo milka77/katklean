@@ -30,7 +30,7 @@ class ContactController extends Controller
             'message' => $request->input('message'),
         ];
 
-        Mail::to('evo3gt@gmail.com')->send(new ContactMail($content));
+        Mail::to('info@katklean.co.uk')->send(new ContactMail($content));
         
         return back()->with('success', "Thank you for your message! We will be in touch with you shortly.");
     }
