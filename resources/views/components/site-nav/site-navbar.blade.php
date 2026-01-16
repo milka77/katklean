@@ -4,7 +4,7 @@
     </a>
 
     <!-- Menu options -->
-    <ul class="text-white md:flex hidden items-center gap-10 mx-auto">
+    <ul class="text-white md:flex hidden items-center gap-10">
         <li><a class="hover:text-white/70 transition" href="#">Home</a></li>
         <li><a class="hover:text-white/70 transition" href="#about">About Us</a></li>
         <li><a class="hover:text-white/70 transition" href="#services">Services</a></li>            
@@ -13,6 +13,9 @@
         <li><a class="hover:text-white/70 transition" href="#contact">Book Now</a></li>
     </ul>
     <!-- End of Menu options -->
+
+    <a class="text-white md:flex hidden hover:text-white/70 transition" href="#contact">Login</a>
+
 
     <button aria-label="menu-btn" type="button" class="menu-btn inline-block md:hidden active:scale-90 transition">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="#fff">
@@ -28,6 +31,7 @@
             <li><a href="#faq" class="text-sm">F.A.Q.s</a></li>
             <li><a href="#contact" class="text-sm">Contact Us</a></li>
             <li><a href="#contact" class="text-sm">Book Now</a></li>
+            <li><a href="#contact" class="text-sm">Login</a></li>
         </ul>
     </div>
 </nav>
