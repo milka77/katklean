@@ -25,19 +25,35 @@
   const faqs = [
     {
       question: "How can our customer pay?",
-      answer: "Customers can pay with cash or bank transfer, which one they preffer more.",
+      answer: "We accept payment by cash or bank transfer, whichever is most convenient for the customer.",
     },
     {
-      question: "Can I trust KatKlean?",
-      answer: "Yes, you can trust us. All of our cleaners are DBS checked.",
+      question: "Are you DBS checked?",
+      answer: "Yes. All of our team members are DBS checked and security-trained, allowing us to work with discretion and respect in our clients’ homes and workplaces.",
     },
+    {
+      question: "Can I trust you with access to my home?",
+      answer: "Absolutely. Trust is at the heart of our service. Our cleaners are security-trained and DBS checked, and we treat every home with care, discretion, and respect.",
+    },
+    {
+      question:"Do you have business insurance cover?",
+      answer:"Yes, we are fully insured with public liability insurance. This means your home or workplace is protected in the unlikely event of accidental damage during our cleaning services."
+    }
     {
       question: "Which areas are covered?",
-      answer: "We are based in Preston. Covering Preston and the surrounding areas.",
+      answer: "We are based in Preston and cover Preston and the surrounding areas. If you’re unsure whether we serve your location, please feel free to contact us.",
     },
     {
       question: "Are there any callout or travel fees?",
-      answer: "No these is no callout fee, may a small travel fee applies depending on the distance. Please contact us.",
+      answer: "There’s no callout fee. In some cases, a small travel fee may apply depending on your location — just get in touch and we’ll be happy to confirm.",
+    },
+    {
+      question: "Can you do cleaning while I'am not at home?",
+      answer: "Yes, you don’t need to be at home during the cleaning. Our service is designed to save you time and make your day easier.",
+    },
+    {
+      question: "What if I’m not happy with the cleaning?",
+      answer: "Your satisfaction matters to us. If you’re not happy with the cleaning, please contact us within 24 hours and we’ll do our best to resolve the issue promptly and fairly.",
     },
   ];
   const container = document.getElementById("faqContainer");

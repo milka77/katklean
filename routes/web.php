@@ -11,3 +11,4 @@ Route::get('/', [ContactController::class, 'index',])->name('home');
 Route::get('/#contact', [ContactController::class, 'index']);
 // Route::get('/contact', [ContactController::class, 'showContact']);
 Route::post('/', [ContactController::class, 'contactMessage']);
+Route::get('/booking', [ContactController::class, 'booking'])->name('booking');

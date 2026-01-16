@@ -34,4 +34,8 @@ class ContactController extends Controller
         
         return back()->with('success', "Thank you for your message! We will be in touch with you shortly.");
     }
+
+    public function booking(){
+        return view('components.site.booking');
+    }
 }

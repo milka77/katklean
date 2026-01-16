@@ -5,12 +5,12 @@
 
     <!-- Menu options -->
     <ul class="text-white md:flex hidden items-center gap-10">
-        <li><a class="hover:text-white/70 transition" href="#">Home</a></li>
+        <li><a class="hover:text-white/70 transition" href="{{ route('home') }}">Home</a></li>
         <li><a class="hover:text-white/70 transition" href="#about">About Us</a></li>
         <li><a class="hover:text-white/70 transition" href="#services">Services</a></li>            
         <li><a class="hover:text-white/70 transition" href="#faq">F.A.Q.s</a></li>
         <li><a class="hover:text-white/70 transition" href="#contact">Contact Us</a></li>
-        <li><a class="hover:text-white/70 transition" href="#contact">Book Now</a></li>
+        <li><a class="hover:text-white/70 transition" href="{{ route('booking') }}">Book Now</a></li>
     </ul>
     <!-- End of Menu options -->
 
