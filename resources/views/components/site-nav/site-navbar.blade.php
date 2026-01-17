@@ -6,10 +6,10 @@
     <!-- Menu options -->
     <ul class="text-white md:flex hidden items-center gap-10">
         <li><a class="hover:text-white/70 transition" href="{{ route('home') }}">Home</a></li>
-        <li><a class="hover:text-white/70 transition" href="#about">About Us</a></li>
+        <li><a class="hover:text-white/70 transition" href="{{ route('about') }}">About Us</a></li>
         <li><a class="hover:text-white/70 transition" href="{{ route('services') }}">Services</a></li>            
-        <li><a class="hover:text-white/70 transition" href="#faq">F.A.Q.s</a></li>
-        <li><a class="hover:text-white/70 transition" href="#contact">Contact Us</a></li>
+        <li><a class="hover:text-white/70 transition" href="{{ route('faq') }}">F.A.Q.s</a></li>
+        <li><a class="hover:text-white/70 transition" href="{{ route('contact') }}">Contact Us</a></li>
         <li><a class="hover:text-white/70 transition" href="{{ route('booking') }}">Book Now</a></li>
     </ul>
     <!-- End of Menu options -->
@@ -26,12 +26,12 @@
     <div class="mobile-menu absolute top-[70px] left-0 w-full bg-gradient-to-r from-cyan-500 to-cyan-900 p-6 hidden md:hidden">
         <ul class="flex flex-col space-y-4 text-white text-lg">
             <li><a href="{{ route('home')  }}" class="text-sm">Home</a></li>
-            <li><a href="#about" class="text-sm">About Us</a></li>
+            <li><a href="{{ route('about') }}" class="text-sm">About Us</a></li>
             <li><a href="{{ route('services') }}" class="text-sm">Services</a></li>
-            <li><a href="#faq" class="text-sm">F.A.Q.s</a></li>
-            <li><a href="#contact" class="text-sm">Contact Us</a></li>
+            <li><a href="{{ route('faq') }}" class="text-sm">F.A.Q.s</a></li>
+            <li><a href="{{ route('contact') }}" class="text-sm">Contact Us</a></li>
             <li><a href="{{ route('booking') }}" class="text-sm">Book Now</a></li>
-            <li><a href="#contact" class="text-sm">Login</a></li>
+            <li><a href="#" class="text-sm">Login</a></li>
         </ul>
     </div>
 </nav>
