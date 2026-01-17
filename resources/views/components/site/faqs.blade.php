@@ -37,11 +37,15 @@
     },
     {
       question:"Do you have business insurance cover?",
-      answer:"Yes, we are fully insured with public liability insurance. This means your home or workplace is protected in the unlikely event of accidental damage during our cleaning services."
-    }
+      answer:"Yes, we are fully insured with public liability insurance. This means your home or workplace is protected in the unlikely event of accidental damage during our cleaning services.",
+    },
     {
       question: "Which areas are covered?",
       answer: "We are based in Preston and cover Preston and the surrounding areas. If you’re unsure whether we serve your location, please feel free to contact us.",
+    },
+    {
+      question:"Can I have an evening or weekend clean?",
+      answer: "Yes, our working hours are Monday - Saturday 07:00 - 19:00 and Sunday 09:00 - 14:00. If you need different hours, please feel free to contact us.",
     },
     {
       question: "Are there any callout or travel fees?",

@@ -7,11 +7,50 @@
     </div>
     <div class="flex flex-wrap justify-between w-full md:w-[45%] gap-5">
       <div>
-        <h3 class="font-semibold text-base text-gray-200 md:mb-5 mb-2">Quick Links</h3>
+        <h3 class="font-semibold text-base text-gray-200 md:mb-5 mb-2">Working Hours:</h3>
         <ul class="text-sm space-y-1">
-          <li><a href="#" class="hover:text-white/70 transition">Home</a></li>
-          <li><a href="#" class="hover:text-white/70 transition">Contact Us</a></li>
-          <li><a href="#" class="hover:text-white/70 transition">FAQs</a></li>
+          <li>
+            <div class="flex grid-cols-2 place-content-between gap-2">
+              <div>Monday: </div>
+              <div>07:00 - 19:00</div>
+            </div>
+          </li>
+          <li>
+            <div class="flex grid-cols-2 place-content-between gap-2">
+              <div>Tuesday: </div>
+              <div>07:00 - 19:00</div>
+            </div>
+          </li>
+          <li>
+            <div class="flex grid-cols-2 place-content-between gap-2">
+              <div>Wednesday: </div>
+              <div>07:00 - 19:00</div>
+            </div>
+          </li>
+          <li>
+            <div class="flex grid-cols-2 place-content-between gap-2">
+              <div>Thursday: </div>
+              <div>07:00 - 19:00</div>
+            </div>
+          </li>
+          <li>
+            <div class="flex grid-cols-2 place-content-between gap-2">
+              <div>Friday: </div>
+              <div>07:00 - 19:00</div>
+            </div>
+          </li>
+          <li>
+            <div class="flex grid-cols-2 place-content-between gap-2">
+              <div>Saturday: </div>
+              <div>07:00 - 19:00</div>
+            </div>
+          </li>
+          <li>
+            <div class="flex grid-cols-2 place-content-between gap-2">
+              <div>Sunday: </div>
+              <div>09:00 - 14:00</div>
+            </div>
+          </li>
         </ul>
       </div>
       <div>

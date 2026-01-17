@@ -16,7 +16,7 @@
   <!-- About Us -->
 
   <!-- Services -->
-  <div class="bg-cyan-100/40 py-5">
+    <div class="bg-cyan-100/40 py-5">
     <div id="services" class="md:mx-20 lg:mx-50 pt-4 pb-2 ">
         <h2 class="text-center text-lg font-semibold pb-3 text-cyan-500">Services</h2>
         <div>
@@ -32,7 +32,7 @@
         </div>
         <div class="mt-5 space-y-2 text-center">
           <h3 class="text-base font-semibold text-slate-700">Regular Domestic Cleaning</h3>
-          <p class="text-sm text-slate-600">Regual cleaning</p>
+          <p class="text-sm text-slate-600">Weekly / Fortnightly</p>
         </div>
       </div>
 
