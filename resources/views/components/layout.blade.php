@@ -6,6 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   @vite('resources/css/app.css')
   <title>{{ config('app.name', 'Laravel') }}</title>
+  @yield('extra-style')
+   <style>
+    body {
+      
+      background-image: url('{{ asset('images/4545.png') }}');
+      background-size: cover;
+      background-position: fixed;
+      
+    }
+  </style>
 </head>
 <body>
 {{--  Navigation --}}

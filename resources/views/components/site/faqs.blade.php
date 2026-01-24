@@ -1,15 +1,17 @@
+<x-layout>
+  @section('content')
   <!-- FAQ -->
-  <div id="faq" class="max-w-xl mx-5 md:mx-auto flex flex-col items-center justify-center px-4 md:px-0 py-5">
-    <p class="text-cyan-500 text-sm font-semibold">FAQ's</p>
-    <h1 class="text-3xl font-semibold text-center text-slate-900 ">Looking for answer?</h1>
-    <p class="text-sm text-slate-500 mt-2 pb-4 text-center">
+  <div id="faq" class="max-w-xl mx-5 md:mx-auto flex flex-col items-center justify-center px-4 md:px-0 py-15">
+    {{-- <p class="text-cyan-500 text-sm font-semibold">FAQ's</p> --}}
+    <h1 class="text-5xl font-semibold text-center text-black pb-5">Looking for answer?</h1>
+    <p class="text-sm text-black mt-2 pb-10 text-center px-10">
         Can't find an answer on your question? — Please use one of the options to contact us.
     </p>
     <!-- FAQ Items -->
     <div id="faqContainer"></div>
   </div>
   <!-- End of FAQ -->
-
+  @endsection
 
 @section('extra-js')
 <script>
@@ -23,10 +25,6 @@
 </script>
 <script>
   const faqs = [
-    {
-      question: "How can our customer pay?",
-      answer: "We accept payment by cash or bank transfer, whichever is most convenient for the customer.",
-    },
     {
       question: "Are you DBS checked?",
       answer: "Yes. All of our team members are DBS checked and security-trained, allowing us to work with discretion and respect in our clients’ homes and workplaces.",
@@ -46,6 +44,10 @@
     {
       question:"Can I have an evening or weekend clean?",
       answer: "Yes, our working hours are Monday - Saturday 07:00 - 19:00 and Sunday 09:00 - 14:00. If you need different hours, please feel free to contact us.",
+    },
+    {
+      question: "How can our customer pay?",
+      answer: "We accept payment by cash or bank transfer, whichever is most convenient for the customer.",
     },
     {
       question: "Are there any callout or travel fees?",
@@ -78,7 +80,7 @@
     </svg>
     `;
     const answer = document.createElement("p");
-    answer.className = "text-sm text-slate-500 transition-all duration-500 ease-in-out max-w-md opacity-0 max-h-0 -translate-y-2 pt-0 answer";
+    answer.className = "text-sm text-black transition-all duration-500 ease-in-out max-w-md opacity-0 max-h-0 -translate-y-2 pt-0 answer";
     answer.textContent = faq.answer;
     wrapper.appendChild(header);
     wrapper.appendChild(answer);
@@ -107,3 +109,4 @@
     });
 </script>
 @endsection
+</x-layout> 
