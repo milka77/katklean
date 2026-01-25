@@ -18,8 +18,10 @@
       its condition access and layout any additional services requested. Any price changes will be discussed and agreed before work begins.</p>
     
     <p class="font-semibold">4. Payment</p>
-    <p class="pl-3 pb-2">Payment details will be confirmed at the time of booking. Payment is accepted by bank transfer unless otherwise agreed.
+    <p class="pl-3 pb-2"><span class="font-semibold">4.1</span> Payment details will be confirmed at the time of booking. Payment is accepted by bank transfer unless otherwise agreed.
       A service is considered paid once cleared funds have been received.</p>
+    <p class="pl-3 pb-2"><span class="font-semibold">4.2</span> Payment must be made from the date of booking up to the day of the cleaning service.
+    We accept payment by bank transfer or cash. Full payment is required no later than the day of cleaning.</p>
     
     <p class="font-semibold">5. Cancellations & rescheduling</p>
     <p class="pl-3 pb-2">We kindly ask for at least 24 hours’ notice for cancellations or rescheduling. Late cancellations or missed appointments may be charged at our discretion.</p>

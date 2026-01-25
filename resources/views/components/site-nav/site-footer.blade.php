@@ -1,12 +1,12 @@
 <!-- Footer -->
-<footer class="px-6 md:px-16 lg:px-24 xl:px-32 bg-slate-700 transition-all">
+<footer class="px-6 md:px-16 lg:px-24 xl:px-32 bg-slate-700 transition-all pt-7">
   <div class="flex flex-col md:flex-row items-center justify-between gap-10 py-10 border-b border-gray-300/50 text-white">
     <div>
       <img  width="157" height="40" src="{{ asset('/images/logo.png') }}" alt="katkelan_logo.png">
       {{-- <p class="max-w-[410px] mt-6">Cleaning solution for your home.</p> --}}
     </div>
-    <div class="flex flex-wrap flex-col lg:flex-row justify-between w-1/2 lg:w-[60%] 2xl:w-[45%] gap-5  ">
-      <div>
+    <div class="flex flex-wrap flex-col lg:flex-row justify-between w-2/3 md:w-1/2 gap-5 pb-15">
+      <div class="border-b border-slate-300 pb-2 md:border-none">
         <h3 class="font-semibold text-base text-gray-200 md:mb-5 mb-2">Quick links</h3>
         <ul class="text-sm space-y-1">
           <li><a class="hover:text-white/70 transition" href="{{ route('terms') }}">Terms & Con.</a> </li>
@@ -14,7 +14,7 @@
           <li></li>
         </ul>
       </div>
-      <div>
+      <div class="border-b border-slate-300 pb-2 md:border-none">
         <h3 class="font-semibold text-base text-gray-200 md:mb-5 mb-2">Working Hours:</h3>
         <ul class="text-sm space-y-1">
           <li>
@@ -37,7 +37,7 @@
           </li>
         </ul>
       </div>
-      <div>
+      <div class="border-b border-slate-300 pb-2 md:border-none">
         <h3 class="font-semibold text-base text-gray-200 md:mb-5 mb-2">Covered Areas</h3>
         <ul class="text-sm space-y-1">
           <li><i class="fa-solid fa-location-dot"></i> Preston (main)</li>

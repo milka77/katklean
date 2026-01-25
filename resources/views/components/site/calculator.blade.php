@@ -34,7 +34,7 @@
                   <button id="living-plus"  class="px-3 py-0.5 bg-slate-100 cursor-pointer">+</button>
                 </div>
               </div>
-              <div class="flex flex-row place-content-between border-b border-slate-300 py-2 mx-4 pr-2">
+              <div class="flex flex-row place-content-between border-b border-slate-300 py-2 mx-4 pr-2 mb-6">
                 <p class="pl-2 font-semibold">Other rooms</p>
                 <div class="flex border rounded-md border-slate-300">
                   <button id="otherroom-minus" class="px-3 py-0.5 bg-slate-100 cursor-pointer">--</button>
@@ -42,10 +42,10 @@
                   <button id="otherroom-plus"  class="px-3 py-0.5 bg-slate-100 cursor-pointer">+</button>
                 </div>
               </div>
-              <div class="flex flex-col pb-2 pt-1 mx-4">
+              <div class="flex flex-col pb-2 pt-1 mx-4 sr-only">
                 <p class="pl-2 py-2 font-semibold">Optional extras</p>
                 <div class="flex place-content-between pb-1 pr-2">
-                  <p class="pl-2 font-semibold text-sm">Internal window cleaning</p>
+                  <p class="pl-2 font-semibold text-sm">Clean inside window panes</p>
                   
                   <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
                     <input id="extra-1" type="checkbox" class="peer sr-only" value="0" />
@@ -65,7 +65,7 @@
                   </label>
                 </div>
                 <div class="flex place-content-between pb-1 pr-2">
-                  <p class="pl-2 font-semibold text-sm">Changing bedsheets</p>
+                  <p class="pl-2 font-semibold text-sm">Make the bed</p>
                   
                   <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
                     <input id="extra-3" type="checkbox" class="peer sr-only" value="0" />

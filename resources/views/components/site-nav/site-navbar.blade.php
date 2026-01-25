@@ -15,7 +15,8 @@
     </ul>
     <!-- End of Menu options -->
 
-    <a class="text-white md:flex hidden hover:text-white/70 transition text-lg pl-5" href="#contact">Login</a>
+    {{-- <a class="text-white md:flex hidden hover:text-white/70 transition text-lg pl-5" href="#">Login</a> --}}
+    <a class=" md:flex hidden text-slate-700 transition text-lg pl-5" href="#">Login</a>
 
 
     <button aria-label="menu-btn" type="button" class="menu-btn inline-block md:hidden active:scale-90 transition">
