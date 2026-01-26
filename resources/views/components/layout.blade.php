@@ -37,5 +37,15 @@
 </body>
 <script src="https://kit.fontawesome.com/b6c120cd7f.js" crossorigin="anonymous"></script>
 @yield('extra-js')
-
+<script>
+    document.getElementById("menu-toggle").addEventListener("click", function () {
+        const menu = document.getElementById("mobile-menu");
+        if (menu.classList.contains("hidden")) {
+            menu.classList.remove("hidden");
+            menu.classList.add("flex");
+        } else {
+            menu.classList.add("hidden");
+        }
+    });
+</script>
 </html>

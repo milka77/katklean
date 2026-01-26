@@ -2,10 +2,10 @@
   @section('content')
   <!-- Calculator -->
   <div class="py-5">
-    <div id="services" class="md:mx-20 lg:mx-50 pt-15 pb-7 ">
-        <h2 class="text-center text-5xl font-semibold pb-7 text-black">Time Calculator</h2>
+    <div id="services" class="md:mx-20 lg:mx-50 pt-15 pb-7 px-2 md:px-0 ">
+        <h2 class="text-center text-4xl md:text-5xl font-semibold pb-7 text-black">Time Calculator</h2>
         
-        <div class="border w-125 mx-auto rounded-2xl border-slate-300 bg-slate-100 p-5">
+        <div class="border w-full md:w-125 mx-auto rounded-2xl border-slate-300 bg-slate-100 p-2 md:p-5">
           <p class="text-center text-lg font-semibold pb-3">Cleaning Time Guide</p>
           <p class="text-center text-sm pb-5">This guide uses a few details about your home and cleaning requirements to provide an approximate time for each visit.</p>
           <div class="border rounded-2xl border-slate-300 bg-stone-50 pt-3">
