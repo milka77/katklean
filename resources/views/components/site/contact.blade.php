@@ -21,7 +21,7 @@
         @endif
 
 
-        <h1 class="text-5xl font-semibold text-black pb-4">Get in touch with us</h1>
+        <h1 class="text-5xl text-center font-semibold text-black pb-4">Get in touch with us</h1>
         <p class="text-lg font-semibold text-center pb-10">Do you have any question?<br>Don't hesitate, send us a message or call us.<br><i class="fa-solid fa-mobile-screen"></i> 07456517365</p>    
         <div class="flex flex-col md:flex-row items-center gap-8 w-[350px] md:w-[700px]">
           <div class="w-full">
