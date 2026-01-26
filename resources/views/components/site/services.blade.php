@@ -5,7 +5,7 @@
     <div id="services" class="md:mx-20 lg:mx-50 pt-15 pb-2 ">
         <h2 class="text-center text-5xl font-semibold pb-5 text-black">Services</h2>
         <div>
-          <p class="font-semibold text-lg text-center pb-7">Enjoy Your Free Time — Leave the Cleaning to Us</p>
+          <p class="font-semibold text-lg text-center pb-7 px-5 md:px-0">Enjoy Your Free Time — Leave the Cleaning to Us</p>
           <p class="pb-5 w-2/3 mx-auto text-center px-3 sm:px-3">After a long, busy working week, the last thing you want to do is spend your valuable time cleaning. Let us take care of it for you. We provide reliable, thorough and professional cleaning services so you can relax, recharge and enjoy a fresh, spotless home. Whether it’s a one-off clean or regular service, we’re here to make your life easier.</p>
         </div>
     </div>
@@ -15,7 +15,7 @@
           <h3 class="text-[27px] font-bold text-black">Standard Domestic Cleaning</h3>
           <p class="text-lg font-semibold text-black">This service can be booked as a weekly or fortnightly</p>
           <p class="text-lg text-left font-bold text-black pt-3 pb-2">Bedroom / Living area</p>
-          <ul class="text-left list-disc pl-10 pr-3">
+          <ul class="text-left list-disc py-1 md:pl-10 md:pr-3">
             <li>Remove cobwebs from ceilings and corners</li>
             <li>Dust all reachable surfaces, including wardrobes, shelving, cupboards and skirting boards</li>
             <li>Wipe down and sanitize light switches and door handles</li>
@@ -25,7 +25,7 @@
           </ul>
 
           <p class="text-lg text-left font-bold text-black pt-3 pb-2">Kitchen</p>
-          <ul class="text-left list-disc pl-10 pr-3">
+          <ul class="text-left list-disc py-1 md:pl-10 md:pr-3">
             <li>Clean the sink, hob, and worktops</li>
             <li>Wipe down kitchen surfaces and appliance exteriors</li>
             <li>Polish stainless steel surfaces</li>
@@ -34,7 +34,7 @@
           </ul>
 
           <p class="text-lg text-left font-bold text-black pt-3 pb-2">Bathroom</p>
-          <ul class="text-left list-disc pl-10 pr-3">
+          <ul class="text-left list-disc py-1 md:pl-10 md:pr-3">
             <li>Scrub and rinse the bath and shower</li>
             <li>Clean and disinfect the toilet inside and out</li>
             <li>Wipe tiles, radiators, shower screens, and mirrors</li>
@@ -43,14 +43,14 @@
           </ul>
 
           <p class="text-lg text-left font-bold text-black pt-3 pb-2">Optional Extras</p>
-          <ul class="text-left list-disc pl-10 pr-3 pb-7">
+          <ul class="text-left list-disc py-1 md:pl-10 md:pr-3 pb-7">
             <li>Clean inside window panes</li>
             <li>Clean the inside of fridge</li>
             <li>Make the bed</li>
           </ul>
 
           <p class="text-2xl font-bold text-black pt-3 pb-3">Approximate standard cleaning prices:</p>
-          <p class="text-sm italic text-black pb-3 max-w-1/2 mx-auto">Please note these prices are only a guide. Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
+          <p class="text-sm italic text-black pb-3 max-w-full md:max-w-2/3 mx-auto">Please note these prices are only a guide. Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
           <table class="table-auto border-collapse w-75 mx-auto  text-left">
             <thead class="border-b border-cyan-900/50">
               <tr>
@@ -89,7 +89,7 @@
             <h3 class="text-[27px] font-bold text-black pt-7">Deep Cleaning (One-Off Sevices)</h3>
             <p class="text-lg font-semibold text-black pb-10">Seasonal, annual, end-of-tenancy and Airbnb cleaning</p>
             
-            <ul class="text-left list-disc pl-10 pr-3 pb-7">
+            <ul class="text-left list-disc py-1 md:pl-10 md:pr-3 pb-7">
               <li>Clean internal windows, ledges and frames</li>
               <li>Dust blinds</li>
               <li>Remove dust from radiators, vents, and skirting boards</li>
@@ -106,7 +106,7 @@
             </ul>
             
             <p class="text-2xl font-bold text-black pt-3 pb-3">Approximate deep cleaning prices:</p>
-            <p class="text-sm italic text-black pb-3 w-1/2 mx-auto">Please note these prices are only a guide. Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
+            <p class="text-sm italic text-black pb-3 max-w-full md:max-w-2/3 mx-auto">Please note these prices are only a guide. Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
             <table class="table-auto border-collapse w-75 mx-auto text-left">
               <thead class="border-b border-cyan-900/50">
                 <tr>
