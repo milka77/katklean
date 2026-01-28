@@ -2,7 +2,9 @@
 <footer class="px-6 md:px-16 lg:px-24 xl:px-32 bg-slate-700 transition-all pt-7">
   <div class="flex flex-col md:flex-row items-center justify-between gap-10 py-10 border-b border-gray-300/50 text-white">
     <div>
-      <img  width="157" height="40" src="{{ asset('/images/logo.png') }}" alt="katkelan_logo.png">
+      <a href="https://katklean.co.uk">
+        <img  width="157" height="40" src="{{ asset('/images/logo.png') }}" alt="katkelan_logo.png">
+      </a>
       {{-- <p class="max-w-[410px] mt-6">Cleaning solution for your home.</p> --}}
     </div>
     <div class="flex flex-wrap flex-col lg:flex-row justify-between w-2/3 md:w-1/2 gap-5 pb-1 md:pb-15">

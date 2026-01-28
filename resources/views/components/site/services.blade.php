@@ -1,4 +1,9 @@
 <x-layout>
+  @section('extra-style')
+  <meta name="title" content="House Cleaning & Domestic Cleaning in Preston | KatKlean">
+  <meta name="description" content="Reliable house cleaning and domestic cleaning services in Preston. Local professionals delivering high-quality home cleaning.">
+  @endsection
+  
   @section('content')
   <!-- Services -->
   <div class="pb-5">

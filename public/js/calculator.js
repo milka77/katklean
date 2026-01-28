@@ -12,6 +12,10 @@ const bedField = document.getElementById('bed-field')
 const bathMinusButton = document.getElementById('bath-minus')
 const bathPlusButton = document.getElementById('bath-plus')
 const bathField = document.getElementById('bath-field')
+//Kitchen
+const kitchenMinusButton = document.getElementById('kitchen-minus')
+const kitchenPlusButton = document.getElementById('kitchen-plus')
+const kitchenField = document.getElementById('kitchen-field')
 //Living areas
 const livingMinusButton = document.getElementById('living-minus')
 const livingPlusButton = document.getElementById('living-plus')
@@ -58,6 +62,24 @@ bathPlusButton.addEventListener('click', event => {
   event.preventDefault()
   const currentBathValue = Number(bathField.innerHTML) || 0
   bathField.innerHTML = currentBathValue + 1
+  calculate()
+})
+
+// Kitchen
+kitchenMinusButton.addEventListener('click', event => {
+  event.preventDefault()
+  const currentKitchenValue = Number(kitchenField.innerHTML) || 0
+  if(currentKitchenValue <= minValue){
+    currentKitchenValue = 0
+  }
+  kitchenField.innerHTML = currentKitchenValue - 1
+  calculate()
+})
+
+kitchenPlusButton.addEventListener('click', event => {
+  event.preventDefault()
+  const currentKitchenValue = Number(kitchenField.innerHTML) || 0
+  kitchenField.innerHTML = currentKitchenValue + 1
   calculate()
 })
 
@@ -119,6 +141,7 @@ function updateHours(hours){
 function calculate() {
   let bed = Number(bedField.innerHTML)
   let bath = Number(bathField.innerHTML)
+  let kitchen = Number(kitchenField.innerHTML)
   let living = Number(livingField.innerHTML)
   let other = Number(otherField.innerHTML)
   let totalRooms = bed + bath + living + other
@@ -134,6 +157,10 @@ function calculate() {
   if(extra1 == 1){
     window = Math.round((totalRooms * 0.2) * 10) / 10
     hours += window
+  }
+  //Kitchen (1st included any other +1 hrs)
+  if(kitchen > 1) {
+    hours += kitchen - 1
   }
   //extras if selected adding 0.5 hours
   extra2 == 1 ? hours += 0.5 : hours

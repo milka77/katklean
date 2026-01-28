@@ -1,4 +1,9 @@
 <x-layout>
+  @section('extra-style')
+  <meta name="title" content="Book House Cleaning in Preston | KatKlean">
+  <meta name="description" content="Looking for house cleaning services in Preston? Contact KatKlean today to book a reliable local cleaning company.">
+  @endsection
+
   @section('content')
   <h1 class="text-center font-bold text-5xl pt-15 pb-7">Online Booking</h1>
   {{-- <h1 class="text-center font-semibold text-xl ">Book your appoinment now</h1> --}}

@@ -10,6 +10,7 @@
           <p class="text-center text-sm pb-5">This guide uses a few details about your home and cleaning requirements to provide an approximate time for each visit.</p>
           <div class="border rounded-2xl border-slate-300 bg-stone-50 pt-3">
             
+              {{-- Bedrooms --}}
               <div class="flex flex-row place-content-between border-b border-slate-300 pt-1 pb-2 mx-4 pr-2">
                 <p class="pl-2 font-semibold">Bedrooms</p>
                 <div class="flex border rounded-md border-slate-300">
@@ -18,6 +19,9 @@
                   <button id="bed-plus" class="px-3 py-0.5 bg-slate-100 cursor-pointer">+</button>
                 </div>
               </div>
+              {{-- End of Bedrooms --}}
+
+              {{-- Bathrooms --}}
               <div class="flex flex-row place-content-between border-b border-slate-300 py-2 mx-4 pr-2">
                 <p class="pl-2 font-semibold">Bathrooms</p>
                 <div class="flex border rounded-md border-slate-300">
@@ -26,22 +30,43 @@
                   <button id="bath-plus" class="px-3 py-0.5 bg-slate-100 cursor-pointer">+</button>
                 </div>
               </div>
+              {{-- end of Bathrooms --}}
+
+              {{-- Kitchen --}}
               <div class="flex flex-row place-content-between border-b border-slate-300  py-2 mx-4 pr-2">
-                <p class="pl-2 font-semibold">Living areas</p>
+                <p class="pl-2 font-semibold">Kitchen</p>
+                <div class="flex border rounded-md border-slate-300">
+                  <button id="kitchen-minus" class="px-3 py-0.5 bg-slate-100 cursor-pointer">--</button>
+                  <div id="kitchen-field" class="border-x  w-9 py-0.5 border-slate-300 px-3">0</div>
+                  <button id="kitchen-plus"  class="px-3 py-0.5 bg-slate-100 cursor-pointer">+</button>
+                </div>
+              </div>
+              {{-- End of Kitchen --}}
+
+              {{-- Living room --}}
+              <div class="flex flex-row place-content-between border-b border-slate-300  py-2 mx-4 pr-2">
+                <p class="pl-2 font-semibold">Living/Dining rooms</p>
                 <div class="flex border rounded-md border-slate-300">
                   <button id="living-minus" class="px-3 py-0.5 bg-slate-100 cursor-pointer">--</button>
                   <div id="living-field" class="border-x  w-9 py-0.5 border-slate-300 px-3">0</div>
                   <button id="living-plus"  class="px-3 py-0.5 bg-slate-100 cursor-pointer">+</button>
                 </div>
               </div>
+              {{-- End of Living room --}}
+
+               {{-- Other rooms --}}
               <div class="flex flex-row place-content-between border-b border-slate-300 py-2 mx-4 pr-2 mb-6">
-                <p class="pl-2 font-semibold">Other rooms</p>
-                <div class="flex border rounded-md border-slate-300">
+                <div>
+                  <p class="pl-2 font-semibold">Other rooms</p>
+                  <p class="pl-2 text-xs font-semibold">(e.g. Study/Utility)</p>
+                </div>
+                <div class="flex border rounded-md border-slate-300 h-7.5">
                   <button id="otherroom-minus" class="px-3 py-0.5 bg-slate-100 cursor-pointer">--</button>
                   <div id="otherroom-field" class="border-x  w-9 py-0.5 border-slate-300 px-3">0</div>
                   <button id="otherroom-plus"  class="px-3 py-0.5 bg-slate-100 cursor-pointer">+</button>
                 </div>
               </div>
+              {{-- Other rooms --}}
               <div class="flex flex-col pb-2 pt-1 mx-4 sr-only">
                 <p class="pl-2 py-2 font-semibold">Optional extras</p>
                 <div class="flex place-content-between pb-1 pr-2">

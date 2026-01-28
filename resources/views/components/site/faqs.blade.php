@@ -14,7 +14,7 @@
   @endsection
 
 @section('extra-js')
-<script>
+{{-- <script>
   const menuButtons = document.querySelectorAll('.menu-btn');
   const mobileMenus = document.querySelectorAll('.mobile-menu');
   menuButtons.forEach((btn, index) => {
@@ -22,7 +22,7 @@
         mobileMenus[index].classList.toggle('hidden');
     });
   });
-</script>
+</script> --}}
 <script>
   const faqs = [
     {
