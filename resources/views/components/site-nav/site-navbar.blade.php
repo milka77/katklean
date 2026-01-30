@@ -14,9 +14,18 @@
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('booking') }}">Book Now</a></li>
     </ul>
     <!-- End of Menu options -->
-
-    {{-- <a class="text-white md:flex hidden hover:text-white/70 transition text-lg pl-5" href="#">Login</a> --}}
-    <a class=" md:flex hidden text-slate-700 transition text-lg pl-5" href="#">Login</a>
+    @guest
+        <a class="text-white md:flex hidden hover:text-white/70 transition text-lg pl-5" href="{{ route('login') }}">Login</a>
+    @endguest
+    @auth
+        <a class="text-white md:flex hidden hover:text-white/70 transition text-lg pl-5" href="#">
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="cursor-pointer">Logout</button>  
+            </form>
+        </a>
+    @endauth
+    {{-- <a class=" md:flex hidden text-slate-700 transition text-lg pl-5" href="#">Login</a> --}}
 
 
     <button id="menu-toggle" aria-label="menu-btn" type="button" class="menu-btn inline-block md:hidden active:scale-90 transition">

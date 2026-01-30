@@ -2,7 +2,7 @@
   @section('content')
   <!-- Calculator -->
   <div class="py-5">
-    <div id="services" class="md:mx-20 lg:mx-50 pt-15 pb-7 px-2 md:px-0 ">
+    <div class="md:mx-20 lg:mx-50 pt-15 pb-7 px-2 md:px-0 ">
         <h2 class="text-center text-4xl md:text-5xl font-semibold pb-7 text-black">Time Calculator</h2>
         
         <div class="border w-full md:w-125 mx-auto rounded-2xl border-slate-300 bg-slate-100 p-2 md:p-5">
