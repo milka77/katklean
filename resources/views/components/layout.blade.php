@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HKGPEN7RE0"></script>
+    {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-HKGPEN7RE0"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'G-HKGPEN7RE0');
-    </script>
+    </script> --}}
 
     {{-- SEO & Social meta tags --}}
     <meta name="description" content="Reliable local cleaning company in Preston offering professional cleaning services for homes and properties.Local Cleaning Company in Preston | KatKlean">
@@ -36,7 +35,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     @vite('resources/css/app.css')
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'KatKlean') }}</title>
     @yield('extra-style')
     <style>
         body {

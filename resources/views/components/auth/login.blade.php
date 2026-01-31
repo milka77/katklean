@@ -22,7 +22,7 @@
             <div class="flex flex-col px-5 pb-2">
               <label class="pl-2 pb-1" for="email">Password</label>
               <input class="border rounded-md border-slate-300 pl-2 py-1 @error('password') border-red-500 @enderror" 
-                type="password" name="password" id="password" placeholder="Enter your password" value="{{ old('password') }}">
+                type="password" name="password" id="password" placeholder="Enter your password"/>
               @error('password')
                 <div class="text-red-500 italic text-sm pl-2">
                   {{ $message }}  

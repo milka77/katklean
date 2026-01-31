@@ -19,6 +19,7 @@ class UserController extends Controller
         return view('components.auth.signup');
     }
 
+    // Store a new user
     public function store(){
         //Validation
         $validated = request()->validate([
@@ -39,6 +40,7 @@ class UserController extends Controller
         return redirect('/')->with('success', 'Account created successfully.');
     }
 
+    // Authenticate and log in the user
     public function loginUser() {
         //Validation
         $validated = request()->validate([
@@ -47,9 +49,7 @@ class UserController extends Controller
         ]);
 
         // Remember me functionality
-        $remember = request()->has('remember') ? true : false;
-
-        
+        $remember = request()->has('remember') ? true : false;      
 
         // Sign in the user
         if(Auth::attempt($validated, $remember)) {
@@ -63,13 +63,20 @@ class UserController extends Controller
         ])->onlyInput('email');
     }
 
+    // Log out the user
     public function logout() {
-        auth()->logout();
+        Auth::logout();
 
-        return redirect()->back();
+        return redirect('/');
     }
 
     public function showProfile() {
+        if (Auth::guest()) {
+            return redirect('/login')->with('error', 'You must be logged in to access the profile page.');
+        }
+
+        
+
         return view('components.auth.profile');
     }
 }
