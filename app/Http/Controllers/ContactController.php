@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 
+use function Flasher\Toastr\Prime\toastr;
 use function Termwind\render;
 
 class ContactController extends Controller
@@ -31,8 +32,10 @@ class ContactController extends Controller
         ];
 
         Mail::to('info@katklean.co.uk')->send(new ContactMail($content));
+
+        toastr()->success('Thank you for your message! We will be in touch with you shortly.');
         
-        return back()->with('success', "Thank you for your message! We will be in touch with you shortly.");
+        return back();
     }
 
     public function booking(){
