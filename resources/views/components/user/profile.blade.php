@@ -36,16 +36,25 @@
                     <p>Postcode: </p><p>{{ $address->postcode }}</p>
                   </div>
                   <div class="mt-6 flex justify-center gap-4">
-                    <a class="border border-red-600 hover:bg-red-500 text-red-500 hover:text-white font-bold py-2 px-4 rounded cursor-pointer" href="{{ route('profile') }}">Delete</a>
-                    <button class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded cursor-pointer"><a href="{{ route('address.edit', $address) }}">Update Address</a></button>
+                    <a class="border border-red-600 hover:bg-red-500 text-red-500 hover:text-white font-bold py-2 px-4 rounded cursor-pointer" href="{{ route('address.destroy', $address) }}">
+                      <form action="{{ route('address.destroy', $address) }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button class="cursor-pointer">Delete</button>  
+                      </form>  
+                    </a>
+                    <button class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded cursor-pointer"><a href="{{ route('address.edit', $address) }}">Update</a></button>
                   </div>
                   <hr class="text-slate-300 my-4">
                   @endforeach
                 @else
-                  <p>No address on file.</p>
+                  <p class="px-2">No address on file.</p>
+                  <hr class="text-slate-300 my-2">
 
-                  <button class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded cursor-pointer"><a href="{{ route('address.create') }}">Add Address</a></button>
-                @endif
+                  @endif
+                  <div class="flex flex-row justify-center">
+                    <button class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded cursor-pointer"><a href="{{ route('address.create') }}">Add</a></button>
+                  </div>
               </div>
               <hr class="text-slate-300 my-2">
               <div class="flex flex-row justify-between">

@@ -57,5 +57,14 @@ class AddressController extends Controller
         return redirect()->route('profile');
     }
 
-    
+    public function destroy(Address $address)
+    {
+        // Detach the address from the authenticated user
+        request()->user()->addresses()->detach($address->id);
+
+        
+        toastr()->success('Address deleted successfully.');
+        // Redirect back with success message
+        return redirect()->route('profile');
+    }
 }

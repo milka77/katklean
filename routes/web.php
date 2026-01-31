@@ -36,4 +36,5 @@ Route::middleware('auth')->group(function() {
   Route::post('/address/store', [AddressController::class, 'store'])->name('address.store');
   Route::get('/address/{address}/edit', [AddressController::class, 'edit'])->name('address.edit');
   Route::put('/address/{address}/update', [AddressController::class, 'update'])->name('address.update');
+  Route::delete('/address/{address}/delete', [AddressController::class, 'destroy'])->name('address.destroy');
 });
