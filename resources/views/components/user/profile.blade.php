@@ -23,8 +23,29 @@
                 
               <p class="px-2 text-lg font-semibold">Address</p>
               <hr class="text-slate-300 mb-2">
-              <div class="flex flex-row justify-between px-2 py1 ">
-                <p>Street Address: </p><p>{{ Auth()->user()->street_address }}</p>  
+              <div class=" py1 ">
+                @if (Auth()->user()->addresses->first())
+                  @foreach (Auth()->user()->addresses as $address)
+                  <div class="flex flex-row justify-between px-2 py1">
+                    <p>Address line: </p><p>{{ $address->address_line1 }}</p>
+                  </div>
+                  <div class="flex flex-row justify-between px-2 py1">
+                    <p>City: </p><p>{{ $address->city }}</p>
+                  </div>
+                  <div class="flex flex-row justify-between px-2 py1">
+                    <p>Postcode: </p><p>{{ $address->postcode }}</p>
+                  </div>
+                  <div class="mt-6 flex justify-center gap-4">
+                    <a class="border border-red-600 hover:bg-red-500 text-red-500 hover:text-white font-bold py-2 px-4 rounded cursor-pointer" href="{{ route('profile') }}">Delete</a>
+                    <button class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded cursor-pointer"><a href="{{ route('address.edit', $address) }}">Update Address</a></button>
+                  </div>
+                  <hr class="text-slate-300 my-4">
+                  @endforeach
+                @else
+                  <p>No address on file.</p>
+
+                  <button class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded cursor-pointer"><a href="{{ route('address.create') }}">Add Address</a></button>
+                @endif
               </div>
               <hr class="text-slate-300 my-2">
               <div class="flex flex-row justify-between">

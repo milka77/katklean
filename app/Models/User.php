@@ -52,8 +52,8 @@ class User extends Authenticatable
         return "{$this->first_name} {$this->last_name}";
     }
 
-    public function address()
+    public function addresses()
     {
-        return $this->belongsTo(Address::class);
+        return $this->belongsToMany(Address::class);
     }
 }

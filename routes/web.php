@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -31,4 +32,8 @@ Route::get('/booking', [ContactController::class, 'booking'])->name('booking');
 Route::middleware('auth')->group(function() {
   Route::post('/logout', [UserController::class, 'logout'])->name('logout');
   Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
+  Route::get('/address/create', [AddressController::class, 'create'])->name('address.create');
+  Route::post('/address/store', [AddressController::class, 'store'])->name('address.store');
+  Route::get('/address/{address}/edit', [AddressController::class, 'edit'])->name('address.edit');
+  Route::put('/address/{address}/update', [AddressController::class, 'update'])->name('address.update');
 });

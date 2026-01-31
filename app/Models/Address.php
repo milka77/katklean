@@ -10,12 +10,11 @@ class Address extends Model
         'address_line1',
         'city',
         'postcode',
-        'user_id',
     ];
 
 
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class);
     }
 }

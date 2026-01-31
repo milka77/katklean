@@ -77,6 +77,7 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    // Show user profile
     public function showProfile() {
         if (Auth::guest()) {
             toastr()->error('You must be logged in to access the profile page.');
@@ -85,6 +86,6 @@ class UserController extends Controller
 
         
 
-        return view('components.auth.profile');
+        return view('components.user.profile');
     }
 }
