@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 
+use function Flasher\Toastr\Prime\toastr;
+
 class UserController extends Controller
 {
     public function login(Request $request) {
@@ -36,8 +38,9 @@ class UserController extends Controller
 
         // Log the user in
         Auth::login($user);
-
-        return redirect('/')->with('success', 'Account created successfully.');
+        // Toast success message and redirect
+        toastr()->success('Account created successfully.');
+        return redirect('/');
     }
 
     // Authenticate and log in the user
@@ -54,10 +57,14 @@ class UserController extends Controller
         // Sign in the user
         if(Auth::attempt($validated, $remember)) {
             request()->session()->regenerate();
+
+            toastr()->success('Logged in successfully.');
             
             return redirect()->intended('/');
         }
 
+        toastr()->error('Login failed. Please check your credentials and try again.');
+        
         return redirect('/login')->withErrors([
             'email' => 'The provided email or password is incorrect.',
         ])->onlyInput('email');
@@ -72,7 +79,8 @@ class UserController extends Controller
 
     public function showProfile() {
         if (Auth::guest()) {
-            return redirect('/login')->with('error', 'You must be logged in to access the profile page.');
+            toastr()->error('You must be logged in to access the profile page.');
+            return redirect('/login');
         }
 
         

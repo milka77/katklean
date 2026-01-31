@@ -19,6 +19,13 @@ return new class extends Migration
             $table->string('city');            
             $table->timestamps();
         });
+
+        Schema::create('address_user', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(\App\Models\User::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(\App\Models\Address::class)->constrained()->onDelete('cascade');      
+            $table->timestamps();
+        });
     }
 
     /**
@@ -27,5 +34,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('addresses');
+        Schema::dropIfExists('address_user');
     }
 };
