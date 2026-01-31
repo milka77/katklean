@@ -10,6 +10,9 @@
 
         gtag('config', 'G-HKGPEN7RE0');
     </script> --}}
+    {{-- Laravel Cookie consent  --}}
+    {!! CookieConsent::styles() !!}
+    {{-- Laravel Cookie consent  --}}
 
     {{-- SEO & Social meta tags --}}
     <meta name="description" content="Reliable local cleaning company in Preston offering professional cleaning services for homes and properties.Local Cleaning Company in Preston | KatKlean">
@@ -60,6 +63,7 @@
 <x-site-nav.site-footer/>
 {{--  End of Footer --}}
 
+{!! CookieConsent::scripts() !!}
 </body>
 <script src="https://kit.fontawesome.com/b6c120cd7f.js" crossorigin="anonymous"></script>
 @yield('extra-js')
