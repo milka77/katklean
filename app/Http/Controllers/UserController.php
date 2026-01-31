@@ -74,6 +74,8 @@ class UserController extends Controller
     public function logout() {
         Auth::logout();
 
+        toastr()->success('Logged out successfully.');
+        
         return redirect('/');
     }
 

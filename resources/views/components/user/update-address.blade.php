@@ -40,7 +40,7 @@
                 </div>
                 <div class="flex justify-between px-2">
                   <a class="border border-red-600 hover:bg-red-500 text-red-500 hover:text-white font-bold py-2 px-4 rounded cursor-pointer" href="{{ route('profile') }}">Cancel</a>
-                  <button type="submit" class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded cursor-pointer">Save Address</button>
+                  <button type="submit" class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded cursor-pointer">Save</button>
 
                 </div>
               </form>
