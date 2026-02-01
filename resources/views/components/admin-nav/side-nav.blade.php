@@ -4,10 +4,13 @@
       <li><a href="#">Dashboard</a></li>
       <li><a href="{{ route('admin.users.index') }}">Users</a></li>
       <li><a href="#">Settings</a></li>
-      <li>Roles</li>
+      <li class="my-1">Roles</li>
       <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.roles.index') }}">View Roles</a></li>
       <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.roles.create') }}">Add role</a></li> 
-      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.roles.create') }}">Attach role</a></li> 
+      <hr class="text-slate-300 mr-4">  
+      <li class="my-1">Products</li>
+      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.products.index') }}">View Products</a></li>
+      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.products.create') }}">Add Product</a></li> 
       <hr class="text-slate-300 mr-4">  
     </ul>
     
