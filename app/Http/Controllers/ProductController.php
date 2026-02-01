@@ -77,11 +77,12 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
-        $product->delete();
-
-        // Flash Message
-        toastr('Product deleted successfully!', 'success');
-
+        try {
+            $product->delete();
+            toastr('Product deleted successfully!', 'success');
+        } catch (\Exception $e) {
+            toastr('An error occurred while deleting the product: ' . $e->getMessage(), 'error');
+        }
         return redirect()->back();
     }
 }
