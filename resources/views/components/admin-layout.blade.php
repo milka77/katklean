@@ -40,7 +40,7 @@
 
 </body>
 <script src="https://kit.fontawesome.com/b6c120cd7f.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
 @yield('extra-js')
 
-<script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
 </html>

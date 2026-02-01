@@ -42,8 +42,16 @@ Route::middleware('auth')->group(function() {
 
   // Admin Routes
   Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+
+  Route::get('/admin/roles', [RoleController::class, 'index'])->name('admin.roles.index');
   Route::get('/admin/roles/create', [RoleController::class, 'create'])->name('admin.roles.create');
   Route::post('/admin/roles/store', [RoleController::class, 'store'])->name('admin.roles.store');
   Route::get('/admin/roles/{role}/edit', [RoleController::class, 'edit'])->name('admin.roles.edit');
   Route::put('/admin/roles/{role}/update', [RoleController::class, 'update'])->name('admin.roles.update');
+  Route::delete('/admin/roles/{role}/delete', [RoleController::class, 'destroy'])->name('admin.roles.destroy');
+  Route::put('/admin/users/{user}/role/attach', [AdminController::class, 'attach'])->name('user.role.attach');
+  Route::put('/admin/users/{user}/role/detach', [AdminController::class, 'detach'])->name('user.role.detach');  
+
+  Route::get('/admin/users', [AdminController::class, 'userIndex'])->name('admin.users.index');
+  Route::get('/admin/users/{user}/show', [AdminController::class, 'showUser'])->name('admin.users.show');
 });

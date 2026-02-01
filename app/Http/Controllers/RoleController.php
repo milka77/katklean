@@ -13,7 +13,9 @@ class RoleController extends Controller
 {
     public function index()
     {
-        return view('roles.index');
+        $roles = Role::all();
+
+        return view('components.admin.roles.index', compact('roles'));
     }
 
     public function create()
@@ -57,6 +59,15 @@ class RoleController extends Controller
         $role->save();
 
         toastr('Role updated successfully!', 'success');
+
+        return redirect()->route('admin.index');
+    }
+
+    public function destroy(Role $role)
+    {
+        $role->delete();
+
+        toastr('Role deleted successfully!', 'success');
 
         return redirect()->route('admin.index');
     }

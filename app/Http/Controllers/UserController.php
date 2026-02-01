@@ -90,4 +90,34 @@ class UserController extends Controller
 
         return view('components.user.profile');
     }
+
+    // ******************
+    // Admin Functions //
+    // ******************
+    // Assign role to user
+    public function attach(User $user)
+    {
+        $user->roles()->attach(request('role'));
+
+        toastr('Role attached successfully!', 'success');
+
+        return redirect()->route('admin.index');
+    }
+
+    // Detach role from user
+    public function detach(User $user)
+    {
+        $user->roles()->detach(request('role'));
+
+        toastr('Role detached successfully!', 'success');
+
+        return redirect()->route('admin.index');
+    }
+
+    // Show user details
+    public function show(User $user)
+    {
+        return view('components.admin.users.show', compact('user'));
+    }
+
 }
