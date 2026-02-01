@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -55,5 +56,22 @@ class User extends Authenticatable
     public function addresses()
     {
         return $this->belongsToMany(Address::class);
+    }
+
+    // relationship with roles
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    // Check if user has a role
+    public function hasRole($role)
+    {
+        foreach ($this->roles as $role) {
+            if(Str::lower($role->name) == Str::lower($role)) {
+                return true;
+        }
+        return false;
+        }
     }
 }

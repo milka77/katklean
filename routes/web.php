@@ -5,6 +5,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -39,5 +40,10 @@ Route::middleware('auth')->group(function() {
   Route::put('/address/{address}/update', [AddressController::class, 'update'])->name('address.update');
   Route::delete('/address/{address}/delete', [AddressController::class, 'destroy'])->name('address.destroy');
 
+  // Admin Routes
   Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+  Route::get('/admin/roles/create', [RoleController::class, 'create'])->name('admin.roles.create');
+  Route::post('/admin/roles/store', [RoleController::class, 'store'])->name('admin.roles.store');
+  Route::get('/admin/roles/{role}/edit', [RoleController::class, 'edit'])->name('admin.roles.edit');
+  Route::put('/admin/roles/{role}/update', [RoleController::class, 'update'])->name('admin.roles.update');
 });
