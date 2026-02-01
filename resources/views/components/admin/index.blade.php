@@ -1,8 +1,9 @@
 <x-admin-layout>
     @section('content')
-    <h1 class="text-3xl font-bold underline">
-        Admin Dashboard
-    </h1>
-    <p>Welcome to the admin dashboard!</p>
+    <div class="w-full">
+        <h1 class="text-3xl font-bold underline text-center">Admin Dashboard</h1>
+        <p class="text-center">Welcome to the admin dashboard!</p>
+
+    </div>
     @endsection
 </x-admin-layout>
