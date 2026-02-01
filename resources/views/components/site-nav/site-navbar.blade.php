@@ -6,7 +6,6 @@
     <!-- Menu options -->
     <ul class="text-white md:flex hidden items-center gap-10 text-lg">
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('home') }}">Home</a></li>
-        {{-- <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('about') }}">About Us</a></li> --}}
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('services') }}">Services</a></li>            
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('faq') }}">F.A.Q.s</a></li>
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('contact') }}">Contact Us</a></li>

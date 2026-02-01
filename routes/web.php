@@ -4,6 +4,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -37,4 +38,6 @@ Route::middleware('auth')->group(function() {
   Route::get('/address/{address}/edit', [AddressController::class, 'edit'])->name('address.edit');
   Route::put('/address/{address}/update', [AddressController::class, 'update'])->name('address.update');
   Route::delete('/address/{address}/delete', [AddressController::class, 'destroy'])->name('address.destroy');
+
+  Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
