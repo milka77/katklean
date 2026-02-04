@@ -30,4 +30,8 @@ class SiteController extends Controller
     public function policy() {
         return view('components.site.policy');
     }
+
+    public function galery() {
+        return view('components.site.gallery');
+    }
 }
