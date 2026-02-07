@@ -11,6 +11,10 @@
       <li class="my-1">Products</li>
       <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.products.index') }}">View Products</a></li>
       <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.products.create') }}">Add Product</a></li> 
+      <hr class="text-slate-300 mr-4">
+      <li class="my-1">Gallery</li>
+      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.gallery.index') }}">View Gallery</a></li>
+      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.gallery.create') }}">Add Gallery Item</a></li> 
       <hr class="text-slate-300 mr-4">  
     </ul>
     

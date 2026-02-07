@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class ImageUpload extends Model
 {
-    //
+    protected $fillable = [
+        'filename',
+        'title',
+        'filepath',
+    ];
+
+    
 }

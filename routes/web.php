@@ -7,6 +7,7 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ImageUploadController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -68,4 +69,11 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
   Route::put('/products/{product}/update', [ProductController::class, 'update'])->name('admin.products.update');
   Route::delete('/products/{product}/delete', [ProductController::class, 'destroy'])->name('admin.products.destroy');
+
+  Route::get('/gallery/create', [ImageUploadController::class, 'create'])->name('admin.gallery.create');
+  Route::post('/gallery/store', [ImageUploadController::class, 'store'])->name('admin.gallery.store');
+  Route::get('/gallery', [ImageUploadController::class, 'index'])->name('admin.gallery.index');
+  Route::delete('/gallery/{image}/delete', [ImageUploadController::class, 'destroy'])->name('admin.gallery.destroy');
+  Route::get('/gallery/{image}/edit', [ImageUploadController::class, 'show'])->name('admin.gallery.edit');
+  Route::put('/gallery/{image}/update', [ImageUploadController::class, 'update'])->name('admin.gallery.update');
 });

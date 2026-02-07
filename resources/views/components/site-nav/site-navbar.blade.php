@@ -11,6 +11,8 @@
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('contact') }}">Contact Us</a></li>
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('calculator') }}">Calculator</a></li>
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('booking') }}">Book Now</a></li>
+        <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('gallery') }}">Gallery</a></li>
+
     </ul>
     <!-- End of Menu options -->
     <!-- Login / Signup buttons -->
@@ -63,6 +65,7 @@
             <li><a href="{{ route('contact') }}" class="text-sm">Contact Us</a></li>
             <li><a href="{{ route('calculator') }}" class="text-sm">Calculator</a></li>
             <li><a href="{{ route('booking') }}" class="text-sm">Book Now</a></li>
+            <li><a href="{{ route('gallery') }}" class="text-sm">Gallery</a></li>
             @guest
             <li><a href="{{ route('login') }}" class="text-sm">Login</a></li>
             @endguest
