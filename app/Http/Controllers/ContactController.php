@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
 use App\Mail\ContactMail;
+use App\Models\Booking;
+use App\Models\User;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
@@ -39,6 +42,7 @@ class ContactController extends Controller
     }
 
     public function booking(){
-        return view('components.site.booking');
+        $services = Product::where('is_extra', false)->get();
+        return view('components.site.booking', compact('services'));
     }
 }

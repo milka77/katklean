@@ -55,7 +55,7 @@
               {{-- End of Living room --}}
 
                {{-- Other rooms --}}
-              <div class="flex flex-row place-content-between border-b border-slate-300 py-2 mx-4 pr-2 mb-6">
+              <div class="flex flex-row place-content-between border-b border-slate-300 py-2 mx-4 pr-2">
                 <div>
                   <p class="pl-2 font-semibold">Other rooms</p>
                   <p class="pl-2 text-xs font-semibold">(e.g. Study/Utility)</p>
@@ -67,7 +67,7 @@
                 </div>
               </div>
               {{-- Other rooms --}}
-              <div class="flex flex-col pb-2 pt-1 mx-4 sr-only">
+              <div class="flex flex-col pb-2 pt-1 mx-4">
                 <p class="pl-2 py-2 font-semibold">Optional extras</p>
                 <div class="flex place-content-between pb-1 pr-2">
                   <p class="pl-2 font-semibold text-sm">Clean inside window panes</p>

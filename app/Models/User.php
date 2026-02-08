@@ -76,4 +76,10 @@ class User extends Authenticatable
         return false;
         }
     }
+
+    // Bookings relationship
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);  
+    }
 }
