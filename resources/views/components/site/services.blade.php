@@ -54,6 +54,7 @@
             <li>Make the bed</li>
           </ul>
 
+          <p>For standard cleaning, a short visit may be recommended for larger properties or where additional information is needed.</p>
           <p class="text-2xl font-bold text-black pt-3 pb-3">Approximate standard cleaning prices:</p>
           <p class="text-sm italic text-black pb-3 max-w-full md:max-w-2/3 mx-auto">Please note these prices are only a guide. Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
           <table class="table-auto border-collapse w-75 mx-auto  text-left">
@@ -66,11 +67,11 @@
             <tbody>
               <tr class="border-b border-cyan-900/50">
                 <td class="pl-3">1 bed / 1 bath</td>
-                <td class="text-right pr-6">£45</td>
+                <td class="text-right pr-6">£40</td>
               </tr>
               <tr class="border-b border-cyan-900/50">
                 <td class="pl-3">2 bed / 1 bath</td>
-                <td class="text-right pr-6">£60</td>
+                <td class="text-right pr-6">£55</td>
               </tr>
               <tr class="border-b border-cyan-900/50">
                 <td class="pl-3">3 bed / 1 bath</td>
@@ -109,7 +110,9 @@
               <li>Clean behind and underneath furniture and large appliances</li>
               <li>Disinfect bins and food storage areas to help prevent pests</li>
             </ul>
+            <p class="font-semibold pb-3">Please note: I do not offer carpet or upholstery cleaning services.</p>
             
+            <p>For one-off and deep cleans, I recommend a short visit beforehand to ensure accurate pricing and expectations.</p>
             <p class="text-2xl font-bold text-black pt-3 pb-3">Approximate deep cleaning prices:</p>
             <p class="text-sm italic text-black pb-3 max-w-full md:max-w-2/3 mx-auto">Please note these prices are only a guide. Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
             <table class="table-auto border-collapse w-75 mx-auto text-left">
@@ -138,7 +141,7 @@
                 </tr>
                 <tr class="border-b border-cyan-900/50">
                   <td class="pl-3">5 bed / 2 bath</td>
-                  <td class="text-right pr-4">£250</td>
+                  <td class="text-right pr-4">£270</td>
                 </tr>
               </tbody>
             </table>

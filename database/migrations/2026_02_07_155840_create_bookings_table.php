@@ -41,6 +41,8 @@ return new class extends Migration
             $table->string('phone');
             // Payment details
             $table->string('payment_method');
+            $table->string('payment_status')->default('pending');
+            $table->decimal('total_price', 8, 2);
             // Other details
             $table->boolean('own_equipment')->default(false);
             $table->string('frequency');
