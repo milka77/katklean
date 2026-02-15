@@ -333,7 +333,7 @@
 
     {{-- <div class="breely-inline" data-url="https://katklean.breely.com/form/13495"></div> <!-- Add this where you want it embedded --> --}}
     {{-- <iframe class="h-full w-full" src="https://evo3gt.youcanbook.me/"></iframe> --}}
-    </div>
+  </div>
   @endsection
 
   @section('extra-js')

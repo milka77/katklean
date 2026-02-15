@@ -11,6 +11,8 @@ namespace App\Http\Controllers;
 // use App\Http\Controllers\ProductController;
 // use App\Http\Controllers\ImageUploadController;
 // use App\Http\Controllers\BookingController;
+
+use App\Mail\BookingConfirmedMail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -35,7 +37,7 @@ Route::get('/calculator', [SiteController::class, 'calculator'])->name('calculat
 Route::get('/gallery', [SiteController::class, 'galery'])->name('gallery');
 Route::get('/terms', [SiteController::class, 'terms'])->name('terms');
 Route::get('/policy', [SiteController::class, 'policy'])->name('policy');
-Route::get('/booking', [ContactController::class, 'booking'])->name('booking');
+Route::get('/booking', [BookingController::class, 'booking'])->name('booking');
 
 // Booking links
 Route::get('/availability', [BookingController::class, 'availability'])->name('booking.availability');
@@ -86,4 +88,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
   //Booking routes
   Route::get('/booking', [BookingController::class, 'adminIndex'])->name('admin.booking.index');
+  Route::put('/booking/{booking}/confirmed', [BookingController::class, 'confirmation'])->name('admin.booking.confirmation');
+  Route::get('/email/{booking}', [BookingConfirmedMail::class, 'emails.booking-confirmed']);
+  Route::get('/booking/{booking}/show', [BookingController::class, 'adminShow'])->name('admin.booking.show');
 });

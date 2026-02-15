@@ -1,5 +1,5 @@
 <div>
-  <nav class="side-nav w-45 pl-4 pt-4 bg-gray-800 text-white h-screen">
+  <nav class="side-nav w-45 pl-4 pt-4 bg-gray-800 text-white min-h-screen max-h-full">
     <ul class="text-sm">
       <li><a href="#">Dashboard</a></li>
       <li><a href="{{ route('admin.users.index') }}">Users</a></li>
@@ -15,7 +15,10 @@
       <li class="my-1">Gallery</li>
       <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.gallery.index') }}">View Gallery</a></li>
       <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.gallery.create') }}">Add Gallery Item</a></li> 
-      <hr class="text-slate-300 mr-4">  
+      <hr class="text-slate-300 mr-4">
+      <li class="my-1">Bookings</li>
+      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.booking.index') }}">View Bookings</a></li>
+      <hr class="text-slate-300 mr-4"> 
     </ul>
     
     {{-- <div class="flex flex-col  text-sm">

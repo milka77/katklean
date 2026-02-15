@@ -6,10 +6,13 @@ use App\Models\Booking;
 use App\Models\Product;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
+use App\Mail\BookingConfirmedMail;
 use App\Services\AvailabilityService;
+use Flasher\Toastr\Prime\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 use function Flasher\Toastr\Prime\toastr;
 
@@ -26,9 +29,9 @@ class BookingController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
+    public function booking(){
+        $services = Product::where('is_extra', false)->get();
+        return view('components.site.booking', compact('services'));
     }
 
     /**
@@ -133,7 +136,7 @@ class BookingController extends Controller
             if(Auth::user()) {
                 $user = Auth::user();
                 $user_ID = $user->id;
-                
+
                 $booking = Booking::create([
                     // Foreign
                     'user_id' => $user_ID,
@@ -297,5 +300,28 @@ class BookingController extends Controller
         $bookings = Booking::all();
 
         return view('components.admin.booking.index', compact('bookings'));
+    }
+
+    public function confirmation(Booking $booking, Request $request)
+    {
+        $previousStatus = $booking->status;
+
+        if ($booking->status === 'confirmed') {
+            return back()->with('info', 'Booking already confirmed.');
+        }
+
+        $booking->status = 'confirmed';
+        $booking->save();
+
+        toastr('success', 'Booking was confirmed.');
+
+        return back();
+    }
+
+    public function adminShow(Booking $booking)
+    {
+        $services = Product::where('is_extra', false)->get();
+
+        return view('components.admin.booking.show', compact('booking', 'services'));
     }
 }

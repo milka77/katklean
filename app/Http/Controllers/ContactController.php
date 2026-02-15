@@ -41,8 +41,4 @@ class ContactController extends Controller
         return back();
     }
 
-    public function booking(){
-        $services = Product::where('is_extra', false)->get();
-        return view('components.site.booking', compact('services'));
-    }
 }

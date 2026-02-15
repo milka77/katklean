@@ -2,23 +2,28 @@
 
 namespace App\Mail;
 
+
+use App\Models\Booking;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Queue\SerializesModels;
 
 class BookingConfirmedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public Booking $booking;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(Booking $booking)
     {
-        //
+        $this->booking = $booking;
     }
 
     /**
@@ -27,7 +32,8 @@ class BookingConfirmedMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Booking Confirmed Mail',
+            subject: 'Booking Confirmation',
+            replyTo: [new Address('info@katklean.co.uk', 'KatKlean')]
         );
     }
 
@@ -37,8 +43,15 @@ class BookingConfirmedMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.booking-confirmed',
         );
+    }
+
+    public function build()
+    {
+        return $this
+            ->subject('Your booking has been confirmed')
+            ->view('emails.booking-confirmed');
     }
 
     /**
