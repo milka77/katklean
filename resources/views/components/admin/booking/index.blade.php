@@ -33,6 +33,7 @@
             <th class="py-2 border-b border-slate-400">Payment Status</th>
             <th class="py-2 border-b border-slate-400">Total Price</th>
             <th class="py-2 border-b border-slate-400">Frequency</th>
+            <th class="py-2 border-b border-slate-400">Own Equipment</th>
             <th class="py-2 border-b border-slate-400">Status</th>
             <th class="py-2 border-b border-slate-400">Confirm Payment</th>
             <th class="py-2 border-b border-slate-400">Confirm Booking</th>
@@ -75,8 +76,11 @@
             <td class="py-2 px-4 border-b border-slate-400">{{ $booking->payment_status }}</td>
             <td class="py-2 px-4 border-b border-slate-400">£{{ $booking->total_price }}</td>
             <td class="py-2 px-4 border-b border-slate-400">{{ $booking->frequency }}</td>
+            <td class="py-2 px-4 border-b border-slate-400">@if ($booking->own_equipment == 0) No @else Yes @endif </td>
             <td class="py-2 px-4 border-b border-slate-400">{{ $booking->status }}</td>
-            <td class="py-2 px-4 border-b border-slate-400">blah</td>
+            <td class="py-2 px-4 border-b border-slate-400">
+              <a href="">blah</a>
+            </td>
             <td class="py-2 px-4 border-b border-slate-400">
               <form action="{{ route('admin.booking.confirmation', $booking->id) }}" method="POST" class="inline">
                 @csrf
@@ -85,7 +89,7 @@
                 </form>
             </td>
             <td class="py-2 px-4 border-b border-slate-400">
-              <a href="" class="border border-green-600 hover:bg-green-500 text-green-500 hover:text-white font-bold px-2 rounded cursor-pointer">Edit</a>
+              <a href="{{ route('admin.booking.show', $booking) }}" class="border border-green-600 hover:bg-green-500 text-green-500 hover:text-white font-bold px-2 rounded cursor-pointer">Edit</a>
             </td>
           @endforeach
         </tbody>
