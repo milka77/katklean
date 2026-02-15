@@ -9,7 +9,7 @@
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('services') }}">Services</a></li>            
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('faq') }}">F.A.Q.s</a></li>
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('contact') }}">Contact Us</a></li>
-        <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('calculator') }}">Calculator</a></li>
+        {{-- <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('calculator') }}">Calculator</a></li> --}}
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('booking') }}">Book Now</a></li>
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('gallery') }}">Gallery</a></li>
 
@@ -63,7 +63,7 @@
             <li><a href="{{ route('services') }}" class="text-sm">Services</a></li>
             <li><a href="{{ route('faq') }}" class="text-sm">F.A.Q.s</a></li>
             <li><a href="{{ route('contact') }}" class="text-sm">Contact Us</a></li>
-            <li><a href="{{ route('calculator') }}" class="text-sm">Calculator</a></li>
+            {{-- <li><a href="{{ route('calculator') }}" class="text-sm">Calculator</a></li> --}}
             <li><a href="{{ route('booking') }}" class="text-sm">Book Now</a></li>
             <li><a href="{{ route('gallery') }}" class="text-sm">Gallery</a></li>
             @guest

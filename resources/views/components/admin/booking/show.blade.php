@@ -208,20 +208,20 @@
             <p class="pl-2 text-sm">Clean inside window panes</p>
             
             <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
-              <input id="extra_1" name="extra_1" type="checkbox" class="peer sr-only" value="{{ $booking->extra_1 }}" />
-              <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
+              <input id="extra_1" name="extra_1" type="checkbox" class="peer selected:bg-slate-500" value="{{ $booking->extra_1 }}" @if($booking->extra_1 == 1) checked @endif/>
+              {{-- <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
               <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
-  
+   --}}
             </label>
           </div>
           <div class="flex place-content-between pb-1 pr-2">
             <p class="pl-2 text-sm">Fridge interior</p>
             
             <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
-              <input id="extra_2" name="extra_2" type="checkbox" class="peer sr-only" value={{ $booking->extra_2 }}/>
-              <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
+              <input id="extra_2" name="extra_2" type="checkbox" class="peer" value={{ $booking->extra_2 }} @if($booking->extra_2 == 1) checked @endif/>
+              {{-- <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
               <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
-  
+   --}}
             </label>
           </div>
   
@@ -229,10 +229,10 @@
             <p class="pl-2 text-sm">Make the bed</p>
             
             <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
-              <input id="extra_3" name="extra_3" type="checkbox" class="peer sr-only" value={{ $booking->extra_3 }} />
-              <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
+              <input id="extra_3" name="extra_3" type="checkbox" class="peer" value={{ $booking->extra_3 }} @if($booking->extra_3 == 1) checked @endif/>
+              {{-- <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
               <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
-  
+   --}}
             </label>
           </div>
   
@@ -264,9 +264,9 @@
                 <p class="pl-1 text-sm">KatKlean's equipment.</p>
                 
                 <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
-                  <input name="own_equipment" id="own_equipment" type="checkbox" class="peer sr-only" value={{ $booking->own_equipment }} />
-                  <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
-                  <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>    
+                  <input name="own_equipment" id="own_equipment" type="checkbox" class="peer" value={{ $booking->own_equipment }} @if($booking->own_equipment == 1) checked @endif/>
+                  {{-- <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
+                  <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>     --}}
                 </label>
               
               @error('own_equipment')
@@ -299,14 +299,14 @@
         <div class="flex flex-col">
             <label class="pl-2 pb-2 mx-auto">Start time</label>
             <div id="start_at_times" class="">
-              <input type="datetime" name="start_at" id="start_at" value="{{ $booking->start_at }}">
+              <input type="datetime" name="start_at" id="start_at" class="border rounded-md border-slate-300 pl-2 py-1" value="{{ $booking->start_at }}">
               
               {{-- <p class="border rounded-md border-slate-300 mx-auto px-2 py-1 cursor-pointer bg-slate-700 hover:bg-slate-500 text-white">07:00</p> --}}
             </div>
-            @error('start_at')
-              <p class="p-3 text-red-500 border border-red-500 bg-red-200 rounded-xl text-center">{{  $message }}</p>
-            @enderror
         </div>
+        @error('start_at')
+          <p class="p-3 text-red-500 border border-red-500 bg-red-200 rounded-xl text-center">{{  $message }}</p>
+        @enderror
       </div>
 
       <div class="border border-slate-300 rounded-xl">
@@ -322,7 +322,7 @@
       </div>
 
       <div class="flex justify-center my-5">
-        <button type="submit" class="bg-slate-800 text-white px-4 py-2 rounded-md hover:bg-slate-700 transition-colors duration-200">Update Booking</button>
+        <button type="submit" class="bg-slate-800 text-white px-4 py-2 rounded-md hover:bg-slate-700 transition-colors cursor-pointer">Update Booking</button>
       </div>
       </div>
     </form>
@@ -330,5 +330,9 @@
     {{-- <div class="breely-inline" data-url="https://katklean.breely.com/form/13495"></div> <!-- Add this where you want it embedded --> --}}
     {{-- <iframe class="h-full w-full" src="https://evo3gt.youcanbook.me/"></iframe> --}}
   </div>
+  @endsection
+
+  @section('extra-js')
+  <script src="{{ asset('js/booking_admin.js') }}" type="text/javascript"></script>
   @endsection
 </x-admin-layout>

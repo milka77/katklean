@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <!-- Google tag (gtag.js) -->
-    {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-HKGPEN7RE0"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    @if (env('APP_ENV') == 'production')
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HKGPEN7RE0"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-        gtag('config', 'G-HKGPEN7RE0');
-    </script> --}}
+            gtag('config', 'G-HKGPEN7RE0');
+        </script>
+    @endif
+    
     {{-- Laravel Cookie consent  --}}
     {!! CookieConsent::styles() !!}
     {{-- Laravel Cookie consent  --}}
