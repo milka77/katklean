@@ -259,9 +259,48 @@ class BookingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Booking $booking, Request $request)
     {
-        //
+        $validated = $request->validate([
+            // Foreign
+            'product_id' => ['required', 'exists:products,id'],
+
+            // Rooms
+            'bed'     => ['required', 'integer'],
+            'bath'    => ['required', 'integer'],
+            'living'  => ['required', 'integer'],
+            'kitchen' => ['required', 'integer'],
+            'other'   => ['nullable', 'integer'],
+
+            // Extras
+            'extra_1' => ['nullable', 'boolean'],
+            'extra_2' => ['nullable', 'boolean'],
+            'extra_3' => ['nullable', 'boolean'],
+
+            // Booking timing
+            'duration_minutes' => ['required', 'integer'],
+            'booking_date'     => ['required', 'date'],
+            'start_at'         => ['required'],
+
+            // Customer
+            'name'          => ['required', 'string', 'max:255'],
+            'address_line1' => ['required', 'string'],
+            'postcode'      => ['required', 'string'],
+            'town'          => ['required', 'string'],
+            'email'         => ['required', 'email'],
+            'phone'         => ['required', 'string'],
+
+            // Payment
+            'payment_method' => ['required', 'string'],
+            'total_price'    => ['required', 'numeric'],
+
+            // Other
+            'frequency'     => ['required', 'string'],
+            'own_equipment' => ['nullable', 'boolean'],
+            'message'       => ['nullable', 'string'],
+            'house_access'  => ['nullable', 'string'],
+        ]);
+
     }
 
     /**
