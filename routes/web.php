@@ -1,13 +1,16 @@
 <?php
 
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\SiteController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AddressController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ImageUploadController;
+namespace App\Http\Controllers;
+
+// use App\Http\Controllers\ContactController;
+// use App\Http\Controllers\SiteController;
+// use App\Http\Controllers\UserController;
+// use App\Http\Controllers\AddressController;
+// use App\Http\Controllers\AdminController;
+// use App\Http\Controllers\RoleController;
+// use App\Http\Controllers\ProductController;
+// use App\Http\Controllers\ImageUploadController;
+// use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -33,6 +36,10 @@ Route::get('/gallery', [SiteController::class, 'galery'])->name('gallery');
 Route::get('/terms', [SiteController::class, 'terms'])->name('terms');
 Route::get('/policy', [SiteController::class, 'policy'])->name('policy');
 Route::get('/booking', [ContactController::class, 'booking'])->name('booking');
+
+// Booking links
+Route::get('/availability', [BookingController::class, 'availability'])->name('booking.availability');
+Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
 
 Route::middleware('auth')->group(function() {
   Route::post('/logout', [UserController::class, 'logout'])->name('logout');
@@ -76,4 +83,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   Route::delete('/gallery/{image}/delete', [ImageUploadController::class, 'destroy'])->name('admin.gallery.destroy');
   Route::get('/gallery/{image}/edit', [ImageUploadController::class, 'show'])->name('admin.gallery.edit');
   Route::put('/gallery/{image}/update', [ImageUploadController::class, 'update'])->name('admin.gallery.update');
+
+  //Booking routes
+  Route::get('/booking', [BookingController::class, 'adminIndex'])->name('admin.booking.index');
 });

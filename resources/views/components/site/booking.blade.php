@@ -8,7 +8,7 @@
   <h1 class="text-center font-bold text-5xl pt-15 pb-7">Online Booking</h1>
   <h1 class="text-center font-semibold text-xl ">Book your appoinment now</h1>
   <div class="h-full w-full md:w-2/3 2xl:w-1/3 mx-auto my-5 border border-slate-300 bg-slate-100 p-3 rounded-xl">
-    <form action="" method="post" class="grid  rounded-xl">
+    <form action="{{ route('booking.store') }}" method="post" class="grid  rounded-xl">
       @csrf
       {{-- User delails --}}
       <div class="grid ">
@@ -104,13 +104,13 @@
       <div class="bg-stone-50 border border-slate-300 rounded-xl py-3 mb-3">
         <div class="flex flex-col px-5 pb-2">
           <label class="pl-2 pb-1" for="first_name">Service</label>
-            <select class="border rounded-md border-slate-300 pl-2 py-1" name="service_id" id="service_id">
+            <select class="border rounded-md border-slate-300 pl-2 py-1" name="product_id" id="product_id">
               <option value="" disabled selected>Select A Service</option>
               @foreach ($services as $service)
-                <option value="{{ $service->id }}" @if(old('service_id') == $service->id) selected @endif>{{ $service->name }}</option>
+                <option value="{{ $service->id }}" @if(old('product_id') == $service->id) selected @endif>{{ $service->name }}</option>
               @endforeach
             </select>
-          @error('service_id')
+          @error('product_id')
             <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
           @enderror
         </div>
@@ -213,7 +213,7 @@
             <p class="pl-2 text-sm">Clean inside window panes</p>
             
             <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
-              <input id="extra-1" type="checkbox" class="peer sr-only" value="0" />
+              <input id="extra-1" name="extra-1" type="checkbox" class="peer sr-only" value="{{ old('extra-1') }}" />
               <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
               <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
   
@@ -223,7 +223,7 @@
             <p class="pl-2 text-sm">Fridge interior</p>
             
             <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
-              <input id="extra-2" type="checkbox" class="peer sr-only" value="0"/>
+              <input id="extra-2" name="extra-2" type="checkbox" class="peer sr-only" value="0"/>
               <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
               <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
   
@@ -234,7 +234,7 @@
             <p class="pl-2 text-sm">Make the bed</p>
             
             <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
-              <input id="extra-3" type="checkbox" class="peer sr-only" value="0" />
+              <input id="extra-3" name="extra-3" type="checkbox" class="peer sr-only" value="0" />
               <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
               <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
   
@@ -269,12 +269,10 @@
                 <p class="pl-1 text-sm">KatKlean's equipment.</p>
                 
                 <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
-                  <input id="extra-1" type="checkbox" class="peer sr-only" value="0" />
+                  <input name="own_equipment" id="own_equipment" type="checkbox" class="peer sr-only" value="0" />
                   <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
-                  <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
-    
+                  <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>    
                 </label>
-              
               
               @error('own_equipment')
                 <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
@@ -288,11 +286,39 @@
 
 
       <input type="hidden" name="duration_minutes" id="duration_minutes" value="0">
+      
+      {{-- Date and Time --}}
+      <div class="grid grid-cols-1 gap-4 px-5 pt-2 pb-4 mb-3 border border-slate-300 rounded-xl bg-stone-50">
+        <div class="flex flex-row gap-5 pt-3 mx-auto">
+            <label class="pl-2 pt-1">Booking date</label>
+            <input
+                type="date"
+                id="booking_date"
+                name="booking_date"
+                class="border rounded-md border-slate-300 pl-2 py-1" value="{{ old('booking_date') }}"/>
+            @error('booking_date')
+              <p class="p-3 text-red-500 border border-red-500 bg-red-200 rounded-xl text-center">{{  $message }}</p>
+            @enderror
+        </div>
+
+        <div class="flex flex-col">
+            <label class="pl-2 pb-2 mx-auto">Start time</label>
+            <div id="start_at_times" class="grid grid-cols-4 md:grid-cols-8 gap-2">
+              {{-- <p class="border rounded-md border-slate-300 mx-auto px-2 py-1 cursor-pointer bg-slate-700 hover:bg-slate-500 text-white">07:00</p> --}}
+            </div>
+            @error('start_at')
+              <p class="p-3 text-red-500 border border-red-500 bg-red-200 rounded-xl text-center">{{  $message }}</p>
+            @enderror
+        </div>
+      </div>
+      <input type="hidden" name="start_at" id="start_at">
+
       <div class="border border-slate-300 rounded-xl">
         <div class="bg-slate-200/80 text-center pt-3 w-full rounded-2xl">
           <p class="font-semibold text-sm px-5 md:px-15">Prices provided are indicative and based on the information available at the time of booking.</p>
           <p class="text-xs text-center">Any changes will always be discussed and agreed in advance.</p>
           <p class="py-2 text-2xl font-semibold">£ <span id=result>0</span>.00</p>
+          <input type="hidden" name="total_price" id="total_price" >
           <div class="mx-4 pb-5 text-xs px-10 border-t border-slate-300 pt-2">
             <p>A minimum visit price applies to all bookings.</p>
           </div>

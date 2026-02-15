@@ -27,7 +27,7 @@
 {{--  End of Navigation --}}
 
 {{-- Content --}}
-<div class="p-6 w-full justify-center">
+<div class="p-6 justify-center">
     @yield('content')
 
 </div>

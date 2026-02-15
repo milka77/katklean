@@ -1,5 +1,5 @@
 const result = document.getElementById('result')
-const serviceInput = document.getElementById('service_id')
+const serviceInput = document.getElementById('product_id')
 const bedInput = document.getElementById('bed')
 const bathInput = document.getElementById('bath')
 const kitchenInput = document.getElementById('kitchen')
@@ -9,6 +9,8 @@ const extraOneInput = document.getElementById('extra-1')
 const extraTwoInput = document.getElementById('extra-2')
 const extraThreeInput = document.getElementById('extra-3')
 const durationInput = document.getElementById('duration_minutes')
+const totalPriceInput = document.getElementById('total_price')
+const ownEquipmentInput = document.getElementById('own_equipment')
 
 // Service type
 serviceInput.addEventListener('change', event => {
@@ -62,6 +64,11 @@ extraThreeInput.addEventListener('change', event => {
   extraThreeInput.value == 0 ? extraThreeInput.value = 1 : extraThreeInput.value = 0
   calculate()
 })
+ownEquipmentInput.addEventListener('change', event => {
+  event.preventDefault()
+  ownEquipmentInput.value == 0 ? ownEquipmentInput.value = 1 : ownEquipmentInput.value = 0
+  calculate()
+})
 
 // Update the hours in the HTML element
 function updateHours(hours, service,){
@@ -70,6 +77,7 @@ function updateHours(hours, service,){
   // } else {
   //   result.innerHTML = hours + " hours"
   // }
+  console.log('minutes:', minutes)
   let minutes = hours * 60
   durationInput.value = minutes
 }
@@ -93,6 +101,7 @@ function calculatePrice(service, bed, bath, kitchen, living, other, extra1, extr
     // Counting the total price
     price += total * 30  
     result.innerHTML = price
+    totalPriceInput.value = price
 
   } else if(service == '8') {
     price = 0
@@ -112,6 +121,7 @@ function calculatePrice(service, bed, bath, kitchen, living, other, extra1, extr
       // if(price < 120){ price = 120}
     }
     result.innerHTML = price
+    totalPriceInput.value = price
   }
 
   console.log('price: £', price)  
@@ -137,7 +147,7 @@ function calculate() {
   // If deep cleaning service is selected, fixed 8 hours
   if(service == '2') {
     // Deep cleaning service, fixed 8 hours
-    updateHours('Full day', service)
+    updateHours(8, service)
     calculatePrice(service, bed, bath, kitchen, living, other, extra1, extra2, extra3)
   } else {
     // Calculate time based on rooms and extras
@@ -168,3 +178,84 @@ function calculate() {
     calculatePrice(service, bed, bath, kitchen, living, other, extra1, extra2, extra3, roundedHours)
   } 
 }
+
+
+// Checking availability
+const bookingDateInput = document.getElementById('booking_date')
+const startTimeSelect = document.getElementById('start_at_times')
+
+async function fetchAvailability() {
+  console.log('fetchAvailability fired', {
+    date: bookingDateInput?.value,
+    duration: durationInput?.value,
+    product: serviceInput?.value
+  })
+  const date = bookingDateInput.value
+  const duration = durationInput.value
+  const product = serviceInput.value
+
+  if (!date || !duration || !product) return
+
+  // startTimeSelect.innerHTML = '<option>Loading...</option>'
+  startTimeSelect.disabled = true
+
+  const response = await fetch(
+  `/availability?date=${date}&duration_minutes=${duration}&product_id=${product}`,
+  {
+    headers: {
+      'Accept': 'application/json'
+    }
+  }
+)
+
+  const slots = await response.json()
+
+  startTimeSelect.innerHTML = ''
+
+  if (slots.length === 0) {
+    // startTimeSelect.innerHTML += '<option disabled>No availability</option>'
+  } else {
+    slots.forEach(time => {
+      // startTimeSelect.innerHTML += `<option value="${time}">${time}</option>`
+      startTimeSelect.innerHTML += `<p data-time="${time}" class="time-slot w-15 border rounded-md border-slate-300 mx-auto px-2 py-1 cursor-pointer bg-slate-700 hover:bg-slate-500 text-white">${time}</p>`
+    })
+  }
+
+  startTimeSelect.disabled = false
+}
+
+
+// Listening for changes and refresh availability
+bookingDateInput.addEventListener('change', fetchAvailability)
+serviceInput.addEventListener('change', fetchAvailability)
+
+// after duration changes
+function updateHours(hours) {
+  let minutes = hours * 60
+  durationInput.value = minutes
+  fetchAvailability()
+}
+
+// Listen when user selecting the time
+const startAtInput = document.getElementById('start_at');
+
+startTimeSelect.addEventListener('click', function (e) {
+
+  const slot = e.target.closest('.time-slot');
+  if (!slot) return;
+
+  const selectedTime = slot.dataset.time;
+  const selectedDate = bookingDateInput.value;
+
+  // Set hidden input value
+  startAtInput.value = `${selectedDate} ${selectedTime}:00`;
+
+  console.log('Selected time:', selectedTime);
+
+  // Optional: visual selected state
+  document.querySelectorAll('.time-slot').forEach(el =>
+    el.classList.remove('bg-slate-700', 'text-white')
+  );
+
+  slot.classList.add('bg-slate-700', 'text-white');
+});

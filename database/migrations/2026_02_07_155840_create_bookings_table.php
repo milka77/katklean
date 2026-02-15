@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             // Foreign keys
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('service_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('product_id')->constrained()->cascadeOnDelete();
             // Room details
             $table->unsignedTinyInteger('bed')->default(0);
             $table->unsignedTinyInteger('bath')->default(0);
@@ -23,13 +23,14 @@ return new class extends Migration
             $table->unsignedTinyInteger('kitchen')->default(0);
             $table->unsignedTinyInteger('other')->default(0);
             // Additional services
-            $table->boolean('windows')->default(false);
-            $table->boolean('inside_fridge')->default(false);
-            $table->boolean('make_beds')->default(false);
+            $table->boolean('extra_1')->default(false);
+            $table->boolean('extra_2')->default(false);
+            $table->boolean('extra_3')->default(false);
             // Booking details
             $table->text('message')->nullable();
             $table->string('house_access')->nullable();
             $table->integer('duration_minutes');
+            $table->date('booking_date');
             $table->dateTime('start_at');
             $table->dateTime('end_at');
             // Customer details
