@@ -14,7 +14,7 @@
   <!-- End of Why Choose us -->
 
   <!-- Services and calculator -->
-  <div id="services" class="grid grid-cols-1 md:grid-cols-2">
+  <div id="services" class="bg-[#ccebed]/75">
     <div class=" py-15">
       <h2 class="text-center text-5xl font-semibold pb-5 text-black">Services</h2>
       <p class=" text-center text-lg font-semibold pb-5">Enjoy Your Free Time — Leave the Cleaning to Us</p>
@@ -34,7 +34,7 @@
     </div>
 
     {{-- Calculator --}}
-    <div class="bg-[#ccebed]/75 py-15 min-h-100">
+    {{-- <div class="bg-[#ccebed]/75 py-15 min-h-100">
       <h2 class="text-center text-5xl font-semibold pb-10 text-black">Calculator</h2>
       <p class=" text-center text-lg pb-15 md:pb-21 lg:pb-21 xl:pb-21 2xl:pb-28 font-semibold max-w-2/3 lg:max-w-1/2 mx-auto">See how many hours your home may need. Get a quick estimate based on your home’s size, rooms and cleaning requirements.</p>
       
@@ -44,7 +44,7 @@
         </button>
       </div>
       
-    </div>
+    </div> --}}
   </div>
   <!-- End of Services and calculator-->
 
