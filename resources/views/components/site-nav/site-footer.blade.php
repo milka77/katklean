@@ -60,5 +60,6 @@
   <p class="py-4 text-center text-sm md:text-base text-gray-200">
     Copyright 2026 © {{ config('app.name'), 'KatKlean' }}. All Right Reserved.
   </p>
+  <p class="pb-4 text-center text-xs md:text-base text-gray-200">Website by <a href="https://krisztiankeseru.com" target="_blank" rel="noopener noreferrer">Krisztian Keseru</a></p>
 </footer>
 <!-- End of Footer -->
