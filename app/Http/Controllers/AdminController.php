@@ -12,7 +12,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        if (auth()->user()->hasRole('admin')) {
+        if (Auth::user()->hasRole('admin')) {
             return view('components.admin.index');
         }
 
