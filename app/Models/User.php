@@ -67,10 +67,10 @@ class User extends Authenticatable
     }
 
     // Check if user has a role
-    public function hasRole($role)
+    public function hasRole($role_name)
     {
         foreach ($this->roles as $role) {
-            if(Str::lower($role->name) == Str::lower($role)) {
+            if(Str::lower($role_name) == Str::lower($role->name)) {
                 return true;
         }
         return false;
