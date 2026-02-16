@@ -30,7 +30,7 @@ class AddressController extends Controller
         // Attach the address to the authenticated user
         $request->user()->addresses()->attach($address->id);
 
-        toastr()->success('Address added successfully.');
+        flash()->success('Address added successfully.');
         // Redirect back with success message
         return redirect()->route('profile');
     }
@@ -52,7 +52,7 @@ class AddressController extends Controller
         // Update the address
         $address->update($validated);
 
-        toastr()->success('Address updated successfully.');
+        flash()->success('Address updated successfully.');
         // Redirect back with success message
         return redirect()->route('profile');
     }
@@ -63,7 +63,7 @@ class AddressController extends Controller
         request()->user()->addresses()->detach($address->id);
 
         
-        toastr()->success('Address deleted successfully.');
+        flash()->success('Address deleted successfully.');
         // Redirect back with success message
         return redirect()->route('profile');
     }

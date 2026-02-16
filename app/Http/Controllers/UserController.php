@@ -39,7 +39,7 @@ class UserController extends Controller
         // Log the user in
         Auth::login($user);
         // Toast success message and redirect
-        toastr()->success('Account created successfully.');
+        flash()->success('Account created successfully.');
         return redirect('/');
     }
 
@@ -58,12 +58,12 @@ class UserController extends Controller
         if(Auth::attempt($validated, $remember)) {
             request()->session()->regenerate();
 
-            toastr()->success('Logged in successfully.');
+            flash()->success('Logged in successfully.');
             
             return redirect()->intended('/');
         }
 
-        toastr()->error('Login failed. Please check your credentials and try again.');
+        flash()->error('Login failed. Please check your credentials and try again.');
         
         return redirect('/login')->withErrors([
             'email' => 'The provided email or password is incorrect.',
@@ -74,7 +74,7 @@ class UserController extends Controller
     public function logout() {
         Auth::logout();
 
-        toastr()->success('Logged out successfully.');
+        flash()->success('Logged out successfully.');
         
         return redirect('/');
     }
@@ -82,7 +82,7 @@ class UserController extends Controller
     // Show user profile
     public function showProfile() {
         if (Auth::guest()) {
-            toastr()->error('You must be logged in to access the profile page.');
+            flash()->error('You must be logged in to access the profile page.');
             return redirect('/login');
         }
 

@@ -36,7 +36,7 @@ class ImageUploadController extends Controller
             'filepath' => $filepath,
         ]);
 
-        toastr('Image uploaded successfully.', 'success');
+        flash()->success('Image uploaded successfully.');
 
         return redirect()->route('admin.gallery.create');
     }
@@ -62,9 +62,9 @@ class ImageUploadController extends Controller
             // Delete the database record
             $image->delete();
 
-            toastr('Image deleted successfully.', 'success');
+            flash()->success('Image deleted successfully.');
         } catch (\Exception $e) {
-            toastr('Error deleting image: ' . $e->getMessage(), 'error');
+            flash()->error('Error deleting image: ' . $e->getMessage());
         }
 
         return redirect()->route('admin.gallery.index');
@@ -104,7 +104,7 @@ class ImageUploadController extends Controller
 
         $image->save();
 
-        toastr('Image updated successfully.', 'success');
+        flash()->success('Image updated successfully.');
 
         return redirect()->route('admin.gallery.index');
     }

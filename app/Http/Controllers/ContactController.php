@@ -36,7 +36,7 @@ class ContactController extends Controller
 
         Mail::to('info@katklean.co.uk')->send(new ContactMail($content));
 
-        toastr()->success('Thank you for your message! We will be in touch with you shortly.');
+        flash()->success('Thank you for your message! We will be in touch with you shortly.');
         
         return back();
     }

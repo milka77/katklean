@@ -181,6 +181,8 @@ class BookingController extends Controller
     
                     'status' => 'pending',
                 ]);
+
+                flash()->success('Your booking has been created successfully.');
             } else {
                 $booking = Booking::create([
                     // Foreign
@@ -225,6 +227,8 @@ class BookingController extends Controller
     
                     'status' => 'pending',
                 ]);
+
+                flash()->success('Your booking has been created successfully.');
             }
 
         DB::commit();
@@ -234,7 +238,7 @@ class BookingController extends Controller
             throw $e;
         }
 
-        toastr('success', 'Your booking has been created successfully.');
+        flash()->success('Your booking has been created successfully.');
         return redirect()
         ->back()
         ->with('success', 'Your booking has been created successfully.');
@@ -352,7 +356,7 @@ class BookingController extends Controller
         $booking->status = 'confirmed';
         $booking->save();
 
-        toastr('success', 'Booking was confirmed.');
+        flash()->success('Booking was confirmed.');
 
         return back();
     }

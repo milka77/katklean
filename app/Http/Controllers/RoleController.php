@@ -36,7 +36,7 @@ class RoleController extends Controller
         $role->slug = Str::slug($data['name'], '-');
         $role->save();
 
-        toastr('Role created successfully!', 'success');
+        flash()->success('Role created successfully!');
 
         return redirect()->route('admin.index');
     }
@@ -58,7 +58,7 @@ class RoleController extends Controller
         $role->slug = Str::slug($data['name'], '-');
         $role->save();
 
-        toastr('Role updated successfully!', 'success');
+        flash()->success('Role updated successfully!');
 
         return redirect()->route('admin.index');
     }
@@ -67,7 +67,7 @@ class RoleController extends Controller
     {
         $role->delete();
 
-        toastr('Role deleted successfully!', 'success');
+        flash()->success('Role deleted successfully!');
 
         return redirect()->route('admin.index');
     }

@@ -39,7 +39,7 @@ class ProductController extends Controller
         $product->save();
 
         // Flash Message
-        toastr('Product created successfully!', 'success');
+        flash()->success('Product created successfully!');
 
         return redirect()->back();
     }
@@ -66,9 +66,9 @@ class ProductController extends Controller
             $product->save();
     
             // Flash Message
-            toastr('Product updated successfully!', 'success');
+            flash()->success('Product updated successfully!');
         } catch (\Exception $e) {
-            toastr('An error occurred while updating the product: ' . $e->getMessage(), 'error');
+            flash()->error('An error occurred while updating the product: ' . $e->getMessage());
             return redirect()->back()->withInput();
         }
 
@@ -79,9 +79,9 @@ class ProductController extends Controller
     {
         try {
             $product->delete();
-            toastr('Product deleted successfully!', 'success');
+            flash()->success('Product deleted successfully!');
         } catch (\Exception $e) {
-            toastr('An error occurred while deleting the product: ' . $e->getMessage(), 'error');
+            flash()->error('An error occurred while deleting the product: ' . $e->getMessage());
         }
         return redirect()->back();
     }

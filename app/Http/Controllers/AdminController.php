@@ -6,12 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        return view('components.admin.index');
+        if (auth()->user()->hasRole('admin')) {
+            return view('components.admin.index');
+        }
+
+        return redirect('/');
     }
 
     // ******************
@@ -22,7 +27,7 @@ class AdminController extends Controller
     {
         $user->roles()->attach(request('role'));
 
-        toastr('Role attached successfully!', 'success');
+        flash()->success('Role attached successfully!');
 
         return redirect()->back();
     }
@@ -32,7 +37,7 @@ class AdminController extends Controller
     {
         $user->roles()->detach(request('role'));
 
-        toastr('Role detached successfully!', 'success');
+        flash()->success('Role detached successfully!');
 
         return redirect()->back();
     }
