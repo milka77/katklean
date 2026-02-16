@@ -17,7 +17,7 @@
   <div id="services" class="bg-[#ccebed]/75">
     <div class=" py-15">
       <h2 class="text-center text-5xl font-semibold pb-5 text-black">Services</h2>
-      <p class=" text-center text-lg font-semibold pb-5">Enjoy Your Free Time — Leave the Cleaning to Us</p>
+      <p class=" text-center text-lg font-semibold pb-5 px-5">Enjoy Your Free Time — Leave the Cleaning to Us</p>
       <div class="grid grid-cols-1 gap-10 py-5 ">
         <ul class="text-center">
           <li class="pb-1 text-lg">Regular Domestic Cleaning</li>
