@@ -21,6 +21,8 @@
     @yield('extra-style')
     
 </head>
+@if (Auth()->user()->hasRole('admin')) 
+
 <body class="flex bg-slate-200" >
 {{--  Navigation --}}
 <x-admin-nav.side-nav />
@@ -41,6 +43,8 @@
 </body>
 <script src="https://kit.fontawesome.com/b6c120cd7f.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+
+@endif
 @yield('extra-js')
 
 </html>
