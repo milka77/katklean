@@ -4,7 +4,7 @@
     <h2 class="text-center text-5xl font-semibold pb-7 text-black">Privacy & Cookie Policy</h2>
     <p class="text-center pb-7 font-semibold">Last updated: January 2026</p>
   </div>
-  <div class="max-w-1/2 mx-auto pb-15"> 
+  <div class="max-w-4/5 md:max-w-1/2 mx-auto pb-15"> 
     <p class="font-semibold">1. Who we are</p>
     <p class="pl-3 pb-2">We are a small, independent domestic cleaning business operating in the UK.<br>For the purposes of data protection law, we are the data controller.</p>
     
