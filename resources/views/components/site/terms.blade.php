@@ -4,7 +4,7 @@
     <h2 class="text-center text-5xl font-semibold pb-7 text-black">Terms and conditions</h2>
     <p class="text-center pb-7 font-semibold">Last updated: January 2026</p>
   </div>
-  <div class="max-w-1/2 mx-auto pb-15"> 
+  <div class="max-w-4/5 md:max-w-1/2 mx-auto pb-15"> 
     <p class="font-semibold">1. About our service</p>
     <p class="pl-3 pb-2">We provide domestic cleaning services as described on our website. All cleaning is carried out personally and with reasonable care and attention.
       Services are provided on an agreed date and time, subject to availability.</p>
