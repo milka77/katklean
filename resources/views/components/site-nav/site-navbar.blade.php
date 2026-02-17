@@ -35,6 +35,11 @@
         <el-menu anchor="bottom end" popover class="w-30 origin-top-right rounded-md bg-slate-700 outline-1 -outline-offset-1 outline-white/10 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
             <div class="py-1">
             <a href="{{ route('profile') }}" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:text-white focus:outline-hidden">Profile</a>
+            {{-- Admin page link for admins --}}
+            @if (Auth()->user()->hasRole('admin'))
+                <a href="{{ route('admin.index') }}" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:text-white focus:outline-hidden">Admin</a>
+            @endif
+                
             @auth
             <a class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:text-white focus:outline-hidden" href="{{ route('logout') }}">
                 <form action="{{ route('logout') }}" method="POST">
