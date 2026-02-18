@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Models\Booking;
 use App\Models\Product;
 use App\Mail\BookingConfirmedMail;
+use App\Mail\AdminNewBookingMail;
 use Illuminate\Support\Facades\Mail;
 
 class BookingObserver
@@ -14,7 +15,8 @@ class BookingObserver
      */
     public function created(Booking $booking): void
     {
-        //
+        Mail::to(config('mail.admin_address'))
+            ->send(new AdminNewBookingMail($booking->load('product')));
     }
 
     /**
