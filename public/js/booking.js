@@ -217,24 +217,30 @@ async function fetchAvailability() {
 
   startTimeSelect.innerHTML = ''
 
-  console.log('old time:', oldTime)
+  // Sliceing datetime for time only like "07:00"
   oldTimeOnly = oldTime.slice(11, 16)
-  console.log(oldTimeOnly)
-
+  
   if (slots.length === 0) {
     // startTimeSelect.innerHTML += '<option disabled>No availability</option>'
   } else {
+    
     slots.forEach(time => {
-      // startTimeSelect.innerHTML += `<option value="${time}">${time}</option>`
-      // startTimeSelect.innerHTML += `<p data-time="${time}" class="time-slot w-15 border rounded-md border-slate-300 mx-auto px-2 py-1 cursor-pointer bg-slate-700 hover:bg-slate-500 text-white">${time}</p>`
-      const isSelected = oldTimeOnly && oldTimeOnly === time;
-      startTimeSelect.innerHTML += `
-        <p data-time="${time}" 
-           class="time-slot w-15 border rounded-md border-slate-300 mx-auto px-2 py-1 cursor-pointer 
-           ${isSelected ? 'bg-green-600' : 'bg-slate-700'} 
-           hover:bg-slate-500 text-white">
-           ${time}
-        </p>`;
+      if(oldTimeOnly){
+        const isSelected = oldTimeOnly && oldTimeOnly === time;
+        startTimeSelect.innerHTML += `
+          <p data-time="${time}" 
+            class="time-slot w-15 border rounded-md border-slate-300 mx-auto px-2 py-1 cursor-pointer 
+            ${isSelected ? 'bg-slate-700 text-white' : ''} 
+            hover:bg-slate-500 text-black">
+            ${time}
+          </p>`;
+      } else {
+        startTimeSelect.innerHTML += `
+          <p data-time="${time}" 
+             class="time-slot w-15 border rounded-md border-slate-300 mx-auto px-2 py-1 cursor-pointer bg-slate-700 hover:bg-slate-500 text-white">
+             ${time}
+          </p>`;
+      }
     })
   }
 
