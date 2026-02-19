@@ -285,7 +285,7 @@
       </div>
 
 
-      <input type="hidden" name="duration_minutes" id="duration_minutes" value="0">
+      <input type="hidden" name="duration_minutes" id="duration_minutes" value="{{ old('duration_minutes') }}">
       
       {{-- Date and Time --}}
       <div class="grid grid-cols-1 gap-4 px-5 pt-2 pb-4 mb-3 border border-slate-300 rounded-xl bg-stone-50">
@@ -311,14 +311,20 @@
           <p class="p-3 text-red-500 border border-red-500 bg-red-200 rounded-xl text-center">{{  $message }}</p>
         @enderror
       </div>
-      <input type="hidden" name="start_at" id="start_at">
+      <input type="hidden" name="start_at" id="start_at" value="{{ old('start_at') }}">
 
       <div class="border border-slate-300 rounded-xl">
         <div class="bg-slate-200/80 text-center pt-3 w-full rounded-2xl">
           <p class="font-semibold text-sm px-5 md:px-15">Prices provided are indicative and based on the information available at the time of booking.</p>
           <p class="text-xs text-center">Any changes will always be discussed and agreed in advance.</p>
-          <p class="py-2 text-2xl font-semibold">£ <span id=result>0</span>.00</p>
-          <input type="hidden" name="total_price" id="total_price" >
+          <p class="py-2 text-2xl font-semibold">£ <span id=result>
+            @if(old('total_price'))
+              {{ old('total_price') }}
+            @else
+              0
+            @endif
+          </span>.00</p>
+          <input type="hidden" name="total_price" id="total_price" value="{{  old('total_price') }}">
           <div class="mx-4 pb-5 text-xs px-10 border-t border-slate-300 pt-2">
             <p>A minimum visit price applies to all bookings.</p>
           </div>
@@ -338,6 +344,12 @@
 
   @section('extra-js')
   <script src="{{ asset('js/booking.js') }}" type="text/javascript"></script>
-  {{-- <script type="text/javascript" src="https://katklean.breely.com/embed.js?url=%2Fform%2F13495"></script> --}}
+  {{-- Passing old booking_time value to JS --}}
+  <script> 
+    const oldTime = "{{ old('start_at') }}"; 
+    const oldDuration = "{{  old('duration_minutes') }}"  
+    const oldPrice = "{{  old('total_price') }}"
+  </script>
+
   @endsection
 </x-layout>

@@ -78,7 +78,12 @@ function updateHours(hours, service,){
   //   result.innerHTML = hours + " hours"
   // }
   console.log('minutes:', minutes)
-  let minutes = hours * 60
+  let minutes = 0
+  if(oldDuration != 0) {
+    minutes = oldDuration
+  } else {
+    minutes = hours * 60
+  }
   durationInput.value = minutes
 }
 
@@ -212,12 +217,24 @@ async function fetchAvailability() {
 
   startTimeSelect.innerHTML = ''
 
+  console.log('old time:', oldTime)
+  oldTimeOnly = oldTime.slice(11, 16)
+  console.log(oldTimeOnly)
+
   if (slots.length === 0) {
     // startTimeSelect.innerHTML += '<option disabled>No availability</option>'
   } else {
     slots.forEach(time => {
       // startTimeSelect.innerHTML += `<option value="${time}">${time}</option>`
-      startTimeSelect.innerHTML += `<p data-time="${time}" class="time-slot w-15 border rounded-md border-slate-300 mx-auto px-2 py-1 cursor-pointer bg-slate-700 hover:bg-slate-500 text-white">${time}</p>`
+      // startTimeSelect.innerHTML += `<p data-time="${time}" class="time-slot w-15 border rounded-md border-slate-300 mx-auto px-2 py-1 cursor-pointer bg-slate-700 hover:bg-slate-500 text-white">${time}</p>`
+      const isSelected = oldTimeOnly && oldTimeOnly === time;
+      startTimeSelect.innerHTML += `
+        <p data-time="${time}" 
+           class="time-slot w-15 border rounded-md border-slate-300 mx-auto px-2 py-1 cursor-pointer 
+           ${isSelected ? 'bg-green-600' : 'bg-slate-700'} 
+           hover:bg-slate-500 text-white">
+           ${time}
+        </p>`;
     })
   }
 
@@ -258,4 +275,15 @@ startTimeSelect.addEventListener('click', function (e) {
   );
 
   slot.classList.add('bg-slate-700', 'text-white');
+});
+
+
+// Auto trigger availability on reload
+document.addEventListener('DOMContentLoaded', function () {
+
+    const dateInput = document.getElementById('booking_date');
+
+    if (dateInput.value) {
+        fetchAvailability.call(dateInput);
+    }
 });
