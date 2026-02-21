@@ -1,6 +1,6 @@
 <x-admin-layout>
   @section('content')
-  <div class="w-full md:w-1/2  mx-auto bg-slate-50 p-8 rounded-lg shadow-md">
+  <div class="mx-auto bg-slate-50 p-8 rounded-lg shadow-md">
     <h2 class="text-2xl font-bold mb-6 text-center">Roles for {{ $user->first_name }}</h2>
     
     <table class="w-full min-w-1/2 bg-white text-center mb-6">
