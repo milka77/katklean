@@ -13,7 +13,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
+use function Flasher\Prime\flash;
 use function Flasher\Toastr\Prime\toastr;
 
 class BookingController extends Controller
@@ -59,6 +61,7 @@ class BookingController extends Controller
         'duration_minutes' => ['required', 'integer'],
         'booking_date'     => ['required', 'date'],
         'start_at'         => ['required'],
+        'frequency'        => ['required', 'in:once,weekly,fortnightly,monthly'],
 
         // Customer
         'name'          => ['required', 'string', 'max:255'],
@@ -83,162 +86,193 @@ class BookingController extends Controller
         $duration = (int) $validated['duration_minutes'];
         $endAt = $startAt->copy()->addMinutes($duration);
         
-        // dd($startAt);
+        // For recurring bookings
+        $startDate = Carbon::parse($validated['booking_date']);
+        $frequency = $validated['frequency'];
+        $occurrences = 1;
+        $groupId = null;
+
         /*
         |--------------------------------------------------------------------------
-        | 🔒 24 Hour Rule
+        | Checking the booking's frequency 
         |--------------------------------------------------------------------------
         */
-        if ($startAt->lt(now()->addHours(24))) {
-            return back()->withErrors([
-                'start_at' => 'Bookings must be made at least 24 hours in advance.'
-            ])->withInput();
+        if($frequency !== 'once'){
+            $occurrences = 6;
+            $groupId = Str::uuid();
         }
 
-        /*
-        |--------------------------------------------------------------------------
-        | 🔒 Sunday Deep Clean Restriction
-        |--------------------------------------------------------------------------
-        */
-        if ($startAt->isSunday()) {
-            $product = Product::find($validated['product_id']);
+        // Collection all recurring dates for check if all dates are available
+        $dates = collect();
+        
+        for ($i = 0; $i < $occurrences; $i++) {
 
-            if (str_contains(strtolower($product->name), 'deep')) {
+            $date = match ($frequency) {
+                'weekly' => $startDate->copy()->addWeeks($i),
+                'fortnightly' => $startDate->copy()->addWeeks($i * 2),
+                'monthly' => $startDate->copy()->addMonths($i),
+                default => $startDate,
+            };
+
+            $recurringStartAt = Carbon::parse(
+                $date->toDateString() . ' ' . $startAt->format('H:i:s')
+            );
+            $recurringEndAt = $recurringStartAt->copy()->addMinutes($duration);
+        
+            $dates->push([
+                'date' => $date,
+                'start_at' => $recurringStartAt,
+                'end_at' => $recurringEndAt,
+            ]);
+        }
+            
+        foreach ($dates as $slot) {
+
+            // 🔒 24 hour rule
+            if ($slot['date']->lt(now()->addHours(24))) {
                 return back()->withErrors([
-                    'product_id' => 'Deep cleaning is not available on Sundays.'
+                    'start_at' => 'All recurring bookings must be at least 24 hours in advance.'
                 ])->withInput();
             }
-        }
 
-        /*
-        |--------------------------------------------------------------------------
-        | 🔒 Overlap Protection (Race Condition Safe)
-        |--------------------------------------------------------------------------
-        */
-        DB::beginTransaction();
+            // 🔒 Sunday Deep Clean rule
+            if ($slot['date']->isSunday()) {
 
-        try {
+                $product = Product::find($validated['product_id']);
 
+                if (str_contains(strtolower($product->name), 'deep')) {
+                    return back()->withErrors([
+                        'product_id' => 'Deep cleaning is not available on Sundays.'
+                    ])->withInput();
+                }
+            }
+
+            // 🔒 Overlap check
             $overlap = Booking::where('product_id', $validated['product_id'])
-                ->where('start_at', '<', $endAt)
-                ->where('end_at', '>', $startAt)
-                ->lockForUpdate()
+                ->where('start_at', '<', $slot['end_at'])
+                ->where('end_at', '>', $slot['start_at'])
                 ->exists();
 
             if ($overlap) {
-                DB::rollBack();
-
                 return back()->withErrors([
-                    'start_at' => 'This time slot has just been booked. Please choose another time.'
+                    'start_at' => 'One or more recurring dates are no longer available.'
                 ])->withInput();
             }
-
-            if(Auth::user()) {
-                $user = Auth::user();
-                $user_ID = $user->id;
-
-                $booking = Booking::create([
-                    // Foreign
-                    'user_id' => $user_ID,
-                    'product_id' => $validated['product_id'],
-    
-                    // Rooms
-                    'bed'     => $validated['bed'],
-                    'bath'    => $validated['bath'],
-                    'living'  => $validated['living'],
-                    'kitchen' => $validated['kitchen'],
-                    'other'   => $validated['other'] ?? 0,
-    
-                    // Extras
-                    'extra_1' => $request->boolean('extra_1'),
-                    'extra_2' => $request->boolean('extra_2'),
-                    'extra_3' => $request->boolean('extra_3'),
-    
-                    // Booking
-                    'duration_minutes' => $duration,
-                    'booking_date'     => $validated['booking_date'],
-                    'start_at'         => $startAt,
-                    'end_at'           => $endAt,
-    
-                    // Customer
-                    'name'          => $validated['name'],
-                    'address_line1' => $validated['address_line1'],
-                    'postcode'      => $validated['postcode'],
-                    'town'          => $validated['town'],
-                    'email'         => $validated['email'],
-                    'phone'         => $validated['phone'],
-    
-                    // Payment
-                    'payment_method' => $validated['payment_method'],
-                    'payment_status' => 'pending',
-                    'total_price'    => $validated['total_price'],
-    
-                    // Other
-                    'own_equipment' => $request->boolean('own_equipment'),
-                    'frequency'     => $validated['frequency'],
-                    'message'       => $validated['message'] ?? null,
-                    'house_access'  => $validated['house_access'] ?? null,
-    
-                    'status' => 'pending',
-                ]);
-
-                flash()->success('Your booking has been created successfully.');
-            } else {
-                $booking = Booking::create([
-                    // Foreign
-                    'product_id' => $validated['product_id'],
-    
-                    // Rooms
-                    'bed'     => $validated['bed'],
-                    'bath'    => $validated['bath'],
-                    'living'  => $validated['living'],
-                    'kitchen' => $validated['kitchen'],
-                    'other'   => $validated['other'] ?? 0,
-    
-                    // Extras
-                    'extra_1' => $request->boolean('extra_1'),
-                    'extra_2' => $request->boolean('extra_2'),
-                    'extra_3' => $request->boolean('extra_3'),
-    
-                    // Booking
-                    'duration_minutes' => $duration,
-                    'booking_date'     => $validated['booking_date'],
-                    'start_at'         => $startAt,
-                    'end_at'           => $endAt,
-    
-                    // Customer
-                    'name'          => $validated['name'],
-                    'address_line1' => $validated['address_line1'],
-                    'postcode'      => $validated['postcode'],
-                    'town'          => $validated['town'],
-                    'email'         => $validated['email'],
-                    'phone'         => $validated['phone'],
-    
-                    // Payment
-                    'payment_method' => $validated['payment_method'],
-                    'payment_status' => 'pending',
-                    'total_price'    => $validated['total_price'],
-    
-                    // Other
-                    'own_equipment' => $request->boolean('own_equipment'),
-                    'frequency'     => $validated['frequency'],
-                    'message'       => $validated['message'] ?? null,
-                    'house_access'  => $validated['house_access'] ?? null,
-    
-                    'status' => 'pending',
-                ]);
-
-                flash()->success('Your booking has been created successfully.');
-            }
-
-        DB::commit();
-
-        } catch (\Exception $e) {
-            DB::rollBack();
-            throw $e;
         }
 
-        flash()->success('Your booking has been created successfully.');
+        try {
+
+            foreach($dates as $slot){
+                // Registered user booking
+                if(Auth::user()) {
+                    $user = Auth::user();
+                    $user_ID = $user->id;
+    
+                    Booking::create([
+                        // Foreign
+                        'user_id' => $user_ID,
+                        'product_id' => $validated['product_id'],
+        
+                        // Rooms
+                        'bed'     => $validated['bed'],
+                        'bath'    => $validated['bath'],
+                        'living'  => $validated['living'],
+                        'kitchen' => $validated['kitchen'],
+                        'other'   => $validated['other'] ?? 0,
+        
+                        // Extras
+                        'extra_1' => $request->boolean('extra_1'),
+                        'extra_2' => $request->boolean('extra_2'),
+                        'extra_3' => $request->boolean('extra_3'),
+        
+                        // Booking
+                        'duration_minutes' => $duration,
+                        'booking_date' => $slot['date']->toDateString(),
+                        'start_at'     => $slot['start_at'],
+                        'end_at'       => $slot['end_at'],
+                        'recurring_group_id' => $groupId,
+        
+                        // Customer
+                        'name'          => $validated['name'],
+                        'address_line1' => $validated['address_line1'],
+                        'postcode'      => $validated['postcode'],
+                        'town'          => $validated['town'],
+                        'email'         => $validated['email'],
+                        'phone'         => $validated['phone'],
+        
+                        // Payment
+                        'payment_method' => $validated['payment_method'],
+                        'payment_status' => 'pending',
+                        'total_price'    => $validated['total_price'],
+        
+                        // Other
+                        'own_equipment' => $request->boolean('own_equipment'),
+                        'frequency'     => $frequency,
+                        'message'       => $validated['message'] ?? null,
+                        'house_access'  => $validated['house_access'] ?? null,
+        
+                        'status' => 'pending',
+                    ]);
+                    
+                // Guest user's booking
+                } else {
+                    Booking::create([
+                        // Foreign
+                        'product_id' => $validated['product_id'],
+        
+                        // Rooms
+                        'bed'     => $validated['bed'],
+                        'bath'    => $validated['bath'],
+                        'living'  => $validated['living'],
+                        'kitchen' => $validated['kitchen'],
+                        'other'   => $validated['other'] ?? 0,
+        
+                        // Extras
+                        'extra_1' => $request->boolean('extra_1'),
+                        'extra_2' => $request->boolean('extra_2'),
+                        'extra_3' => $request->boolean('extra_3'),
+        
+                        // Booking
+                        'duration_minutes'   => $duration,
+                        'booking_date'       => $slot['date']->toDateString(),
+                        'start_at'           => $slot['start_at'],
+                        'end_at'             => $slot['end_at'],
+                        'recurring_group_id' => $groupId,
+        
+                        // Customer
+                        'name'          => $validated['name'],
+                        'address_line1' => $validated['address_line1'],
+                        'postcode'      => $validated['postcode'],
+                        'town'          => $validated['town'],
+                        'email'         => $validated['email'],
+                        'phone'         => $validated['phone'],
+        
+                        // Payment
+                        'payment_method' => $validated['payment_method'],
+                        'payment_status' => 'pending',
+                        'total_price'    => $validated['total_price'],
+        
+                        // Other
+                        'own_equipment' => $request->boolean('own_equipment'),
+                        'frequency'     => $frequency,
+                        'message'       => $validated['message'] ?? null,
+                        'house_access'  => $validated['house_access'] ?? null,
+        
+                        'status' => 'pending',
+                    ]);
+                    
+                }
+
+            } //end of foreach booking create
+
+
+
+        } catch (\Exception $e) {
+            throw $e;
+            flash()->error('Something went wrong.'. $e);
+        }
+        
+                
         return redirect()
         ->back()
         ->with('success', 'Your booking has been created successfully.');
@@ -333,6 +367,13 @@ class BookingController extends Controller
         );
 
         return response()->json($slots);
+    }
+
+    private function isAvailable($date, $time, $productId)
+    {
+        return !Booking::whereDate('booking_date', $date)
+            ->where('booking_time', $time)
+            ->exists();
     }
 
     /**

@@ -5,45 +5,48 @@
       
       <table class="bg-slate-100 text-center table-fixed min-w-full">
         <thead>
-          <tr class="bg-slate-300">
-            <th class="py-2 border-b border-slate-400">ID</th>
-            <th class="py-2 border-b border-slate-400 min-w-30">Date</th>
-            <th class="py-2 border-b border-slate-400 min-w-50">Start</th>
-            <th class="py-2 border-b border-slate-400 min-w-50">End</th>
-            <th class="py-2 border-b border-slate-400">Duration (mins)</th>
-            <th class="py-2 border-b border-slate-400 min-w-50">Name</th>
-            <th class="py-2 border-b border-slate-400 min-w-50">Address</th>
-            <th class="py-2 border-b border-slate-400 min-w-25">Postcode</th>
-            <th class="py-2 border-b border-slate-400">Town</th>
-            <th class="py-2 border-b border-slate-400">Email</th>
-            <th class="py-2 border-b border-slate-400">Phone</th>
-            <th class="py-2 border-b border-slate-400">User ID</th>
-            <th class="py-2 border-b border-slate-400 min-w-50">Product</th>
-            <th class="py-2 px-3 border-b border-slate-400">Bed</th>
-            <th class="py-2 px-3 border-b border-slate-400">Bath</th>
-            <th class="py-2 px-3 border-b border-slate-400">Living</th>
-            <th class="py-2 px-3 border-b border-slate-400">Kitchen</th>
-            <th class="py-2 px-3 border-b border-slate-400">Other</th>
-            <th class="py-2 px-4 border-b border-slate-400 min-w-25">Extra-1</th>
-            <th class="py-2 px-4 border-b border-slate-400 min-w-25">Extra-2</th>
-            <th class="py-2 px-4 border-b border-slate-400 min-w-25">Extra-3</th>
-            <th class="py-2 border-b border-slate-400">Message</th>
-            <th class="py-2 border-b border-slate-400">House Access</th>
-            <th class="py-2 border-b border-slate-400">Payment</th>
-            <th class="py-2 border-b border-slate-400">Payment Status</th>
-            <th class="py-2 border-b border-slate-400">Total Price</th>
-            <th class="py-2 border-b border-slate-400">Frequency</th>
-            <th class="py-2 border-b border-slate-400">Own Equipment</th>
-            <th class="py-2 border-b border-slate-400">Status</th>
-            <th class="py-2 border-b border-slate-400">Confirm Payment</th>
-            <th class="py-2 border-b border-slate-400">Confirm Booking</th>
-            <th class="py-2 border-b border-slate-400">Edit Booking</th>
+          <tr class="bg-slate-400">
+            <th class="no-wrap border-b border-slate-400">ID</th>
+            <th class="no-wrap border-b border-slate-400">Ref</th>
+            <th class="no-wrap border-b border-slate-400 min-w-30">Date</th>
+            <th class="no-wrap border-b border-slate-400 min-w-50">Start</th>
+            <th class="no-wrap border-b border-slate-400 min-w-50">End</th>
+            <th class="no-wrap border-b border-slate-400">Duration (mins)</th>
+            <th class="no-wrap border-b border-slate-400 min-w-50">Name</th>
+            <th class="no-wrap border-b border-slate-400 min-w-50">Address</th>
+            <th class="no-wrap border-b border-slate-400 min-w-25">Postcode</th>
+            <th class="no-wrap border-b border-slate-400">Town</th>
+            <th class="no-wrap border-b border-slate-400">Email</th>
+            <th class="no-wrap border-b border-slate-400">Phone</th>
+            <th class="no-wrap border-b border-slate-400">User ID</th>
+            <th class="no-wrap border-b border-slate-400 min-w-50">Product</th>
+            <th class="no-wrap px-3 border-b border-slate-400">Bed</th>
+            <th class="no-wrap px-3 border-b border-slate-400">Bath</th>
+            <th class="no-wrap px-3 border-b border-slate-400">Living</th>
+            <th class="no-wrap px-3 border-b border-slate-400">Kitchen</th>
+            <th class="no-wrap px-3 border-b border-slate-400">Other</th>
+            <th class="no-wrap px-4 border-b border-slate-400 min-w-25">Extra-1</th>
+            <th class="no-wrap px-4 border-b border-slate-400 min-w-25">Extra-2</th>
+            <th class="no-wrap px-4 border-b border-slate-400 min-w-25">Extra-3</th>
+            <th class="no-wrap border-b border-slate-400">Message</th>
+            <th class="no-wrap border-b border-slate-400">House Access</th>
+            <th class="no-wrap border-b border-slate-400">Payment</th>
+            <th class="no-wrap border-b border-slate-400">Payment Status</th>
+            <th class="no-wrap border-b border-slate-400">Total Price</th>
+            <th class="no-wrap border-b border-slate-400">Frequency</th>
+            <th class="no-wrap border-b border-slate-400">Recurring_group_id</th>
+            <th class="no-wrap border-b border-slate-400">Own Equipment</th>
+            <th class="no-wrap border-b border-slate-400">Status</th>
+            <th class="no-wrap border-b border-slate-400">Confirm Payment</th>
+            <th class="no-wrap border-b border-slate-400">Confirm Booking</th>
+            <th class="no-wrap border-b border-slate-400">Edit Booking</th>
           </tr>
         </thead>
         <tbody>
           @foreach($bookings as $booking)
-          <tr class="odd:bg-slate-50 even:bg-slate-100">
+          <tr class="odd:bg-slate-50 even:bg-slate-200">
             <td class="py-2 px-4 border-b border-slate-400">{{ $booking->id }}</td>
+            <td class="py-2 px-4 border-b border-slate-400">{{ $booking->reference }}</td>
             <td class="py-2 px-4 border-b border-slate-400">{{ $booking->booking_date }}</td>
             <td class="py-2 px-4 border-b border-slate-400">{{ $booking->start_at }}</td>
             <td class="py-2 px-4 border-b border-slate-400">{{ $booking->end_at }}</td>
@@ -76,6 +79,7 @@
             <td class="py-2 px-4 border-b border-slate-400">{{ $booking->payment_status }}</td>
             <td class="py-2 px-4 border-b border-slate-400">£{{ $booking->total_price }}</td>
             <td class="py-2 px-4 border-b border-slate-400">{{ $booking->frequency }}</td>
+            <td class="py-2 px-4 border-b border-slate-400">{{ $booking->recurring_group_id }}</td>
             <td class="py-2 px-4 border-b border-slate-400">@if ($booking->own_equipment == 0) No @else Yes @endif </td>
             <td class="py-2 px-4 border-b border-slate-400">{{ $booking->status }}</td>
             <td class="py-2 px-4 border-b border-slate-400">
