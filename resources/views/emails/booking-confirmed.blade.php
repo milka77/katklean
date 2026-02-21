@@ -8,16 +8,28 @@
 
     <h2>Hello {{ $booking->name }},</h2>
 
-    <p>Your booking has been <strong>confirmed</strong>. 🎉</p>
+    <p>Your booking <strong>{{ $booking->reference }}</strong> has been <strong>confirmed</strong>. 🎉</p>
 
     <p><strong>Booking details:</strong></p>
 
     <ul>
         <li>Date: {{ $booking->booking_date }}</li>
-        <li>Time: {{ $booking->start_at }} – {{ $booking->end_at }}</li>
+        <li>Reference: {{ $booking->reference }}</li>
+        <li>Time: {!! Str::substr($booking->start_at, 10) !!} – {!! Str::substr($booking->end_at, 10) !!}</li>
         <li>Service: {{ $booking->product->name }}</li>
         <li>Total price: £{{ number_format($booking->total_price, 2) }}</li>
+        <li>Peyment method: @if($booking->payment_method == 'bank')Bank Transfer @else Cash @endif</li>
     </ul>
+
+    @if($booking->payment_method == 'bank')
+        <p><strong>Bank details:</strong></p>
+        <ul>
+            <li>Name: Katalin Kvak</li>
+            <li>Sort code: {{ env('SORT_CODE') }}</li>
+            <li>Account number: {{ env('ACCOUNT_NUMBER') }}</li>
+        </ul>
+        <p>Payment due latest on the day of the booking.</p>
+    @endif
 
     <p>If you have any questions, just reply to this email.</p>
 
