@@ -28,7 +28,7 @@
             <li>Sort code: {{ env('SORT_CODE') }}</li>
             <li>Account number: {{ env('ACCOUNT_NUMBER') }}</li>
         </ul>
-        <p>Payment due latest on the day of the booking.</p>
+        <p>Payment is due latest on the day of the booking.</p>
     @endif
 
     <p>If you have any questions, just reply to this email.</p>
