@@ -62,6 +62,8 @@ class BookingController extends Controller
         'booking_date'     => ['required', 'date'],
         'start_at'         => ['required'],
         'frequency'        => ['required', 'in:once,weekly,fortnightly,monthly'],
+        'recurring_active' => ['nullable', 'boolean'],
+        'recurring_limit'  => ['nullable', 'integer'],
 
         // Customer
         'name'          => ['required', 'string', 'max:255'],
@@ -76,7 +78,6 @@ class BookingController extends Controller
         'total_price'    => ['required', 'numeric'],
 
         // Other
-        'frequency'     => ['required', 'string'],
         'own_equipment' => ['nullable', 'boolean'],
         'message'       => ['nullable', 'string'],
         'house_access'  => ['nullable', 'string'],
@@ -85,26 +86,28 @@ class BookingController extends Controller
         $startAt = Carbon::parse($validated['start_at']);
         $duration = (int) $validated['duration_minutes'];
         $endAt = $startAt->copy()->addMinutes($duration);
-        
+
         // For recurring bookings
         $startDate = Carbon::parse($validated['booking_date']);
         $frequency = $validated['frequency'];
         $occurrences = 1;
         $groupId = null;
+        $recurringActive = false;
 
         /*
         |--------------------------------------------------------------------------
-        | Checking the booking's frequency 
+        | Checking the booking's frequency
         |--------------------------------------------------------------------------
         */
         if($frequency !== 'once'){
             $occurrences = 6;
             $groupId = Str::uuid();
+            $recurringActive = true;
         }
 
         // Collection all recurring dates for check if all dates are available
         $dates = collect();
-        
+
         for ($i = 0; $i < $occurrences; $i++) {
 
             $date = match ($frequency) {
@@ -118,14 +121,14 @@ class BookingController extends Controller
                 $date->toDateString() . ' ' . $startAt->format('H:i:s')
             );
             $recurringEndAt = $recurringStartAt->copy()->addMinutes($duration);
-        
+
             $dates->push([
                 'date' => $date,
                 'start_at' => $recurringStartAt,
                 'end_at' => $recurringEndAt,
             ]);
         }
-            
+
         foreach ($dates as $slot) {
 
             // 🔒 24 hour rule
@@ -167,31 +170,33 @@ class BookingController extends Controller
                 if(Auth::user()) {
                     $user = Auth::user();
                     $user_ID = $user->id;
-    
+
                     Booking::create([
                         // Foreign
                         'user_id' => $user_ID,
                         'product_id' => $validated['product_id'],
-        
+
                         // Rooms
                         'bed'     => $validated['bed'],
                         'bath'    => $validated['bath'],
                         'living'  => $validated['living'],
                         'kitchen' => $validated['kitchen'],
                         'other'   => $validated['other'] ?? 0,
-        
+
                         // Extras
                         'extra_1' => $request->boolean('extra_1'),
                         'extra_2' => $request->boolean('extra_2'),
                         'extra_3' => $request->boolean('extra_3'),
-        
+
                         // Booking
                         'duration_minutes' => $duration,
                         'booking_date' => $slot['date']->toDateString(),
                         'start_at'     => $slot['start_at'],
                         'end_at'       => $slot['end_at'],
                         'recurring_group_id' => $groupId,
-        
+                        'recurring_active' => $recurringActive,
+                        'recurring_limit' => $occurrences,
+
                         // Customer
                         'name'          => $validated['name'],
                         'address_line1' => $validated['address_line1'],
@@ -199,46 +204,48 @@ class BookingController extends Controller
                         'town'          => $validated['town'],
                         'email'         => $validated['email'],
                         'phone'         => $validated['phone'],
-        
+
                         // Payment
                         'payment_method' => $validated['payment_method'],
                         'payment_status' => 'pending',
                         'total_price'    => $validated['total_price'],
-        
+
                         // Other
                         'own_equipment' => $request->boolean('own_equipment'),
                         'frequency'     => $frequency,
                         'message'       => $validated['message'] ?? null,
                         'house_access'  => $validated['house_access'] ?? null,
-        
+
                         'status' => 'pending',
                     ]);
-                    
+
                 // Guest user's booking
                 } else {
                     Booking::create([
                         // Foreign
                         'product_id' => $validated['product_id'],
-        
+
                         // Rooms
                         'bed'     => $validated['bed'],
                         'bath'    => $validated['bath'],
                         'living'  => $validated['living'],
                         'kitchen' => $validated['kitchen'],
                         'other'   => $validated['other'] ?? 0,
-        
+
                         // Extras
                         'extra_1' => $request->boolean('extra_1'),
                         'extra_2' => $request->boolean('extra_2'),
                         'extra_3' => $request->boolean('extra_3'),
-        
+
                         // Booking
                         'duration_minutes'   => $duration,
                         'booking_date'       => $slot['date']->toDateString(),
                         'start_at'           => $slot['start_at'],
                         'end_at'             => $slot['end_at'],
                         'recurring_group_id' => $groupId,
-        
+                        'recurring_active' => $recurringActive,
+                        'recurring_limit' => $occurrences,
+
                         // Customer
                         'name'          => $validated['name'],
                         'address_line1' => $validated['address_line1'],
@@ -246,21 +253,21 @@ class BookingController extends Controller
                         'town'          => $validated['town'],
                         'email'         => $validated['email'],
                         'phone'         => $validated['phone'],
-        
+
                         // Payment
                         'payment_method' => $validated['payment_method'],
                         'payment_status' => 'pending',
                         'total_price'    => $validated['total_price'],
-        
+
                         // Other
                         'own_equipment' => $request->boolean('own_equipment'),
                         'frequency'     => $frequency,
                         'message'       => $validated['message'] ?? null,
                         'house_access'  => $validated['house_access'] ?? null,
-        
+
                         'status' => 'pending',
                     ]);
-                    
+
                 }
 
             } //end of foreach booking create
@@ -271,8 +278,8 @@ class BookingController extends Controller
             throw $e;
             flash()->error('Something went wrong.'. $e);
         }
-        
-                
+
+
         return redirect()
         ->back()
         ->with('success', 'Your booking has been created successfully.');
@@ -400,6 +407,22 @@ class BookingController extends Controller
         flash()->success('Booking was confirmed.');
 
         return back();
+    }
+
+    public function completion(Booking $booking, Request $request)
+    {
+      $previousStatus = $booking->status;
+
+      if ($booking->status === 'completed') {
+        return back()->with('info', 'Booking already completed.');
+      }
+
+      $booking->status = 'completed';
+      $booking->save();
+
+      flash()->success('Booking was confirmed.');
+
+      return back();
     }
 
     public function adminShow(Booking $booking)

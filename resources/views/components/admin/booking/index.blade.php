@@ -2,7 +2,7 @@
     @section('content')
     <div class="mx-auto bg-slate-50 p-8 rounded-lg shadow-md">
       <h2 class="text-2xl font-bold mb-6 pl-5">Bookings</h2>
-      
+
       <table class="bg-slate-100 text-center table-fixed min-w-full">
         <thead>
           <tr class="bg-slate-400">
@@ -117,14 +117,18 @@
             <td class="py-2 px-4 border-b border-slate-400">@if ($booking->own_equipment == 0) No @else Yes @endif </td>
             <td class="py-2 px-4 border-b border-slate-400">{{ $booking->status }}</td>
             <td class="py-2 px-4 border-b border-slate-400">
-              <a href="">blah</a>
+              <form action="{{ route('admin.booking.completion', $booking->id) }}" method="POST" class="inline">
+                @csrf
+                @method('PUT')
+                <button type="submit" class="border border-green-600 hover:bg-green-500 text-green-500 hover:text-white font-bold px-2 rounded cursor-pointer">Confirm</button>
+              </form>
             </td>
             <td class="py-2 px-4 border-b border-slate-400">
               <form action="{{ route('admin.booking.confirmation', $booking->id) }}" method="POST" class="inline">
                 @csrf
                 @method('PUT')
                 <button type="submit" class="border border-green-600 hover:bg-green-500 text-green-500 hover:text-white font-bold px-2 rounded cursor-pointer">Confirm</button>
-                </form>
+              </form>
             </td>
             <td class="py-2 px-4 border-b border-slate-400">
               <a href="{{ route('admin.booking.show', $booking) }}" class="border border-green-600 hover:bg-green-500 text-green-500 hover:text-white font-bold px-2 rounded cursor-pointer">Edit</a>
@@ -132,7 +136,7 @@
           @endforeach
         </tbody>
       </table>
-       
+
     </div>
     @endsection
 </x-admin-layout>

@@ -2,16 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// use App\Http\Controllers\ContactController;
-// use App\Http\Controllers\SiteController;
-// use App\Http\Controllers\UserController;
-// use App\Http\Controllers\AddressController;
-// use App\Http\Controllers\AdminController;
-// use App\Http\Controllers\RoleController;
-// use App\Http\Controllers\ProductController;
-// use App\Http\Controllers\ImageUploadController;
-// use App\Http\Controllers\BookingController;
-
 use App\Mail\BookingConfirmedMail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -52,7 +42,7 @@ Route::middleware('auth')->group(function() {
   Route::put('/address/{address}/update', [AddressController::class, 'update'])->name('address.update');
   Route::delete('/address/{address}/delete', [AddressController::class, 'destroy'])->name('address.destroy');
 
-  
+
 });
 
 // Admin Routes
@@ -67,7 +57,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   Route::put('/roles/{role}/update', [RoleController::class, 'update'])->name('admin.roles.update');
   Route::delete('/roles/{role}/delete', [RoleController::class, 'destroy'])->name('admin.roles.destroy');
   Route::put('/users/{user}/role/attach', [AdminController::class, 'attach'])->name('user.role.attach');
-  Route::put('/users/{user}/role/detach', [AdminController::class, 'detach'])->name('user.role.detach');  
+  Route::put('/users/{user}/role/detach', [AdminController::class, 'detach'])->name('user.role.detach');
 
   Route::get('/users', [AdminController::class, 'userIndex'])->name('admin.users.index');
   Route::get('/users/{user}/show', [AdminController::class, 'showUser'])->name('admin.users.show');
@@ -90,5 +80,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   Route::get('/booking', [BookingController::class, 'adminIndex'])->name('admin.booking.index');
   Route::put('/booking/{booking}/confirmed', [BookingController::class, 'confirmation'])->name('admin.booking.confirmation');
   Route::get('/email/{booking}', [BookingConfirmedMail::class, 'emails.booking-confirmed']);
+  Route::put('/booking/{booking}/completed', [BookingController::class, 'completion'])->name('admin.booking.completion');
   Route::get('/booking/{booking}/show', [BookingController::class, 'adminShow'])->name('admin.booking.show');
 });
