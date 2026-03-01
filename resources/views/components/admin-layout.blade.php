@@ -3,11 +3,11 @@
 <head>
      {{-- SEO & Social meta tags --}}
     <meta name="description" content="Reliable local cleaning company in Preston offering professional cleaning services for homes and properties.Local Cleaning Company in Preston | KatKlean">
-    <meta name="keywords" content="cleaning services preston, cleaners preston, domestic cleaning preston, commercial cleaning preston, house cleaning preston, end of tenancy cleaning preston, office cleaning preston, 
+    <meta name="keywords" content="cleaning services preston, cleaners preston, domestic cleaning preston, commercial cleaning preston, house cleaning preston, end of tenancy cleaning preston, office cleaning preston,
         deep cleaning preston, local cleaners preston lancashire">
 
 
-    
+
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,9 +19,9 @@
     @vite('resources/css/app.css')
     <title>{{ config('app.name', 'KatKlean') }}</title>
     @yield('extra-style')
-    
+
 </head>
-@if (Auth()->user()->hasRole('admin')) 
+@if (Auth()->user()->hasRole('admin'))
 
 <body class="flex bg-slate-200" >
 {{--  Navigation --}}

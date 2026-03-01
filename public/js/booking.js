@@ -46,7 +46,7 @@ livingInput.addEventListener('change', event => {
 otherInput.addEventListener('change', event => {
   event.preventDefault()
   calculate()
-}) 
+})
 
 // Extras
 extraOneInput.addEventListener('change', event => {
@@ -104,17 +104,17 @@ function calculatePrice(service, bed, bath, kitchen, living, other, extra1, extr
       price += (kitchen - 1) * 40
     }
     // Counting the total price
-    price += total * 30  
+    price += total * 30
     result.innerHTML = price
     totalPriceInput.value = price
 
-  } else if(service == '8') {
+  } else if(service == '1') {
     price = 0
     if(bed <= 1){
       price += roundedHours * rate
     } else if(bed == 2){
       price += Math.round((roundedHours * rate) * 1.1)
-      // if (price < 55){ price = 55} 
+      // if (price < 55){ price = 55}
     } else if(bed == 3){
       price += Math.round((roundedHours * rate) * 1.25)
       // if(price < 75){ price = 75}
@@ -129,7 +129,7 @@ function calculatePrice(service, bed, bath, kitchen, living, other, extra1, extr
     totalPriceInput.value = price
   }
 
-  console.log('price: £', price)  
+  console.log('price: £', price)
 }
 
 
@@ -176,12 +176,12 @@ function calculate() {
     // Rounding up to the nearest 0.5
     var reminder = hours % 0.5
     var roundedHours = hours - reminder
-    reminder > 0 ? roundedHours += 0.5 : roundedHours 
+    reminder > 0 ? roundedHours += 0.5 : roundedHours
 
     // Updating the HTML element with the calculated hours
     updateHours(roundedHours, service)
     calculatePrice(service, bed, bath, kitchen, living, other, extra1, extra2, extra3, roundedHours)
-  } 
+  }
 }
 
 
@@ -219,24 +219,24 @@ async function fetchAvailability() {
 
   // Sliceing datetime for time only like "07:00"
   oldTimeOnly = oldTime.slice(11, 16)
-  
+
   if (slots.length === 0) {
     // startTimeSelect.innerHTML += '<option disabled>No availability</option>'
   } else {
-    
+
     slots.forEach(time => {
       if(oldTimeOnly){
         const isSelected = oldTimeOnly && oldTimeOnly === time;
         startTimeSelect.innerHTML += `
-          <p data-time="${time}" 
-            class="time-slot w-15 border rounded-md border-slate-300 mx-auto px-2 py-1 cursor-pointer 
-            ${isSelected ? 'bg-slate-700 text-white' : ''} 
+          <p data-time="${time}"
+            class="time-slot w-15 border rounded-md border-slate-300 mx-auto px-2 py-1 cursor-pointer
+            ${isSelected ? 'bg-slate-700 text-white' : ''}
             hover:bg-slate-500 text-black">
             ${time}
           </p>`;
       } else {
         startTimeSelect.innerHTML += `
-          <p data-time="${time}" 
+          <p data-time="${time}"
              class="time-slot w-15 border rounded-md border-slate-300 mx-auto px-2 py-1 cursor-pointer bg-slate-700 hover:bg-slate-500 text-white">
              ${time}
           </p>`;

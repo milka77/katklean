@@ -15,10 +15,10 @@
         <p class="font-semibold text-lg text-center py-5">Personal Details:</p>
         <div class="bg-stone-50 border border-slate-300 rounded-xl py-2">
 
-        
+
           <div class="flex flex-col px-5 py-2 ">
             <label class="pl-2 pb-1" for="first_name">Name<spam class="text-red-500">*</span></label>
-            <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="name" id="name" placeholder="Enter your name" 
+            <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="name" id="name" placeholder="Enter your name"
               value="@if (Auth::user()){{ Auth::user()->getFullNameAttribute() }}@else{{ old('name') }}@endif">
             @error('name')
               <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
@@ -27,7 +27,7 @@
 
           <div class="flex flex-col px-5 pb-2">
             <label class="pl-2 pb-1" for="first_name">Email<spam class="text-red-500">*</span></label>
-            <input class="border rounded-md border-slate-300 pl-2 py-1" type="email" name="email" id="email" placeholder="Enter your email address" 
+            <input class="border rounded-md border-slate-300 pl-2 py-1" type="email" name="email" id="email" placeholder="Enter your email address"
               value="@if (Auth::user()){{ Auth::user()->email }}@else{{ old('email') }}@endif">
             @error('email')
               <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
@@ -45,8 +45,8 @@
 
           <div class="flex flex-col px-5 pb-2">
             <label class="pl-2 pb-1" for="first_name">Address<spam class="text-red-500">*</span></label>
-            <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="address_line1" id="address_line1" placeholder="85 My Street" 
-              value="@if (Auth::user()){{ Auth::user()->addresses[0]['address_line1'] }}@else{{ old('address_line1') }}@endif">
+            <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="address_line1" id="address_line1" placeholder="85 My Street"
+              value="@if (Auth::user()->addresses()->exists()){{ Auth::user()->addresses[0]['address_line1'] }}@else{{ old('address_line1') }}@endif">
             @error('address_line1')
               <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
             @enderror
@@ -54,19 +54,19 @@
 
           <div class="flex flex-col px-5 pb-2">
             <label class="pl-2 pb-1" for="first_name">Town<spam class="text-red-500">*</span></label>
-            <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="town" id="town" placeholder="Preston" 
-              value="@if (Auth::user()){{ Auth::user()->addresses[0]['city'] }}@else{{ old('town') }}@endif">
+            <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="town" id="town" placeholder="Preston"
+              value="@if (Auth::user()->addresses()->exists()){{ Auth::user()->addresses[0]['city'] }}@else{{ old('town') }}@endif">
             @error('town')
-              <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>  
+              <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
             @enderror
-          </div>  
+          </div>
 
           <div class="flex flex-col px-5 pb-5">
             <label class="pl-2 pb-1" for="first_name">Postcode<spam class="text-red-500">*</span></label>
-            <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="postcode" id="postcode" placeholder="PR2 xxx" 
-              value="@if (Auth::user()){{ Auth::user()->addresses[0]['postcode'] }}@else{{ old('postcode') }}@endif">
+            <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="postcode" id="postcode" placeholder="PR2 xxx"
+              value="@if (Auth::user()->addresses()->exists()){{ Auth::user()->addresses[0]['postcode'] }}@else{{ old('postcode') }}@endif">
             @error('postcode')
-              <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>  
+              <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
             @enderror
           </div>
 
@@ -78,7 +78,7 @@
               <option value="bank" @if(old('payment_method') == 'bank') selected @endif>Bank Transfer</option>
             </select>
             @error('payment_method')
-              <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>  
+              <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
             @enderror
           </div>
 
@@ -92,7 +92,7 @@
               <option value="monthly" @if(old('frequency') == 'monthly') selected @endif>Monthly</option>
             </select>
             @error('frequency')
-              <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>  
+              <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
             @enderror
           </div>
         </div>
@@ -114,7 +114,7 @@
             <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
           @enderror
         </div>
-        
+
         {{-- Property details --}}
         <div class="grid grid-cols-2 gap-2 px-5 pb-2">
           {{-- Bedrooms --}}
@@ -137,7 +137,7 @@
               <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
             @enderror
           </div>
-  
+
           <div class="flex flex-col">
             <label class="pl-2 pb-1" for="first_name">Bathrooms</label>
             <select class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="bath" id="bath" placeholder="Numbers of bathrooms" value="{{ old('bath') }}">
@@ -152,7 +152,7 @@
               <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
             @enderror
           </div>
-  
+
           <div class="flex flex-col">
             <label class="pl-2 pb-1" for="first_name">Kitchen</label>
             <select class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="kitchen" id="kitchen" placeholder="Numbers of kitchens" value="{{ old('kitchen') }}">
@@ -167,7 +167,7 @@
               <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
             @enderror
           </div>
-  
+
           <div class="flex flex-col">
             <label class="pl-2 pb-1" for="first_name">Living rooms</label>
             <select class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="living" id="living" placeholder="Numbers of living rooms" value="{{ old('living') }}">
@@ -182,7 +182,7 @@
               <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
             @enderror
           </div>
-  
+
           <div class="flex flex-col">
             <label class="pl-2 pb-1" for="first_name">Other rooms</label>
             <select class="border rounded-md border-slate-300 pl-2 py-1" type="selection" name="other" id="other" placeholder="Numbers of other rooms" value="{{ old('other') }}">
@@ -205,46 +205,46 @@
         </div>
         {{-- End of Property details --}}
         <hr class="text-slate-300 mt-2">
-        
+
         {{-- Extras --}}
         <div class="flex flex-col pb-2 pt-1 mx-4">
           <p class="font-semibold pl-2 py-2">Optional extras</p>
           <div class="flex place-content-between pb-1 pr-2">
             <p class="pl-2 text-sm">Clean inside window panes</p>
-            
+
             <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
               <input id="extra_1" name="extra_1" type="checkbox" class="peer sr-only" value="{{ old('extra_1') }}" />
               <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
               <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
-  
+
             </label>
           </div>
           <div class="flex place-content-between pb-1 pr-2">
             <p class="pl-2 text-sm">Fridge interior</p>
-            
+
             <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
               <input id="extra_2" name="extra_2" type="checkbox" class="peer sr-only" value="0"/>
               <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
               <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
-  
+
             </label>
           </div>
-  
+
           <div class="flex place-content-between pb-1 pr-2">
             <p class="pl-2 text-sm">Make the bed</p>
-            
+
             <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
               <input id="extra_3" name="extra_3" type="checkbox" class="peer sr-only" value="0" />
               <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
               <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
-  
+
             </label>
           </div>
-  
+
         </div>
         {{-- End of Extras --}}
         <hr class="text-slate-300 mt-2">
-        
+
         {{-- Booking message and house access --}}
         <div class="grid">
           <div class="flex flex-col px-5 py-2">
@@ -254,7 +254,7 @@
               <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
             @enderror
           </div>
-  
+
           <div class="flex flex-col px-5 py-2">
             <label class="pl-2 pb-1" for="house_access">House access details</label>
             <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="house_access" id="house_access" placeholder="e.g. Key under mat, call on arrival, etc." value="{{ old('house_access') }}">
@@ -265,15 +265,15 @@
           <div class="px-5 pt-2">
             <p class="pl-2 text-sm font-semibold">Select this option if you would like us to use our own equipment.</p>
             <div class="flex flex-row justify-between px-1 py-2">
-                
+
                 <p class="pl-1 text-sm">KatKlean's equipment.</p>
-                
+
                 <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
                   <input name="own_equipment" id="own_equipment" type="checkbox" class="peer sr-only" value="0" />
                   <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
-                  <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>    
+                  <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
                 </label>
-              
+
               @error('own_equipment')
                 <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
               @enderror
@@ -286,7 +286,7 @@
 
 
       <input type="hidden" name="duration_minutes" id="duration_minutes" value="{{ old('duration_minutes') }}">
-      
+
       {{-- Date and Time --}}
       <div class="grid grid-cols-1 gap-4 px-5 pt-2 pb-4 mb-3 border border-slate-300 rounded-xl bg-stone-50">
         <div class="flex flex-row gap-5 pt-3 mx-auto">
@@ -345,9 +345,9 @@
   @section('extra-js')
   <script src="{{ asset('js/booking.js') }}" type="text/javascript"></script>
   {{-- Passing old booking_time value to JS --}}
-  <script> 
-    const oldTime = "{{ old('start_at') }}"; 
-    const oldDuration = "{{  old('duration_minutes') }}"  
+  <script>
+    const oldTime = "{{ old('start_at') }}";
+    const oldDuration = "{{  old('duration_minutes') }}"
     const oldPrice = "{{  old('total_price') }}"
   </script>
 
