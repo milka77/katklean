@@ -15,7 +15,7 @@
     <ul>
         <li>Date: {{ $booking->booking_date }}</li>
         <li>Reference: {{ $booking->reference }}</li>
-        <li>Time: {!! Str::substr($booking->start_at, 10) !!} – {!! Str::substr($booking->end_at, 10) !!}</li>
+        <li>Time: {!! Str::substr($booking->start_at, 10) !!} </li>
         <li>Service: {{ $booking->product->name }}</li>
         <li>Total price: £{{ number_format($booking->total_price, 2) }}</li>
         <li>Peyment method: @if($booking->payment_method == 'bank')Bank Transfer @else Cash @endif</li>

@@ -16,7 +16,7 @@
 
 <p><strong>Service:</strong> {{ $booking->product->name }}</p>
 <p><strong>Date:</strong> {{ $booking->booking_date }}</p>
-<p><strong>Time:</strong> {{ $booking->start_at }} - {{ $booking->end_at }}</p>
+<p><strong>Time:</strong> {{ $booking->start_at }} </p>
 <p><strong>Total:</strong> £{{ number_format($booking->total_price, 2) }}</p>
 
 <hr>
