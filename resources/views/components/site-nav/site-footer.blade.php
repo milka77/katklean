@@ -24,17 +24,17 @@
               <div>Monday - Friday: </div>
               <div>07:00 - 19:00</div>
             </div>
-          </li>          
+          </li>
           <li>
             <div class="flex grid-cols-2 place-content-between gap-2">
               <div>Saturday: </div>
-              <div>07:00 - 19:00</div>
+              <div>09:00 - 14:00</div>
             </div>
           </li>
           <li>
             <div class="flex grid-cols-2 place-content-between gap-2">
               <div>Sunday: </div>
-              <div>09:00 - 14:00</div>
+              <div>Closed</div>
             </div>
           </li>
         </ul>
@@ -45,6 +45,7 @@
           <li><i class="fa-solid fa-location-dot"></i> Preston (main)</li>
           <li><i class="fa-solid fa-location-dot"></i> Bamber Bridge</li>
           <li><i class="fa-solid fa-location-dot"></i> Pentwotham</li>
+          <li><i class="fa-solid fa-location-dot"></i> Leyland</li>
         </ul>
       </div>
       <div>
