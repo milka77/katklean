@@ -28,11 +28,10 @@ class AvailabilityService
 
         // ✅ Rule 2: Sunday special hours + no deep clean
         if ($date->isSunday()) {
+            return [];
 
-            // Block deep clean (assuming you identify it by slug or name)
-            if (str_contains(strtolower($product->id), 2)) {
-                return [];
-            }
+        // ✅ Rule 3: Saturday opening time 9-14
+        } elseif ($date->isSaturday()) {
 
             $openTime  = $date->copy()->setTime(9, 0);
             $closeTime = $date->copy()->setTime(14, 0);
