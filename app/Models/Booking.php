@@ -56,7 +56,7 @@ class Booking extends Model
             $latest = Booking::latest('id')->first();
             $number = $latest ? $latest->id + 1 : 1;
 
-            $booking->reference = 'BK-' . str_pad($number, 6, '0', STR_PAD_LEFT);
+            $booking->reference = 'KTK-' . now()->format('y') . '-' . str_pad($number, 6, '0', STR_PAD_LEFT);
         });
     }
 
