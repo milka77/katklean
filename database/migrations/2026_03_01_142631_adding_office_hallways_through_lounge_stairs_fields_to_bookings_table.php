@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('bookings', function (Blueprint $table) {
-          $table->boolean('recurring_active')->default(false);
-          $table->integer('recurring_limit')->default(6);
+            $table->unsignedTinyInteger('office')->default(0);
+            $table->unsignedTinyInteger('hallway')->default(0);
+            $table->unsignedTinyInteger('through_lounge')->default(0);
+            $table->unsignedTinyInteger('flight_of_stairs')->default(0);
         });
     }
 
@@ -23,8 +25,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('bookings', function (Blueprint $table) {
-            $table->dropColumn('recurring_active');
-            $table->dropColumn('recurring_limit');
+            $table->dropColumn('office');
+            $table->dropColumn('hallway');
+            $table->dropColumn('through_lounge');
+            $table->dropColumn('flight_of_stairs');
         });
     }
 };
