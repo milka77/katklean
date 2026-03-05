@@ -52,6 +52,7 @@
         <h3 class="font-semibold text-center md:text-left text-base text-gray-200 md:mb-5 mb-2">Contact Us</h3>
         <ul class="text-sm text-center md:text-left space-y-1">
           <li><i class="fa-solid fa-mobile-screen"></i> 07456517365</li>
+          <li><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/447456517365" target="_blank" class="hover:text-white/70 transition">WhatsApp</a></li>
           <li><i class="fa-solid fa-at"></i> <a href="mailto:info@katklean.co.uk" class="hover:text-white/70 transition">info@katklean.co.uk</a></li>
           <li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/KatKlean.uk/" target="_blank" class="hover:text-white/70 transition">Facebook</a></li>
         </ul>
