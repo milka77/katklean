@@ -17,7 +17,7 @@
 
 
           <div class="flex flex-col px-5 py-2 ">
-            <label class="pl-2 pb-1" for="first_name">Name<spam class="text-red-500">*</span></label>
+            <label class="pl-2 pb-1" for="name">Name<spam class="text-red-500">*</span></label>
             <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="name" id="name" placeholder="Enter your name"
               value="@if (Auth::user()){{ Auth::user()->getFullNameAttribute() }}@else{{ old('name') }}@endif">
             @error('name')
@@ -26,7 +26,7 @@
           </div>
 
           <div class="flex flex-col px-5 pb-2">
-            <label class="pl-2 pb-1" for="first_name">Email<spam class="text-red-500">*</span></label>
+            <label class="pl-2 pb-1" for="email">Email<spam class="text-red-500">*</span></label>
             <input class="border rounded-md border-slate-300 pl-2 py-1" type="email" name="email" id="email" placeholder="Enter your email address"
               value="@if (Auth::user()){{ Auth::user()->email }}@else{{ old('email') }}@endif">
             @error('email')
@@ -34,17 +34,17 @@
             @enderror
           </div>
 
-        <div class="grid grid-cols-2 ">
-          <div class="flex flex-col px-5 pb-2">
-            <label class="pl-2 pb-1" for="first_name">Phone number<spam class="text-red-500">*</span></label>
+        <div class="grid grid-cols-2 gap-2 px-5">
+          <div class="flex flex-col pb-2">
+            <label class="pl-2 pb-1" for="phone">Phone number<spam class="text-red-500">*</span></label>
             <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="phone" id="phone" placeholder="07123456789" value="{{ old('phone') }}">
             @error('phone')
               <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
             @enderror
           </div>
 
-          <div class="flex flex-col px-5 pb-2">
-            <label class="pl-2 pb-1" for="first_name">Address<spam class="text-red-500">*</span></label>
+          <div class="flex flex-col pb-2">
+            <label class="pl-2 pb-1" for="address_line1">Address<spam class="text-red-500">*</span></label>
             <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="address_line1" id="address_line1" placeholder="85 My Street"
               value="@if (Auth::user()->addresses()->exists()){{ Auth::user()->addresses[0]['address_line1'] }}@else{{ old('address_line1') }}@endif">
             @error('address_line1')
@@ -52,8 +52,8 @@
             @enderror
           </div>
 
-          <div class="flex flex-col px-5 pb-2">
-            <label class="pl-2 pb-1" for="first_name">Town<spam class="text-red-500">*</span></label>
+          <div class="flex flex-col pb-2">
+            <label class="pl-2 pb-1" for="town">Town<spam class="text-red-500">*</span></label>
             <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="town" id="town" placeholder="Preston"
               value="@if (Auth::user()->addresses()->exists()){{ Auth::user()->addresses[0]['city'] }}@else{{ old('town') }}@endif">
             @error('town')
@@ -61,8 +61,8 @@
             @enderror
           </div>
 
-          <div class="flex flex-col px-5 pb-5">
-            <label class="pl-2 pb-1" for="first_name">Postcode<spam class="text-red-500">*</span></label>
+          <div class="flex flex-col pb-5">
+            <label class="pl-2 pb-1" for="postcode">Postcode<spam class="text-red-500">*</span></label>
             <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="postcode" id="postcode" placeholder="PR2 xxx"
               value="@if (Auth::user()->addresses()->exists()){{ Auth::user()->addresses[0]['postcode'] }}@else{{ old('postcode') }}@endif">
             @error('postcode')
@@ -70,8 +70,8 @@
             @enderror
           </div>
 
-          <div class="flex flex-col px-5 pb-2">
-            <label class="pl-2 pb-1" for="first_name">Payment Method<spam class="text-red-500">*</span></label>
+          <div class="flex flex-col pb-3">
+            <label class="pl-2 pb-1" for="payment_method">Payment Method<spam class="text-red-500">*</span></label>
             <select class="border rounded-md border-slate-300 pl-2 py-1" name="payment_method" id="payment_method">
               <option value="" disabled selected>Select Payment Method</option>
               <option value="cash" @if(old('payment_method') == 'cash') selected @endif>Cash</option>
@@ -82,8 +82,8 @@
             @enderror
           </div>
 
-          <div class="flex flex-col px-5 pb-2">
-            <label class="pl-2 pb-1" for="first_name">Cleaning Frequency<spam class="text-red-500">*</span></label>
+          <div class="flex flex-col pb-3">
+            <label class="pl-2 pb-1" for="frequency">Cleaning Frequency<spam class="text-red-500">*</span></label>
             <select class="border rounded-md border-slate-300 pl-2 py-1" name="frequency" id="frequency">
               <option value="" disabled selected>Select Frequency</option>
               <option value="once" @if(old('frequency') == 'once') selected @endif>Once</option>
@@ -102,25 +102,46 @@
       <p class="font-semibold text-xl text-center  py-5">Booking Details:</p>
 
       <div class="bg-stone-50 border border-slate-300 rounded-xl py-3 mb-3">
-        <div class="flex flex-col px-5 pb-2">
-          <label class="pl-2 pb-1" for="first_name">Service</label>
+        <div class="grid grid-cols-2 gap-2 px-5 pb-2">
+          {{-- Service select element--}}
+          <div class="flex flex-col pb-2">
+            <label class="pl-2 pb-1" for="product_id">Service<span class="text-red-500">*</span></label>
             <select class="border rounded-md border-slate-300 pl-2 py-1" name="product_id" id="product_id">
               <option value="" disabled selected>Select A Service</option>
               @foreach ($services as $service)
                 <option value="{{ $service->id }}" @if(old('product_id') == $service->id) selected @endif>{{ $service->name }}</option>
               @endforeach
             </select>
-          @error('product_id')
+            @error('product_id')
             <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
-          @enderror
+            @enderror
+          </div>
+
+          {{-- Property size selector --}}
+          <div class="flex flex-col pb-2">
+            <label class="pl-2 pb-1" for="property_size">Property size<span class="text-red-500">*</span></label>
+            <select class="border rounded-md border-slate-300 pl-2 py-1" name="property_size" id="property_size">
+              <option value="" disabled selected>Select your property size</option>
+              <option value="1" @if(old('property_size') == 1) selected @endif>1 - 2 Bedrooms</option>
+              <option value="3" @if(old('property_size') == 3) selected @endif>3 - 4 Bedrooms</option>
+              <option value="5" @if(old('property_size') == 5) selected @endif>5 - 5+ Bedrooms</option>
+            </select>
+            @error('property_size')
+            <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
+            @enderror
+          </div>
         </div>
+
+
+        <p class="text-lg font-semibold text-center px-5 py-2">Select only the rooms you would like cleaned.</p>
+        <hr class="text-slate-300 mb-2">
 
         {{-- Property details --}}
         <div class="grid grid-cols-2 gap-2 px-5 pb-2">
           {{-- Bedrooms --}}
           <div class="flex flex-col ">
-            <label class="pl-2 pb-1" for="first_name">Bedrooms</label>
-            <select class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="bed" id="bed" placeholder="Numbers of bedrooms">
+            <label class="pl-2 pb-1" for="bed">Bedrooms</label>
+            <select class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="bed" id="bed">
               <option value="0" @if(old('bed') == 0) selected @endif>0</option>
               <option value="1" @if(old('bed') == 1) selected @endif>1</option>
               <option value="2" @if(old('bed') == 2) selected @endif>2</option>
@@ -139,8 +160,8 @@
           </div>
 
           <div class="flex flex-col">
-            <label class="pl-2 pb-1" for="first_name">Bathrooms</label>
-            <select class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="bath" id="bath" placeholder="Numbers of bathrooms" value="{{ old('bath') }}">
+            <label class="pl-2 pb-1" for="bath">Bathrooms</label>
+            <select class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="bath" id="bath">
               <option value="0" @if(old('bath') == 0) selected @endif>0</option>
               <option value="1" @if(old('bath') == 1) selected @endif>1</option>
               <option value="2" @if(old('bath') == 2) selected @endif>2</option>
@@ -154,8 +175,8 @@
           </div>
 
           <div class="flex flex-col">
-            <label class="pl-2 pb-1" for="first_name">Kitchen</label>
-            <select class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="kitchen" id="kitchen" placeholder="Numbers of kitchens" value="{{ old('kitchen') }}">
+            <label class="pl-2 pb-1" for="kitchen">Kitchen</label>
+            <select class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="kitchen" id="kitchen">
               <option value="0" @if(old('kitchen') == 0) selected @endif>0</option>
               <option value="1" @if(old('kitchen') == 1) selected @endif>1</option>
               <option value="2" @if(old('kitchen') == 2) selected @endif>2</option>
@@ -169,8 +190,8 @@
           </div>
 
           <div class="flex flex-col">
-            <label class="pl-2 pb-1" for="first_name">Living rooms</label>
-            <select class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="living" id="living" placeholder="Numbers of living rooms" value="{{ old('living') }}">
+            <label class="pl-2 pb-1" for="living">Living / Dining rooms</label>
+            <select class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="living" id="living">
               <option value="0" @if(old('living') == 0) selected @endif>0</option>
               <option value="1" @if(old('living') == 1) selected @endif>1</option>
               <option value="2" @if(old('living') == 2) selected @endif>2</option>
@@ -183,23 +204,51 @@
             @enderror
           </div>
 
+          {{--  Office / Study selection --}}
           <div class="flex flex-col">
-            <label class="pl-2 pb-1" for="first_name">Other rooms</label>
-            <select class="border rounded-md border-slate-300 pl-2 py-1" type="selection" name="other" id="other" placeholder="Numbers of other rooms" value="{{ old('other') }}">
+            <label class="pl-2 pb-1" for="other">Other rooms</label>
+            <select class="border rounded-md border-slate-300 pl-2 py-1" type="selection" name="other" id="other">
               <option value="0" @if(old('other') == 0) selected @endif>0</option>
               <option value="1" @if(old('other') == 1) selected @endif>1</option>
               <option value="2" @if(old('other') == 2) selected @endif>2</option>
               <option value="3" @if(old('other') == 3) selected @endif>3</option>
               <option value="4" @if(old('other') == 4) selected @endif>4</option>
               <option value="5" @if(old('other') == 5) selected @endif>5</option>
-              <option value="6" @if(old('other') == 6) selected @endif>6</option>
-              <option value="7" @if(old('other') == 7) selected @endif>7</option>
-              <option value="8" @if(old('other') == 8) selected @endif>8</option>
-              <option value="9" @if(old('other') == 9) selected @endif>9</option>
-              <option value="10" @if(old('other') == 10) selected @endif>10+</option>
             </select>
             @error('other')
               <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
+            @enderror
+          </div>
+
+          {{--  Hallway selection --}}
+          <div class="flex flex-col">
+            <label class="pl-2 pb-1" for="hallway">Hallways</label>
+            <select class="border rounded-md border-slate-300 pl-2 py-1" type="selection" name="hallway" id="hallway">
+              <option value="0" @if(old('hallway') == 0) selected @endif>0</option>
+              <option value="1" @if(old('hallway') == 1) selected @endif>1</option>
+              <option value="2" @if(old('hallway') == 2) selected @endif>2</option>
+              <option value="3" @if(old('hallway') == 3) selected @endif>3</option>
+              <option value="4" @if(old('hallway') == 4) selected @endif>4</option>
+              <option value="5" @if(old('hallway') == 5) selected @endif>5</option>
+            </select>
+            @error('hallway')
+            <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
+            @enderror
+          </div>
+
+          {{--  Flights of Stairs --}}
+          <div class="flex flex-col">
+            <label class="pl-2 pb-1" for="flight_of_stairs">Flights of Stairs</label>
+            <select class="border rounded-md border-slate-300 pl-2 py-1" type="selection" name="flight_of_stairs" id="flight_of_stairs">
+              <option value="0" @if(old('flight_of_stairs') == 0) selected @endif>0</option>
+              <option value="1" @if(old('flight_of_stairs') == 1) selected @endif>1</option>
+              <option value="2" @if(old('flight_of_stairs') == 2) selected @endif>2</option>
+              <option value="3" @if(old('flight_of_stairs') == 3) selected @endif>3</option>
+              <option value="4" @if(old('flight_of_stairs') == 4) selected @endif>4</option>
+              <option value="5" @if(old('flight_of_stairs') == 5) selected @endif>5</option>
+            </select>
+            @error('flight_of_stairs')
+            <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
             @enderror
           </div>
         </div>
@@ -207,43 +256,45 @@
         <hr class="text-slate-300 mt-2">
 
         {{-- Extras --}}
-        <div class="flex flex-col pb-2 pt-1 mx-4">
-          <p class="font-semibold pl-2 py-2">Optional extras</p>
-          <div class="flex place-content-between pb-1 pr-2">
-            <p class="pl-2 text-sm">Clean inside window panes</p>
+        <div id="extras" class="sr-only">
+          <div class="flex flex-col pb-2 pt-1 mx-4">
+            <p class="font-semibold pl-2 py-2">Optional extras</p>
+            <div class="flex place-content-between pb-1 pr-2">
+              <p class="pl-2 text-sm">Clean inside window panes</p>
 
-            <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
-              <input id="extra_1" name="extra_1" type="checkbox" class="peer sr-only" value="{{ old('extra_1') }}" />
-              <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
-              <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
+              <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
+                <input id="extra_1" name="extra_1" type="checkbox" class="peer sr-only" value="{{ old('extra_1') }}" />
+                <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
+                <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
 
-            </label>
+              </label>
+            </div>
+            <div class="flex place-content-between pb-1 pr-2">
+              <p class="pl-2 text-sm">Fridge interior</p>
+
+              <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
+                <input id="extra_2" name="extra_2" type="checkbox" class="peer sr-only" value="0"/>
+                <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
+                <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
+
+              </label>
+            </div>
+
+            <div class="flex place-content-between pb-1 pr-2">
+              <p class="pl-2 text-sm">Make the bed</p>
+
+              <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
+                <input id="extra_3" name="extra_3" type="checkbox" class="peer sr-only" value="0" />
+                <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
+                <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
+
+              </label>
+            </div>
+
           </div>
-          <div class="flex place-content-between pb-1 pr-2">
-            <p class="pl-2 text-sm">Fridge interior</p>
-
-            <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
-              <input id="extra_2" name="extra_2" type="checkbox" class="peer sr-only" value="0"/>
-              <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
-              <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
-
-            </label>
-          </div>
-
-          <div class="flex place-content-between pb-1 pr-2">
-            <p class="pl-2 text-sm">Make the bed</p>
-
-            <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
-              <input id="extra_3" name="extra_3" type="checkbox" class="peer sr-only" value="0" />
-              <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
-              <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
-
-            </label>
-          </div>
-
+          {{-- End of Extras --}}
+          <hr class="text-slate-300 mt-2">
         </div>
-        {{-- End of Extras --}}
-        <hr class="text-slate-300 mt-2">
 
         {{-- Booking message and house access --}}
         <div class="grid">
@@ -263,18 +314,18 @@
             @enderror
           </div>
           <div class="px-5 pt-2">
-            <p class="pl-2 text-sm font-semibold">Select this option if you would like us to use our own equipment.</p>
+            <p class="pl-2 text-sm font-semibold">By booking a service, you agree to our Terms & Conditions.</p>
             <div class="flex flex-row justify-between px-1 py-2">
 
-                <p class="pl-1 text-sm">KatKlean's equipment.</p>
+                <p class="pl-1 text-sm"><a href="{{ route('terms') }}">KatKlean's Terms & Conditions.</a></p>
 
                 <label class="relative inline-flex cursor-pointer items-center gap-3 text-gray-900">
-                  <input name="own_equipment" id="own_equipment" type="checkbox" class="peer sr-only" value="0" />
+                  <input name="terms_and_conditions" id="terms_and_conditions" type="checkbox" class="peer sr-only" value="0" required/>
                   <div class="peer h-5 w-10 rounded-full bg-slate-300  transition-colors duration-200 peer-checked:bg-slate-600 peer-focus:ring-2 peer-focus:ring-slate-500"></div>
                   <span class="dot absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
                 </label>
 
-              @error('own_equipment')
+              @error('terms_and_conditions')
                 <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
               @enderror
             </div>
@@ -326,7 +377,7 @@
           </span>.00</p>
           <input type="hidden" name="total_price" id="total_price" value="{{  old('total_price') }}">
           <div class="mx-4 pb-5 text-xs px-10 border-t border-slate-300 pt-2">
-            <p>A minimum visit price applies to all bookings.</p>
+            <p>A minimum visit price (£40) applies to all bookings.</p>
           </div>
         </div>
       </div>

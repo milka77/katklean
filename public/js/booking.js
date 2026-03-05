@@ -5,17 +5,24 @@ const bathInput = document.getElementById('bath')
 const kitchenInput = document.getElementById('kitchen')
 const livingInput = document.getElementById('living')
 const otherInput = document.getElementById('other')
+const hallwayInput = document.getElementById('hallway')
+const flightOfStairsInput = document.getElementById('flight_of_stairs')
 const extraOneInput = document.getElementById('extra_1')
 const extraTwoInput = document.getElementById('extra_2')
 const extraThreeInput = document.getElementById('extra_3')
 const durationInput = document.getElementById('duration_minutes')
 const totalPriceInput = document.getElementById('total_price')
-const ownEquipmentInput = document.getElementById('own_equipment')
+// const ownEquipmentInput = document.getElementById('own_equipment')
+const extrasFields = document.getElementById('extras')
+const propertySizeInput = document.getElementById('property_size')
+const deepCleanMultiplier = 2.3
+const endOfTenancyMultiplier = 3
 
 // Service type
 serviceInput.addEventListener('change', event => {
   event.preventDefault()
   calculate()
+  toggleExtras(serviceInput.value)
 })
 
 // Bedroom
@@ -42,8 +49,20 @@ livingInput.addEventListener('change', event => {
   calculate()
 })
 
-// Other Rooms
+// Other / Study Rooms
 otherInput.addEventListener('change', event => {
+  event.preventDefault()
+  calculate()
+})
+
+// Hallways
+hallwayInput.addEventListener('change', event => {
+  event.preventDefault()
+  calculate()
+})
+
+// Flight of Stairs
+flightOfStairsInput.addEventListener('change', event => {
   event.preventDefault()
   calculate()
 })
@@ -64,19 +83,29 @@ extraThreeInput.addEventListener('change', event => {
   extraThreeInput.value == 0 ? extraThreeInput.value = 1 : extraThreeInput.value = 0
   calculate()
 })
-ownEquipmentInput.addEventListener('change', event => {
+// ownEquipmentInput.addEventListener('change', event => {
+//   event.preventDefault()
+//   ownEquipmentInput.value == 0 ? ownEquipmentInput.value = 1 : ownEquipmentInput.value = 0
+//   calculate()
+// })
+
+propertySizeInput.addEventListener('change', event => {
   event.preventDefault()
-  ownEquipmentInput.value == 0 ? ownEquipmentInput.value = 1 : ownEquipmentInput.value = 0
   calculate()
 })
 
+// Toggle extra options, visible only for Standard cleaning
+function toggleExtras(id){
+  if(id === "1"){
+    extrasFields.classList.remove('sr-only')
+  } else {
+    extrasFields.classList.add('sr-only')
+  }
+}
+
+
 // Update the hours in the HTML element
 function updateHours(hours, service,){
-  // if(service == "2") {
-  //   result.innerHTML = hours
-  // } else {
-  //   result.innerHTML = hours + " hours"
-  // }
   console.log('minutes:', minutes)
   let minutes = 0
   if(oldDuration != 0) {
@@ -87,49 +116,81 @@ function updateHours(hours, service,){
   durationInput.value = minutes
 }
 
-function calculatePrice(service, bed, bath, kitchen, living, other, extra1, extra2, extra3, roundedHours) {
-  let price = 60
-  let total = bed + bath + other
-  let standardTotal = bed + bath + kitchen + living + other
-  let rate = 20
+function calculatePrice(service, bed, bath, kitchen, living, other, hallway, stairs, extra1, extra2, extra3, roundedHours) {
+  let price = 0
+  let propertySize = propertySizeInput.value
+  // Prices
+  let bedPrice = 10
+  let bathPrice = 16
+  let kitchenPrice = 10
+  let livingPrice = 12
+  let otherPrice = 10
+  let hallwayPrice = 5
+  let stairPrice = 5
 
-  // Base price based on service type
-  if(service == '2') {
-    // Deep cleaning service
-    // First kitchen and living included after additional charges adding
-    if (living > 1) {
-      price += (living -1) * 30
+  // Standard cleaning prices
+  if(service == '1'){
+    if(propertySize == '1'){
+      price += bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice
+    } else if(propertySize == '3'){
+      kitchenPrice = 20
+      price = bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice
+    } else if(propertySize == '5'){
+      kitchenPrice = 20
+      price = bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice + hallway * hallwayPrice + stairs * stairPrice
     }
-    if (kitchen > 1){
-      price += (kitchen - 1) * 40
-    }
-    // Counting the total price
-    price += total * 30
-    result.innerHTML = price
-    totalPriceInput.value = price
-
-  } else if(service == '1') {
-    price = 0
-    if(bed <= 1){
-      price += roundedHours * rate
-    } else if(bed == 2){
-      price += Math.round((roundedHours * rate) * 1.1)
-      // if (price < 55){ price = 55}
-    } else if(bed == 3){
-      price += Math.round((roundedHours * rate) * 1.25)
-      // if(price < 75){ price = 75}
-    } else if(bed == 4){
-      price += Math.round((roundedHours * rate) * 1.29)
-      // if(price < 90){ price = 90}
-    } else if(bed >= 5){
-      price += Math.round((roundedHours * rate) * 1.33)
-      // if(price < 120){ price = 120}
-    }
-    result.innerHTML = price
-    totalPriceInput.value = price
   }
 
-  console.log('price: £', price)
+  //extras if selected adding the price
+  if(extra1 == 1){
+    if(propertySize == '1'){
+      price += 15
+    } else if(propertySize == '3'){
+      price = 25
+    } else if(propertySize == '5'){
+      price = 40    }
+  }
+  // Fridge
+  extra2 == 1 ? price += 20 : price
+  extra3 == 1 ? price += bed * 3 : price
+
+  // Deep cleaning service price
+  if(service == '2'){
+    if(propertySize == '1'){
+      price += bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice
+    } else if(propertySize == '3'){
+      kitchenPrice = 20
+      price = bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice + hallway * hallwayPrice + stairs * stairPrice
+    } else if(propertySize == '5'){
+      kitchenPrice = 20
+      price = bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice + hallway * hallwayPrice + stairs * stairPrice
+    }
+    // Final price calculation rounded
+    price = price * deepCleanMultiplier
+  }
+
+  // EoT cleaning service price
+  if(service == '3'){
+    if(propertySize == '1'){
+      price += bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice
+    } else if(propertySize == '3'){
+      kitchenPrice = 20
+      price = bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice + hallway * hallwayPrice + stairs * stairPrice
+    } else if(propertySize == '5'){
+      kitchenPrice = 20
+      price = bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice + hallway * hallwayPrice + stairs * stairPrice
+    }
+    // Final price calculation rounded
+    price = price * endOfTenancyMultiplier
+  }
+
+  // Final price calculation rounded
+  if(price < 40){
+    price = 40
+  }
+  console.log('price: ', price)
+  result.innerHTML = Math.round(price)
+  totalPriceInput.value = Math.round(price)
 }
 
 
@@ -141,31 +202,63 @@ function calculate() {
   let kitchen = Number(kitchenInput.value)
   let living = Number(livingInput.value)
   let other = Number(otherInput.value)
+  let hallway = Number(hallwayInput.value)
+  let stairs = Number(flightOfStairsInput.value)
   let totalRooms = bed + bath + living + other
+  let propertySize = Number(propertySizeInput.value)
   let extra1 = extraOneInput.value
   let extra2 = extraTwoInput.value
   let extra3 = extraThreeInput.value
   let window = 0
 
-
+  if(service == '1'){
+    if(propertySize < 4){
+      hallway = 0
+      stairs = 0
+    }
+  } else {
+    if(propertySize < 3){
+      hallway = 0
+      stairs = 0
+    }
+  }
 
   // If deep cleaning service is selected, fixed 8 hours
   if(service == '2') {
     // Deep cleaning service, fixed 8 hours
     updateHours(8, service)
-    calculatePrice(service, bed, bath, kitchen, living, other, extra1, extra2, extra3)
+    calculatePrice(service, bed, bath, kitchen, living, other, hallway, stairs, extra1, extra2, extra3)
   } else {
     // Calculate time based on rooms and extras
     //Adding 0.5 hour after every room
-    hours = (totalRooms * 0.5) + 0.5
+    hours = (totalRooms * 0.5)
+
     //Adding 0.2 hours after every room
     if(extra1 == 1){
-      window = Math.round((totalRooms * 0.2) * 10) / 10
+      let totalWindow = totalRooms + kitchen + hallway
+      window = Math.round((totalRooms * 0.078) * 10) / 10
+      console.log('Window time:', window)
       hours += window
     }
-    //Kitchen (1st included any other +1 hrs)
-    if(kitchen > 1) {
+    //Kitchen (1st kitchen 0.5 hrs for 3 or less bed house any other +1 hrs)
+    if(kitchen == 1){
+      hours += 0.5
+    } else if(kitchen > 1) {
       hours += kitchen - 1
+    }
+    // Adding extra 0.5 hrs to 4 bed or bigger property 1st kitchen
+    if(propertySize >= 4 && kitchen != 0){
+      hours += 0.5
+    }
+
+    //Hallways and Staircase
+    if(hallway != 0){
+      // Adding 15 min (0.25 hours) after each hallway when the property is 4 bed or bigger
+      hours += (hallway * 0.25)
+    }
+    if(stairs != 0){
+      // Adding 15 min (0.25 hours) after each staircase when the property is 4 bed or bigger
+      hours += (stairs * 0.25)
     }
     //extras if selected adding 0.5 hours
     extra2 == 1 ? hours += 0.5 : hours
@@ -175,12 +268,13 @@ function calculate() {
 
     // Rounding up to the nearest 0.5
     var reminder = hours % 0.5
-    var roundedHours = hours - reminder
-    reminder > 0 ? roundedHours += 0.5 : roundedHours
-
+    var roundedHours = hours //- reminder
+    console.log('hours: ', hours, '... rounded: ', roundedHours, '--- reminder: ', reminder)
+    // reminder > 0 ? roundedHours += 0.5 : roundedHours
+    console.log('roundedhours after reminder check: ', roundedHours)
     // Updating the HTML element with the calculated hours
     updateHours(roundedHours, service)
-    calculatePrice(service, bed, bath, kitchen, living, other, extra1, extra2, extra3, roundedHours)
+    calculatePrice(service, bed, bath, kitchen, living, other, hallway, stairs, extra1, extra2, extra3, roundedHours)
   }
 }
 

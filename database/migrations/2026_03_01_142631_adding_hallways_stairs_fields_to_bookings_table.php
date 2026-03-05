@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('bookings', function (Blueprint $table) {
-            $table->unsignedTinyInteger('office')->default(0);
+        Schema::table('bookings', callback: function (Blueprint $table) {
             $table->unsignedTinyInteger('hallway')->default(0);
-            $table->unsignedTinyInteger('through_lounge')->default(0);
             $table->unsignedTinyInteger('flight_of_stairs')->default(0);
+            $table->unsignedTinyInteger('property_size')->default(0);
         });
     }
 
@@ -25,10 +24,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('bookings', function (Blueprint $table) {
-            $table->dropColumn('office');
             $table->dropColumn('hallway');
-            $table->dropColumn('through_lounge');
             $table->dropColumn('flight_of_stairs');
+            $table->dropColumn('property_size');
         });
     }
 };

@@ -46,11 +46,14 @@ class BookingController extends Controller
         'product_id' => ['required', 'exists:products,id'],
 
         // Rooms
+        'property_size' => ['required', 'integer'],
         'bed'     => ['required', 'integer'],
         'bath'    => ['required', 'integer'],
         'living'  => ['required', 'integer'],
         'kitchen' => ['required', 'integer'],
         'other'   => ['nullable', 'integer'],
+        'hallway'   => ['nullable', 'integer'],
+        'flight_of_stairs'   => ['nullable', 'integer'],
 
         // Extras
         'extra_1' => ['nullable', 'boolean'],
@@ -78,7 +81,6 @@ class BookingController extends Controller
         'total_price'    => ['required', 'numeric'],
 
         // Other
-        'own_equipment' => ['nullable', 'boolean'],
         'message'       => ['nullable', 'string'],
         'house_access'  => ['nullable', 'string'],
         ]);
@@ -177,11 +179,14 @@ class BookingController extends Controller
                         'product_id' => $validated['product_id'],
 
                         // Rooms
+                        'property_size' => $validated['property_size'],
                         'bed'     => $validated['bed'],
                         'bath'    => $validated['bath'],
                         'living'  => $validated['living'],
                         'kitchen' => $validated['kitchen'],
-                        'other'   => $validated['other'] ?? 0,
+                        'other'   => $validated['other'],
+                        'hallway'   => $validated['hallway'],
+                        'flight_of_stairs'   => $validated['flight_of_stairs'],
 
                         // Extras
                         'extra_1' => $request->boolean('extra_1'),
@@ -211,7 +216,6 @@ class BookingController extends Controller
                         'total_price'    => $validated['total_price'],
 
                         // Other
-                        'own_equipment' => $request->boolean('own_equipment'),
                         'frequency'     => $frequency,
                         'message'       => $validated['message'] ?? null,
                         'house_access'  => $validated['house_access'] ?? null,
@@ -226,11 +230,14 @@ class BookingController extends Controller
                         'product_id' => $validated['product_id'],
 
                         // Rooms
+                        'property_size' => $validated['property_size'],
                         'bed'     => $validated['bed'],
                         'bath'    => $validated['bath'],
                         'living'  => $validated['living'],
                         'kitchen' => $validated['kitchen'],
-                        'other'   => $validated['other'] ?? 0,
+                        'other'   => $validated['other'],
+                        'hallway'   => $validated['hallway'],
+                        'flight_of_stairs'   => $validated['flight_of_stairs'],
 
                         // Extras
                         'extra_1' => $request->boolean('extra_1'),
@@ -260,11 +267,9 @@ class BookingController extends Controller
                         'total_price'    => $validated['total_price'],
 
                         // Other
-                        'own_equipment' => $request->boolean('own_equipment'),
                         'frequency'     => $frequency,
                         'message'       => $validated['message'] ?? null,
                         'house_access'  => $validated['house_access'] ?? null,
-
                         'status' => 'pending',
                     ]);
 
@@ -341,7 +346,6 @@ class BookingController extends Controller
 
             // Other
             'frequency'     => ['required', 'string'],
-            'own_equipment' => ['nullable', 'boolean'],
             'message'       => ['nullable', 'string'],
             'house_access'  => ['nullable', 'string'],
         ]);

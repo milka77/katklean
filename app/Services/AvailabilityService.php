@@ -8,7 +8,7 @@ use Carbon\Carbon;
 
 class AvailabilityService
 {
-    protected int $bufferMinutes = 0;
+    protected int $bufferMinutes = 90;
 
     public function getAvailableSlots(
         string $date,
