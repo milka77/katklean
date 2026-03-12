@@ -43,7 +43,7 @@
     },
     {
       question:"Can I have an evening or weekend clean?",
-      answer: "Yes, our working hours are Monday - Saturday 07:00 - 19:00 and Sunday 09:00 - 14:00. If you need different hours, please feel free to contact us.",
+      answer: "Yes, our working hours are Monday 07:00 - 19:00, Saturday 09:00 - 14:00. If you need different hours, please feel free to contact us.",
     },
     {
       question: "How can our customer pay?",
@@ -109,4 +109,4 @@
     });
 </script>
 @endsection
-</x-layout> 
+</x-layout>
