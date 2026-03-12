@@ -435,4 +435,27 @@ class BookingController extends Controller
 
         return view('components.admin.booking.show', compact('booking', 'services'));
     }
+
+    public function calendarData()
+    {
+      $bookings = Booking::all();
+
+      $events = [];
+
+      foreach ($bookings as $booking) {
+        $events[] = [
+          'title' => $booking->start_at->format('H:i') . ' - ' . $booking->reference,
+          'start' => $booking->start_at,
+          'end'   => $booking->end_at,
+          'url'   => route('admin.booking.show', $booking->id),
+        ];
+      }
+
+      return response()->json($events);
+    }
+
+    public function calendarShow()
+    {
+      return view('components.admin.booking.calendar');
+    }
 }

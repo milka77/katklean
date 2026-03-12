@@ -82,4 +82,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   Route::get('/email/{booking}', [BookingConfirmedMail::class, 'emails.booking-confirmed']);
   Route::put('/booking/{booking}/completed', [BookingController::class, 'completion'])->name('admin.booking.completion');
   Route::get('/booking/{booking}/show', [BookingController::class, 'adminShow'])->name('admin.booking.show');
+  Route::get('/booking/calendar', [BookingController::class, 'calendarData'])->name('admin.booking.calendar');
+  Route::get('/calendar', [BookingController::class, 'calendarShow'])->name('admin.booking.calendar.show');
 });
