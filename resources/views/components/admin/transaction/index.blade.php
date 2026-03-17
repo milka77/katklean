@@ -36,7 +36,7 @@
             </form>
         </div>
 
-        <table class="min-w-full bg-white">
+        <table class="min-w-full table-auto">
             <thead>
                 <tr>
                     <th class="py-2 px-4 border-b capitalize">ID</th>
@@ -56,7 +56,7 @@
             </thead>
             <tbody>
                 @foreach($transactions as $transaction)
-                <tr>
+                <tr class="odd:bg-slate-200 even:bg-gray-100">
                     <td class="py-2 px-4 border-b">{{ $transaction->id }}</td>
                     <td class="py-2 px-4 border-b">{{ $transaction->date }}</td>
                     <td class="py-2 px-4 border-b">{{ $transaction->type }}</td>
@@ -69,7 +69,18 @@
                     <td class="py-2 px-4 border-b">{{ $transaction->distance }}</td>
                     <td class="py-2 px-4 border-b">{{ $transaction->exp_shop }}</td>
                     <td class="py-2 px-4 border-b">{{ $transaction->exp_product }}</td>
-                    <td class="py-2 px-4 border-b"></td>
+                    <td class="py-2 px-4 border-b">
+                        <a href="{{ route('admin.transaction.edit', $transaction->id) }}">
+                            <i class="fa-regular fa-pen-to-square pr-1.5"></i>
+                        </a>
+                        <form action="{{ route('admin.transaction.destroy', $transaction->id) }}" method="POST" class="inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="cursor-pointer">
+                                <i class="fa-regular fa-trash-can text-red-500"></i>
+                            </button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

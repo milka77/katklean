@@ -35,9 +35,9 @@ class TransactionController extends Controller
         return view('components.admin.transaction.index', compact('transactions'));
     }
 
-    Public function show(Transaction $transaction)
+    Public function edit(Transaction $transaction)
     {
-        return view('components.admin.transaction.update', compact('transaction'));
+        return view('components.admin.transaction.edit', compact('transaction'));
     }
 
     Public function create()
