@@ -146,9 +146,9 @@ function calculatePrice(service, bed, bath, kitchen, living, other, hallway, sta
     if(propertySize == '1'){
       price += 15
     } else if(propertySize == '3'){
-      price = 25
+      price += 25
     } else if(propertySize == '5'){
-      price = 40    }
+      price += 40    }
   }
   // Fridge
   extra2 == 1 ? price += 20 : price
