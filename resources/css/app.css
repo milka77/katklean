@@ -13,14 +13,27 @@
     }  */
 * {
     font-family: 'Manrope', sans-serif;
-};
+}
 #services, #about, #faq, #contact {
     scroll-margin-top: 70px;
-};
+}
 
 .dm-serif-display-hero {
   font-family: "DM Serif Display", serif;
   font-weight: 500;
-};
+}
+.fc {
+  max-width: 1100px;
+  margin: 40px auto;
+}
 
-    
+.fc-toolbar-title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.fc-day-grid-event {
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
