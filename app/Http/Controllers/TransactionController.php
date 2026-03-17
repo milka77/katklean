@@ -8,9 +8,31 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('components.admin.transaction.index');
+//      $transactions = Transaction::all();
+        $transactions = Transaction::query();
+
+        // Filter by type
+        if ($request->filled('type')) {
+            $transactions->where('type', $request->type);
+        }
+
+        // Filter by start date
+        if ($request->filled('date_from')) {
+            $transactions->whereDate('date', '>=', $request->date_from);
+        }
+
+        // Filter by end date
+        if ($request->filled('date_to')) {
+            $transactions->whereDate('date', '<=', $request->date_to);
+        }
+
+        $transactions = $transactions
+            ->latest()
+            ->paginate(20);
+
+        return view('components.admin.transaction.index', compact('transactions'));
     }
 
     Public function show()
