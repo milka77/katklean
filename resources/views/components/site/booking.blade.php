@@ -17,7 +17,7 @@
 
 
           <div class="flex flex-col px-5 py-2 ">
-            <label class="pl-2 pb-1" for="name">Name<spam class="text-red-500">*</span></label>
+            <label class="pl-2 pb-1" for="name">Name<span class="text-red-500">*</span></label>
             <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="name" id="name" placeholder="Enter your name"
               value="@if (Auth::user()){{ Auth::user()->getFullNameAttribute() }}@else{{ old('name') }}@endif">
             @error('name')
@@ -26,7 +26,7 @@
           </div>
 
           <div class="flex flex-col px-5 pb-2">
-            <label class="pl-2 pb-1" for="email">Email<spam class="text-red-500">*</span></label>
+            <label class="pl-2 pb-1" for="email">Email<span class="text-red-500">*</span></label>
             <input class="border rounded-md border-slate-300 pl-2 py-1" type="email" name="email" id="email" placeholder="Enter your email address"
               value="@if (Auth::user()){{ Auth::user()->email }}@else{{ old('email') }}@endif">
             @error('email')
@@ -36,7 +36,7 @@
 
         <div class="grid grid-cols-2 gap-2 px-5">
           <div class="flex flex-col pb-2">
-            <label class="pl-2 pb-1" for="phone">Phone number<spam class="text-red-500">*</span></label>
+            <label class="pl-2 pb-1" for="phone">Phone number<span class="text-red-500">*</span></label>
             <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="phone" id="phone" placeholder="07123456789" value="{{ old('phone') }}">
             @error('phone')
               <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
@@ -44,34 +44,34 @@
           </div>
 
           <div class="flex flex-col pb-2">
-            <label class="pl-2 pb-1" for="address_line1">Address<spam class="text-red-500">*</span></label>
+            <label class="pl-2 pb-1" for="address_line1">Address<span class="text-red-500">*</span></label>
             <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="address_line1" id="address_line1" placeholder="85 My Street"
-              value="@if (Auth::user()->addresses()->exists()){{ Auth::user()->addresses[0]['address_line1'] }}@else{{ old('address_line1') }}@endif">
+              value="{{ old('address_line1') }}">
             @error('address_line1')
               <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
             @enderror
           </div>
 
           <div class="flex flex-col pb-2">
-            <label class="pl-2 pb-1" for="town">Town<spam class="text-red-500">*</span></label>
+            <label class="pl-2 pb-1" for="town">Town<span class="text-red-500">*</span></label>
             <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="town" id="town" placeholder="Preston"
-              value="@if (Auth::user()->addresses()->exists()){{ Auth::user()->addresses[0]['city'] }}@else{{ old('town') }}@endif">
+              value="{{ old('town') }}">
             @error('town')
               <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
             @enderror
           </div>
 
           <div class="flex flex-col pb-5">
-            <label class="pl-2 pb-1" for="postcode">Postcode<spam class="text-red-500">*</span></label>
+            <label class="pl-2 pb-1" for="postcode">Postcode<span class="text-red-500">*</span></label>
             <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="postcode" id="postcode" placeholder="PR2 xxx"
-              value="@if (Auth::user()->addresses()->exists()){{ Auth::user()->addresses[0]['postcode'] }}@else{{ old('postcode') }}@endif">
+              value="{{ old('postcode') }}">
             @error('postcode')
               <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
             @enderror
           </div>
 
           <div class="flex flex-col pb-3">
-            <label class="pl-2 pb-1" for="payment_method">Payment Method<spam class="text-red-500">*</span></label>
+            <label class="pl-2 pb-1" for="payment_method">Payment Method<span class="text-red-500">*</span></label>
             <select class="border rounded-md border-slate-300 pl-2 py-1" name="payment_method" id="payment_method">
               <option value="" disabled selected>Select Payment Method</option>
               <option value="cash" @if(old('payment_method') == 'cash') selected @endif>Cash</option>
@@ -83,7 +83,7 @@
           </div>
 
           <div class="flex flex-col pb-3">
-            <label class="pl-2 pb-1" for="frequency">Cleaning Frequency<spam class="text-red-500">*</span></label>
+            <label class="pl-2 pb-1" for="frequency">Cleaning Frequency<span class="text-red-500">*</span></label>
             <select class="border rounded-md border-slate-300 pl-2 py-1" name="frequency" id="frequency">
               <option value="" disabled selected>Select Frequency</option>
               <option value="once" @if(old('frequency') == 'once') selected @endif>Once</option>
