@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     @vite('resources/css/app.css')
-    <title>{{ config('app.name', 'KatKlean') }}</title>
+    <title>Admin - {{ config('app.name', 'KatKlean') }}</title>
     @yield('extra-style')
 
 </head>
