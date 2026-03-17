@@ -3,6 +3,7 @@
   <meta name="title" content="Book House Cleaning in Preston | KatKlean">
   <meta name="description" content="Looking for house cleaning services in Preston? Contact KatKlean today to book a reliable local cleaning company.">
   @endsection
+  @section('title', 'Book House Cleaning in Preston -')
 
   @section('content')
   <h1 class="text-center font-bold text-5xl pt-15 pb-7">Online Booking</h1>
