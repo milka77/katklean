@@ -35,9 +35,9 @@ class TransactionController extends Controller
         return view('components.admin.transaction.index', compact('transactions'));
     }
 
-    Public function show()
+    Public function show(Transaction $transaction)
     {
-        return view('components.admin.transaction.show');
+        return view('components.admin.transaction.show', compact('transaction'));
     }
 
     Public function create()
@@ -82,5 +82,14 @@ class TransactionController extends Controller
       }
 
       return redirect()->back()->with('success', 'Transaction created successfully');
+    }
+
+    Public function destroy(Transaction $transaction)
+    {
+        $transaction->delete();
+
+        flash()->success('Transaction deleted successfully!');
+
+        return redirect()->route('admin.transaction.index');
     }
 }
