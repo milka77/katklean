@@ -1,44 +1,29 @@
 <div>
   <nav class="side-nav w-45 pl-4 pt-4 bg-gray-800 text-white min-h-screen max-h-full">
     <ul class="text-sm">
-      <li><a href="#">Dashboard</a></li>
-      <li><a href="{{ route('admin.users.index') }}">Users</a></li>
-      <li><a href="#">Settings</a></li>
-      <li class="my-1">Roles</li>
+      <li><a href="#"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+      <li><a href="{{ route('admin.users.index') }}"><i class="fa-solid fa-users"></i> Users</a></li>
+      <li><a href="#"><i class="fa-solid fa-gear"></i> Settings</a></li>
+      <li class="my-1"><i class="fa-solid fa-user-tag"></i> Roles</li>
       <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.roles.index') }}">View Roles</a></li>
-      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.roles.create') }}">Add role</a></li> 
-      <hr class="text-slate-300 mr-4">  
-      <li class="my-1">Products</li>
+      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.roles.create') }}">Add role</a></li>
+      <hr class="text-slate-300 mr-4">
+      <li class="my-1"><i class="fa-solid fa-tags"></i> Products</li>
       <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.products.index') }}">View Products</a></li>
-      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.products.create') }}">Add Product</a></li> 
+      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.products.create') }}">Add Product</a></li>
       <hr class="text-slate-300 mr-4">
-      <li class="my-1">Gallery</li>
+      <li class="my-1"><i class="fa-regular fa-images"></i> Gallery</li>
       <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.gallery.index') }}">View Gallery</a></li>
-      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.gallery.create') }}">Add Gallery Item</a></li> 
+      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.gallery.create') }}">Add Gallery Item</a></li>
       <hr class="text-slate-300 mr-4">
-      <li class="my-1">Bookings</li>
+      <li class="my-1"><i class="fa-solid fa-money-bill-transfer"></i> Transactions</li>
+      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.transaction.index') }}">View Transactions</a></li>
+      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.transaction.create') }}">Add Transaction</a></li>
+      <hr class="text-slate-300 mr-4">
+      <li class="my-1"><i class="fa-solid fa-cart-shopping"></i> Bookings</li>
+      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.booking.calendar.show') }}">View Calendar</a></li>
       <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.booking.index') }}">View Bookings</a></li>
-      <hr class="text-slate-300 mr-4"> 
+      <hr class="text-slate-300 mr-4">
     </ul>
-    
-    {{-- <div class="flex flex-col  text-sm">
-      <button type="button" class="peer group w-full text-left px-4 pr-2 py-2 rounded text-white shadow-sm hover:bg-slate-700 focus:outline-none">
-        <span>Select</span>
-        <svg class="w-5 h-5 inline float-right transition-transform duration-200 -rotate-90 group-focus:rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#6B7280">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
-        </svg>
-      </button>
-  
-    <ul class="hidden overflow-hidden peer-focus:block w-full border-y border-slate-300 rounded shadow-md mt-1 py-2">
-        <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.roles.index') }}">View Roles</a></li>
-      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.roles.create') }}">Add role</a></li>   
-    </ul>
-    </div>
-    <ul class="overflow-hidden peer-focus:block w-full border-y border-slate-300 rounded shadow-md mt-1 py-2 text-sm"> 
-      <li>Roles</li>
-      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.roles.index') }}">View Roles</a></li>
-      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.roles.create') }}">Add role</a></li> 
-      <li class="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"><a href="{{ route('admin.roles.create') }}">Attach role</a></li>   
-    </ul> --}}
   </nav>
 </div>
