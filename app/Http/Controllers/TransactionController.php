@@ -37,7 +37,7 @@ class TransactionController extends Controller
 
     Public function show(Transaction $transaction)
     {
-        return view('components.admin.transaction.show', compact('transaction'));
+        return view('components.admin.transaction.update', compact('transaction'));
     }
 
     Public function create()
@@ -82,6 +82,34 @@ class TransactionController extends Controller
       }
 
       return redirect()->back()->with('success', 'Transaction created successfully');
+    }
+
+    public function update(Transaction $transaction)
+    {
+        $validated = request()->validate([
+            'date' => 'required',
+            'type' => 'required',
+            'amount' => 'required',
+            'description' => ['nullable', 'string'],
+            'booking_reference' => ['nullable', 'string'],
+            'address' => ['nullable', 'string'],
+            'service' => ['nullable', 'string'],
+            'distance' => ['nullable', 'string'],
+            'exp_shop' => ['nullable', 'string'],
+            'exp_product' => ['nullable', 'string'],
+        ]);
+
+        try{
+            $transaction->update($validated);
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->with('error', 'Transaction update failed: ' . $e->getMessage());
+        }
+
+        flash()->success('Transaction ID: ' . $transaction->id . ' updated successfully! ');
+
+        return redirect()->route('admin.transaction.index');
     }
 
     Public function destroy(Transaction $transaction)
