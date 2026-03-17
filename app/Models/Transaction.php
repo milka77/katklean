@@ -20,8 +20,4 @@ class Transaction extends Model
       'distance',
     ];
 
-//    public static function create(array $array)
-//    {
-//        return self::create($array);
-//    }
 }
