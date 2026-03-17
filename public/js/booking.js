@@ -224,7 +224,7 @@ function calculate() {
   }
 
   // If deep cleaning service is selected, fixed 8 hours
-  if(service == '2') {
+  if(service == '2' || service == '3') {
     // Deep cleaning service, fixed 8 hours
     updateHours(8, service)
     calculatePrice(service, bed, bath, kitchen, living, other, hallway, stairs, extra1, extra2, extra3)
