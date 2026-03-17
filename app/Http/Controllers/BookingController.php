@@ -458,4 +458,14 @@ class BookingController extends Controller
     {
       return view('components.admin.booking.calendar');
     }
+
+    // *******
+    // * Admin Add Manual Booking *
+    // *******
+    public function adminAddManualBooking()
+    {
+      $services = Product::where('is_extra', false)->get();
+
+      return view('components.admin.booking.add-manual-booking', compact('services'));
+    }
 }

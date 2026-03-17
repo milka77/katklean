@@ -84,12 +84,13 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   Route::get('/booking/{booking}/show', [BookingController::class, 'adminShow'])->name('admin.booking.show');
   Route::get('/booking/calendar', [BookingController::class, 'calendarData'])->name('admin.booking.calendar');
   Route::get('/calendar', [BookingController::class, 'calendarShow'])->name('admin.booking.calendar.show');
+  Route::get('/booking/add-manual-booking', [BookingController::class, 'adminAddManualBooking'])->name('admin.booking.add-manual-booking');
 
   //Transaction routes
   Route::get('/transaction', [TransactionController::class, 'index'])->name('admin.transaction.index');
   Route::get('/transaction/create', [TransactionController::class, 'create'])->name('admin.transaction.create');
   Route::post('/transaction/store', [TransactionController::class, 'store'])->name('admin.transaction.store');
-  Route::get('/transaction/{transaction}/show', [TransactionController::class, 'show'])->name('admin.transaction.show');
+  Route::get('/transaction/{transaction}/edit', [TransactionController::class, 'edit'])->name('admin.transaction.edit');
   Route::put('/transaction/{transaction}/update', [TransactionController::class, 'update'])->name('admin.transaction.update');
   Route::delete('/transaction/{transaction}/delete', [TransactionController::class, 'destroy'])->name('admin.transaction.destroy');
 });
