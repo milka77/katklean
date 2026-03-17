@@ -334,16 +334,25 @@
                         <div class="flex flex-col">
                             <label class="pl-2 pb-1" for="duration_minutes">Duration in minutes:</label>
                             <input class="border rounded-md border-slate-300 pl-2 py-1" type="number" name="duration_minutes" id="duration_minutes" value="{{ old('duration_minutes') }}">
+                            @error('duration_minutes')
+                            <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <div class="flex flex-col">
                             <label class="pl-2 pb-1" for="total_price">Total Price:</label>
                             <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="total_price" id="total_price" value="{{  old('total_price') }}">
+                            @error('total_price')
+                            <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <div class="flex flex-col">
                             <label class="pl-2 pb-1" for="start_at">Start time:</label>
                             <input class="border rounded-md border-slate-300 pl-2 py-1" type="text" name="start_at" id="start_at" value="{{ old('start_at') }}">
+                            @error('start_at')
+                            <p class="text-red-500 italic text-sm pl-2">{{ $message }}</p>
+                            @enderror
                         </div>
 
 
