@@ -43,7 +43,7 @@
 
         {{--  Expenses      --}}
         <div id="expense" class="border-y border-slate-300 py-3 {{ $transaction->type == 'income' ? 'sr-only' : '' }}">
-          <p class="text-xl font-semibold text-center">Expenses</p>
+          <p class="text-xl font-semibold text-center">Expense</p>
 
           {{--  Exp_shop --}}
           <div>
@@ -143,9 +143,13 @@
 
         <div class="text-center">
           <button type="submit"
-                  class="px-4 py-2 bg-slate-700 text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-500 rounded-2xl">
+                  class="px-4 py-2 bg-slate-700 text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-500 rounded">
             Update
           </button>
+
+          <a href="{{ route('admin.transaction.index') }}" class="px-4 py-2 border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white">
+              Cancel
+          </a>
         </div>
       </form>
     </div>
