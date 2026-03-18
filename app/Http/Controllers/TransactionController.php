@@ -32,7 +32,10 @@ class TransactionController extends Controller
             ->latest()
             ->paginate(20);
 
-        return view('components.admin.transaction.index', compact('transactions'));
+        $income = $transactions->where('type', 'income')->sum('amount');
+        $expense = $transactions->where('type', 'expense')->sum('amount');
+
+        return view('components.admin.transaction.index', compact('transactions', 'income', 'expense'));
     }
 
     Public function edit(Transaction $transaction)

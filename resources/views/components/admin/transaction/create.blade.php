@@ -140,11 +140,16 @@
         </div>
         {{--  End of Income        --}}
 
-        <div class="text-center">
-          <button type="submit"
-                  class="px-4 py-2 bg-slate-700 text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-500 rounded-2xl">
-            Save Transaction
-          </button>
+        <div class="flex justify-between">
+            <button type="submit"
+                  class="px-4 py-2 bg-slate-700 text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-500 rounded">
+              Save Transaction
+            </button>
+            <div class="px-4 py-2 border border-red-500 hover:bg-red-500 text-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-slate-500 rounded">
+                <a href="{{ route('admin.transaction.index') }}" >
+                Cancel
+                </a>
+            </div>
         </div>
       </form>
     </div>

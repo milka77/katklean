@@ -33,7 +33,83 @@
                 </div>
                 @endif
 
+                <div class="border border-green-500 hover:bg-green-500  text-green-500 hover:text-white px-4 py-2 rounded cursor-pointer">
+                    <a href="{{ route('admin.transaction.create') }}" >
+                        Add Transaction
+                    </a>
+                </div>
+
             </form>
+        </div>
+
+        <div class="grid grid-cols-4 gap-4 mt-4">
+            {{-- Sum Widget  --}}
+            <div class="rounded-xl border border-slate-300 bg-white p-5  md:p-6">
+                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-700 ">
+                    <i class="fa-solid text-white fa-money-bill-transfer"></i>
+                </div>
+
+                <div class="mt-5 flex items-end justify-between">
+                    <div>
+                        <span class="text-sm ">Summary</span>
+                        <h4 class="text-3xl font-bold ">
+                            £ {{ $income - $expense }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            {{-- End of Sum Widget  --}}
+
+            {{-- Income Widget  --}}
+            <div class="rounded-xl border border-slate-300 bg-white p-5  md:p-6">
+                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-700 ">
+                    <i class="fa-solid text-white fa-money-bill-transfer"></i>
+                </div>
+
+                <div class="mt-5 flex items-end justify-between">
+                    <div>
+                        <span class="text-sm ">Income</span>
+                        <h4 class="text-3xl font-bold">
+                            £ {{ $income }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            {{-- End of Income Widget  --}}
+
+            {{-- Expense Widget  --}}
+            <div class="rounded-xl border border-slate-300 bg-white p-5  md:p-6">
+                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-700 ">
+                    <i class="fa-solid text-white fa-money-bill-transfer"></i>
+                </div>
+
+                <div class="mt-5 flex items-end justify-between">
+                    <div>
+                        <span class="text-sm ">Expense</span>
+                        <h4 class="text-3xl font-bold text-red-500">
+                            £ {{ $expense }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            {{-- End of Expense Widget  --}}
+
+            {{-- Total Records Widget  --}}
+            <div class="rounded-xl border border-slate-300 bg-white p-5  md:p-6">
+                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-700 ">
+                    <i class="fa-solid text-white fa-money-bill-transfer"></i>
+                </div>
+
+                <div class="mt-5 flex items-end justify-between">
+                    <div>
+                        <span class="text-sm ">Total Records:</span>
+                        <h4 class="text-3xl font-bold ">
+                           {{ $transactions->total() }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            {{-- End of Total Records Widget  --}}
         </div>
 
         <table class="min-w-full table-auto">
@@ -61,7 +137,7 @@
                     <td class="py-2 px-4 border-b">{{ $transaction->date }}</td>
                     <td class="py-2 px-4 border-b">{{ $transaction->type }}</td>
                     <td class="py-2 px-4 border-b text-right">£ {{ $transaction->amount }}</td>
-                    <td class="py-2 px-4 border-b">{{ $transaction->user_id }}</td>
+                    <td class="py-2 px-4 border-b">{{ $transaction->user->first_name }}</td>
                     <td class="py-2 px-4 border-b">{{ $transaction->description }}</td>
                     <td class="py-2 px-4 border-b">{{ $transaction->booking_reference }}</td>
                     <td class="py-2 px-4 border-b">{{ $transaction->address }}</td>
@@ -86,10 +162,6 @@
             </tbody>
         </table>
 
-        <div class="flex gap-3 mt-4">
-            <p>Total records: {{ $transactions->total() }} <span class="pl-2">|</span></p>
-            <p>Sum: £ {{ $transactions->sum('amount') }}</p>
-        </div>
     </div>
     @endsection
 </x-admin-layout>

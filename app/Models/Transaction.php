@@ -20,4 +20,21 @@ class Transaction extends Model
       'distance',
     ];
 
+    // Define the relationship with the User model
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // Define the relationship with the Booking model
+    public function booking()
+    {
+        return $this->belongsTo(Booking::class);
+    }
+
+    // Define the relationship with the Product model
+    public function service()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
