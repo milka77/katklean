@@ -12,11 +12,11 @@ class AdminController extends Controller
 {
     public function index()
     {
-        if (Auth::user()->hasRole('admin')) {
-            return view('components.admin.index');
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect('/');
         }
 
-        return redirect('/');
+        return view('components.admin.index');
     }
 
     // ******************
