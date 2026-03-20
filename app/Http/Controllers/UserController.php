@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Booking;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
@@ -31,7 +32,7 @@ class UserController extends Controller
             'password' => ['required', Password::min(6)->letters()->numbers(), 'confirmed'],
         ]);
 
-        
+
 
         // Create the user
         $user = User::create($validated);
@@ -52,19 +53,19 @@ class UserController extends Controller
         ]);
 
         // Remember me functionality
-        $remember = request()->has('remember') ? true : false;      
+        $remember = request()->has('remember') ? true : false;
 
         // Sign in the user
         if(Auth::attempt($validated, $remember)) {
             request()->session()->regenerate();
 
             flash()->success('Logged in successfully.');
-            
+
             return redirect()->intended('/');
         }
 
         flash()->error('Login failed. Please check your credentials and try again.');
-        
+
         return redirect('/login')->withErrors([
             'email' => 'The provided email or password is incorrect.',
         ])->onlyInput('email');
@@ -75,7 +76,7 @@ class UserController extends Controller
         Auth::logout();
 
         flash()->success('Logged out successfully.');
-        
+
         return redirect('/');
     }
 
@@ -86,9 +87,31 @@ class UserController extends Controller
             return redirect('/login');
         }
 
-        
-
         return view('components.user.profile');
+    }
+
+    // Show user's bookings
+    public function showBookings(User $user) {
+        if (Auth::guest()) {
+            flash()->error('You must be logged in to access the bookings page.');
+            return redirect('/login');
+        }
+
+        // Get upcoming bookings for the user
+        $upcomingBookings = Booking::where([
+            ['user_id', Auth()->user()->id],
+            ['start_at', '>=', now()],
+            ])->orderBy('start_at')
+            ->paginate(5);
+
+        // Get past bookings for the user
+        $historyBookings = Booking::where([
+            ['user_id', Auth()->user()->id],
+            ['start_at', '<', now()],
+            ])->orderBy('start_at', 'desc')
+            ->paginate(5);
+
+        return view('components.user.bookings', compact('upcomingBookings', 'historyBookings'));
     }
 
     // ******************
