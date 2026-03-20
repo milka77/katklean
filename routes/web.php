@@ -36,6 +36,7 @@ Route::post('/booking', [BookingController::class, 'store'])->name('booking.stor
 Route::middleware('auth')->group(function() {
   Route::post('/logout', [UserController::class, 'logout'])->name('logout');
   Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
+  Route::get('/profile/bookings', [UserController::class, 'showBookings'])->name('profile.bookings');
   Route::get('/address/create', [AddressController::class, 'create'])->name('address.create');
   Route::post('/address/store', [AddressController::class, 'store'])->name('address.store');
   Route::get('/address/{address}/edit', [AddressController::class, 'edit'])->name('address.edit');
