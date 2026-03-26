@@ -12,6 +12,7 @@ const extraTwoInput = document.getElementById('extra_2')
 const extraThreeInput = document.getElementById('extra_3')
 const durationInput = document.getElementById('duration_minutes')
 const totalPriceInput = document.getElementById('total_price')
+const frequencyInput = document.getElementById('frequency')
 // const ownEquipmentInput = document.getElementById('own_equipment')
 const extrasFields = document.getElementById('extras')
 const propertySizeInput = document.getElementById('property_size')
@@ -89,6 +90,11 @@ extraThreeInput.addEventListener('change', event => {
 //   calculate()
 // })
 
+frequencyInput.addEventListener('change', event => {
+  event.preventDefault()
+  calculate()
+})
+
 propertySizeInput.addEventListener('change', event => {
   event.preventDefault()
   calculate()
@@ -138,6 +144,10 @@ function calculatePrice(service, bed, bath, kitchen, living, other, hallway, sta
     } else if(propertySize == '5'){
       kitchenPrice = 20
       price = bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice + hallway * hallwayPrice + stairs * stairPrice
+    }
+    // 15% off while customer booking a weekly cleaning.
+    if(frequencyInput.value == 'weekly'){
+      price = price * 0.85
     }
   }
 
