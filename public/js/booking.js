@@ -137,7 +137,7 @@ function calculatePrice(service, bed, bath, kitchen, living, other, hallway, sta
   // Standard cleaning prices
   if(service == '1'){
     if(propertySize == '1'){
-      price += bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice
+      price = bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice
     } else if(propertySize == '3'){
       kitchenPrice = 20
       price = bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice
@@ -167,7 +167,7 @@ function calculatePrice(service, bed, bath, kitchen, living, other, hallway, sta
   // Deep cleaning service price
   if(service == '2'){
     if(propertySize == '1'){
-      price += bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice
+      price = bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice
     } else if(propertySize == '3'){
       kitchenPrice = 20
       price = bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice + hallway * hallwayPrice + stairs * stairPrice
@@ -180,9 +180,9 @@ function calculatePrice(service, bed, bath, kitchen, living, other, hallway, sta
   }
 
   // EoT cleaning service price
-  if(service == '3'){
+  if(service == '4'){
     if(propertySize == '1'){
-      price += bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice
+      price = bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice
     } else if(propertySize == '3'){
       kitchenPrice = 20
       price = bed * bedPrice + bath * bathPrice + kitchen * kitchenPrice + living * livingPrice + other * otherPrice + hallway * hallwayPrice + stairs * stairPrice
@@ -234,7 +234,7 @@ function calculate() {
   }
 
   // If deep cleaning service is selected, fixed 8 hours
-  if(service == '2' || service == '3') {
+  if(service == '2' || service == '4') {
     // Deep cleaning service, fixed 8 hours
     updateHours(8, service)
     calculatePrice(service, bed, bath, kitchen, living, other, hallway, stairs, extra1, extra2, extra3)
