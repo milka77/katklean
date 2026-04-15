@@ -29,9 +29,6 @@ Route::get('/terms', [SiteController::class, 'terms'])->name('terms');
 Route::get('/policy', [SiteController::class, 'policy'])->name('policy');
 Route::get('/booking', [BookingController::class, 'booking'])->name('booking');
 
-// Booking links
-Route::get('/availability', [BookingController::class, 'availability'])->name('booking.availability');
-Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
 
 Route::middleware('auth')->group(function() {
   Route::post('/logout', [UserController::class, 'logout'])->name('logout');
@@ -77,6 +74,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   Route::get('/gallery/{image}/edit', [ImageUploadController::class, 'show'])->name('admin.gallery.edit');
   Route::put('/gallery/{image}/update', [ImageUploadController::class, 'update'])->name('admin.gallery.update');
 
+  // Booking links moved to admin routes to prevent guests from accessing booking management pages
+  Route::get('/availability', [BookingController::class, 'availability'])->name('booking.availability');
+  Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
+  
   //Booking routes
   Route::get('/booking', [BookingController::class, 'adminIndex'])->name('admin.booking.index');
   Route::put('/booking/{booking}/confirmed', [BookingController::class, 'confirmation'])->name('admin.booking.confirmation');
