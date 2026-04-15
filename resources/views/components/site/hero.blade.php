@@ -9,7 +9,7 @@
         <div class="flex flex-col-1 md:flex-col-2 mt-5 gap-7 content-center justify-center pt-20">
 
             <button class="bg-slate-700 text-white hover:bg-slate-900 text-lg text-nowrap px-8 md:px-10 h-15 mr-2 rounded-full transition cursor-pointer">
-                <a class="p-8" href="{{ route('booking') }}">Book Now </a>
+                <a class="p-8" href="{{ route('contact') }}">Contact Us</a>
             </button>
         </div>
    </div>
