@@ -85,9 +85,9 @@
 
           <p class="font-semibold pb-3">Please note: I do not offer carpet or upholstery cleaning services.</p>
           <p>For standard cleaning, a short visit may be recommended for larger properties or where additional information is needed.</p>
-          <p class="text-2xl font-bold text-black pt-3 pb-3">Approximate standard cleaning prices:</p>
+          {{-- <p class="text-2xl font-bold text-black pt-3 pb-3">Approximate standard cleaning prices:</p> --}}
           <p class="text-sm italic text-black pb-3 max-w-full md:max-w-2/3 mx-auto">Please note these prices are only a guide. Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
-          <table class="table-auto border-collapse w-75 mx-auto  text-left">
+          <table class="table-auto border-collapse w-80 mx-auto  text-left">
             <thead class="border-b border-cyan-900/50">
               <tr>
                 <th class="pl-3">Bedrooms</th>
@@ -96,25 +96,29 @@
             </thead>
             <tbody>
               <tr class="border-b border-cyan-900/50">
-                <td class="pl-3">1 bed / 1 bath</td>
-                <td class="text-right pr-6">£48</td>
-              </tr>
-              <tr class="border-b border-cyan-900/50">
-                <td class="pl-3">2 bed / 1 bath</td>
-                <td class="text-right pr-6">£58</td>
-              </tr>
-              <tr class="border-b border-cyan-900/50">
-                <td class="pl-3">3 bed / 1 bath</td>
-                <td class="text-right pr-6">£78</td>
-              </tr>
-              <tr class="border-b border-cyan-900/50">
-                <td class="pl-3">4 bed / 1 bath</td>
-                <td class="text-right pr-6">£88</td>
-              </tr>
-              <tr class="border-b border-cyan-900/50">
-                <td class="pl-3">5 bed / 2 bath</td>
-                <td class="text-right pr-5">£114</td>
-              </tr>
+                  <td class="pl-3">Flat - 1 bed / 1 bath</td>
+                  <td class="text-right pr-4">£50</td>
+                </tr>
+                <tr class="border-b border-cyan-900/50">
+                  <td class="pl-3">Flat - 2 bed / 1 bath</td>
+                  <td class="text-right pr-4">£60</td>
+                </tr>
+                <tr class="border-b border-cyan-900/50">
+                  <td class="pl-3">House - 2 bed / 1 bath</td>
+                  <td class="text-right pr-4">£70</td>
+                </tr>
+                <tr class="border-b border-cyan-900/50">
+                  <td class="pl-3">House - 3 bed / 1 bath</td>
+                  <td class="text-right pr-4">£80</td>
+                </tr>
+                <tr class="border-b border-cyan-900/50">
+                  <td class="pl-3">House - 4 bed / 2 bath</td>
+                  <td class="text-right pr-4">£100</td>
+                </tr>
+                <tr class="border-b border-cyan-900/50">
+                  <td class="pl-3">House - 5 bed / 2 bath</td>
+                  <td class="text-right pr-4">£110</td>
+                </tr>
             </tbody>
           </table>
           </div>
@@ -177,9 +181,9 @@
 
           <p class="font-semibold pb-3">Please note: I do not offer carpet or upholstery cleaning services.</p>
 
-          <p class="text-2xl font-bold text-black pt-3 pb-3">Approximate deep cleaning prices:</p>
+          {{-- <p class="text-2xl font-bold text-black pt-3 pb-3">Approximate deep cleaning prices:</p> --}}
           <p class="text-sm italic text-black pb-3 max-w-full md:max-w-2/3 mx-auto">Please note these prices are only a guide. Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
-          <table class="table-auto border-collapse w-75 mx-auto text-left">
+          <table class="table-auto border-collapse w-80 mx-auto text-left">
             <thead class="border-b border-cyan-900/50">
             <tr>
               <th class="pl-3">Bedrooms</th>
@@ -188,25 +192,29 @@
             </thead>
             <tbody>
             <tr class="border-b border-cyan-900/50">
-              <td class="pl-3">1 bed / 1 bath</td>
-              <td class="text-right pr-4">£110</td>
-            </tr>
-            <tr class="border-b border-cyan-900/50">
-              <td class="pl-3">2 bed / 1 bath</td>
-              <td class="text-right pr-4">£133</td>
-            </tr>
-            <tr class="border-b border-cyan-900/50">
-              <td class="pl-3">3 bed / 1 bath</td>
-              <td class="text-right pr-4">£179</td>
-            </tr>
-            <tr class="border-b border-cyan-900/50">
-              <td class="pl-3">4 bed / 1 bath</td>
-              <td class="text-right pr-4">£202</td>
-            </tr>
-            <tr class="border-b border-cyan-900/50">
-              <td class="pl-3">5 bed / 2 bath</td>
-              <td class="text-right pr-4">£262</td>
-            </tr>
+                  <td class="pl-3">Flat - 1 bed / 1 bath</td>
+                  <td class="text-right pr-4">£140</td>
+                </tr>
+                <tr class="border-b border-cyan-900/50">
+                  <td class="pl-3">Flat - 2 bed / 1 bath</td>
+                  <td class="text-right pr-4">£180</td>
+                </tr>
+                <tr class="border-b border-cyan-900/50">
+                  <td class="pl-3">House - 2 bed / 1 bath</td>
+                  <td class="text-right pr-4">£220</td>
+                </tr>
+                <tr class="border-b border-cyan-900/50">
+                  <td class="pl-3">House - 3 bed / 1 bath</td>
+                  <td class="text-right pr-4">£260</td>
+                </tr>
+                <tr class="border-b border-cyan-900/50">
+                  <td class="pl-3">House - 4 bed / 2 bath</td>
+                  <td class="text-right pr-4">£280</td>
+                </tr>
+                <tr class="border-b border-cyan-900/50">
+                  <td class="pl-3">House - 5 bed / 2 bath</td>
+                  <td class="text-right pr-4">£320</td>
+                </tr>
             </tbody>
           </table>
 
@@ -222,12 +230,12 @@
 
         <div class="flex flex-col w-2/3 mx-auto items-center justify-center border-t border-cyan-900/40">
           <div class="mt-5 space-y-2 text-center">
-            <h3 class="text-[27px] font-bold text-black pt-7 capitalize">End of tenancy / Empty property clean</h3>
+            <h3 class="text-[27px] font-bold text-black pt-7 capitalize">End of tenancy / After Builders Cleaning</h3>
             <p class="text-lg font-semibold text-black">Property must be fully emptied prior to service.</p>
             <p class="text-lg font-semibold text-black pb-10">Includes everything in Deep clean, plus the following:</p>
 
-            <p class="text-lg text-left font-bold text-black pt-3 pb-2">Kitchen</p>
-            <ul class="text-left list-disc py-1 md:pl-10 md:pr-3 pb-7">
+            <p class="text-lg text-left font-bold text-black pt-3">Kitchen</p>
+            <ul class="text-left list-disc py-1 md:pl-10 md:pr-3">
               <li>Clean inside cupboards and drawers</li>
               <li>Clean inside oven</li>
               <li>Clean inside fridge</li>
@@ -252,9 +260,9 @@
             <p class="font-semibold">Heavy build-up, mould or excessive limescale may require additional time and cost.</p>
             <p class="font-semibold pb-3">Cleaning is carried out with reasonable care, but some stains, limescale or marks may be permanent and cannot be fully removed.</p>
 
-            <p class="text-2xl font-bold text-black pt-3 pb-3">Approximate end of tenancy/vacant property deep cleaning prices:</p>
+            {{-- <p class="text-2xl font-bold text-black pt-3 pb-3">Approximate end of tenancy/vacant property deep cleaning prices:</p> --}}
             <p class="text-sm italic text-black pb-3 max-w-full md:max-w-2/3 mx-auto">Please note these prices are only a guide. Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
-            <table class="table-auto border-collapse w-75 mx-auto text-left">
+            <table class="table-auto border-collapse w-80 mx-auto text-left">
               <thead class="border-b border-cyan-900/50">
                 <tr>
                   <th class="pl-3">Bedrooms</th>
@@ -263,24 +271,28 @@
               </thead>
               <tbody>
                 <tr class="border-b border-cyan-900/50">
-                  <td class="pl-3">1 bed / 1 bath</td>
-                  <td class="text-right pr-4">£144</td>
+                  <td class="pl-3">Flat - 1 bed / 1 bath</td>
+                  <td class="text-right pr-4">£180</td>
                 </tr>
                 <tr class="border-b border-cyan-900/50">
-                  <td class="pl-3">2 bed / 1 bath</td>
-                  <td class="text-right pr-4">£174</td>
+                  <td class="pl-3">Flat - 2 bed / 1 bath</td>
+                  <td class="text-right pr-4">£210</td>
                 </tr>
                 <tr class="border-b border-cyan-900/50">
-                  <td class="pl-3">3 bed / 1 bath</td>
-                  <td class="text-right pr-4">£234</td>
+                  <td class="pl-3">House - 2 bed / 1 bath</td>
+                  <td class="text-right pr-4">£240</td>
                 </tr>
                 <tr class="border-b border-cyan-900/50">
-                  <td class="pl-3">4 bed / 1 bath</td>
-                  <td class="text-right pr-4">£264</td>
+                  <td class="pl-3">House - 3 bed / 1 bath</td>
+                  <td class="text-right pr-4">£280</td>
                 </tr>
                 <tr class="border-b border-cyan-900/50">
-                  <td class="pl-3">5 bed / 2 bath</td>
-                  <td class="text-right pr-4">£342</td>
+                  <td class="pl-3">House - 4 bed / 2 bath</td>
+                  <td class="text-right pr-4">£320</td>
+                </tr>
+                <tr class="border-b border-cyan-900/50">
+                  <td class="pl-3">House - 5 bed / 2 bath</td>
+                  <td class="text-right pr-4">£380</td>
                 </tr>
               </tbody>
             </table>
