@@ -42,10 +42,10 @@
       <div class="border-b border-slate-300 pb-2 md:border-none">
         <h3 class="font-semibold text-center md:text-left text-base text-gray-200 md:mb-5 mb-2">Covered Areas</h3>
         <ul class="text-sm text-center md:text-left space-y-1">
-          <li><i class="fa-solid fa-location-dot"></i> Preston (main)</li>
-          <li><i class="fa-solid fa-location-dot"></i> Bamber Bridge</li>
-          <li><i class="fa-solid fa-location-dot"></i> Pentwotham</li>
-          <li><i class="fa-solid fa-location-dot"></i> Leyland</li>
+          <li><i class="fa-solid fa-location-dot"></i> Preston</li>
+          <li><i class="fa-solid fa-location-dot"></i> Chroley</li>
+          <li><i class="fa-solid fa-location-dot"></i> Blackpool</li>
+          <li><i class="fa-solid fa-location-dot"></i> Surrounding Areas</li>
         </ul>
       </div>
       <div>
