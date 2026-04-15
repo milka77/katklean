@@ -9,13 +9,13 @@
   <div class="pb-5">
     <div id="services" class="md:mx-20 lg:mx-50 pt-15 pb-2 ">
         <h2 class="text-center text-5xl font-semibold pb-5 text-black">Services</h2>
-        <div>
+        {{-- <div>
           <p class="font-semibold text-lg text-center pb-7 px-5 md:px-0">Enjoy Your Free Time — Leave the Cleaning to Us</p>
           <p class="pb-5 w-2/3 mx-auto text-center px-3 sm:px-3">After a long, busy working week, the last thing you want to do is spend your valuable time cleaning. Let us take care of it for you. We provide reliable, thorough and professional cleaning services so you can relax, recharge and enjoy a fresh, spotless home. Whether it’s a one-off clean or regular service, we’re here to make your life easier.</p>
-        </div>
+        </div> --}}
     </div>
     <div class="grid grid-cols-1 gap-10 md:mx-20 lg:mx-50 pb-15">
-      <div class="flex flex-col max-w-2/3 mx-auto items-center justify-center border-t border-cyan-900/40">
+      <div class="flex flex-col max-w-2/3 mx-auto items-center justify-center">
         <div class="mt-5 space-y-2 text-center sm:px-3">
           <h3 class="text-[27px] font-bold text-black capitalize">Standard Domestic Cleaning</h3>
           <p class="text-lg font-semibold text-black">This service can be booked as a weekly or fortnightly</p>
