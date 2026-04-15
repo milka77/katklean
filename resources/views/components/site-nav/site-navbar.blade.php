@@ -10,7 +10,7 @@
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('faq') }}">F.A.Q.s</a></li>
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('contact') }}">Contact Us</a></li>
         {{-- <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('calculator') }}">Calculator</a></li> --}}
-        <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('booking') }}">Book Now</a></li>
+        {{-- <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('booking') }}">Book Now</a></li> --}}
         <li><a class="hover:text-white/70 transition text-nowrap" href="{{ route('gallery') }}">Gallery</a></li>
 
     </ul>
@@ -69,7 +69,7 @@
             <li><a href="{{ route('faq') }}" class="text-sm">F.A.Q.s</a></li>
             <li><a href="{{ route('contact') }}" class="text-sm">Contact Us</a></li>
             {{-- <li><a href="{{ route('calculator') }}" class="text-sm">Calculator</a></li> --}}
-            <li><a href="{{ route('booking') }}" class="text-sm">Book Now</a></li>
+            {{-- <li><a href="{{ route('booking') }}" class="text-sm">Book Now</a></li> --}}
             <li><a href="{{ route('gallery') }}" class="text-sm">Gallery</a></li>
             @guest
             <li><a href="{{ route('login') }}" class="text-sm">Login</a></li>
@@ -77,6 +77,12 @@
             @auth
             <hr class="border-slate-600 w-full">
             <li><a href="{{ route('profile') }}" class="text-sm">Profile</a></li>
+            {{-- Admin page link for admins --}}
+            @if (Auth()->user()->hasRole('admin'))
+                <li>
+                    <a href="{{ route('admin.index') }}" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:text-white focus:outline-hidden">Admin</a>
+                </li>
+            @endif
             <li><a href="{{ route('logout') }}" class="text-sm">
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
