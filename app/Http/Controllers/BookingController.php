@@ -392,7 +392,7 @@ class BookingController extends Controller
      */
     public function adminIndex()
     {
-        $bookings = Booking::all();
+        $bookings = Booking::paginate(10);
 
         return view('components.admin.booking.index', compact('bookings'));
     }
