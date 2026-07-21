@@ -86,8 +86,8 @@
           <p class="font-semibold pb-3">Please note: I do not offer carpet or upholstery cleaning services.</p>
           <p>For standard cleaning, a short visit may be recommended for larger properties or where additional information is needed.</p>
           {{-- <p class="text-2xl font-bold text-black pt-3 pb-3">Approximate standard cleaning prices:</p> --}}
-          <p class="text-sm italic text-black pb-3 max-w-full md:max-w-2/3 mx-auto">Please note these prices are only a guide. Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
-          <table class="table-auto border-collapse w-80 mx-auto  text-left">
+          <p class="font-semibold text-black max-w-full md:max-w-2/3 mx-auto">Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
+          <table class="hidden table-auto border-collapse w-80 mx-auto  text-left">
             <thead class="border-b border-cyan-900/50">
               <tr>
                 <th class="pl-3">Bedrooms</th>
@@ -122,7 +122,7 @@
             </tbody>
           </table>
           </div>
-          <div class="flex flex-col-1 justify-center pt-10 pb-5">
+          <div class="flex flex-col-1 justify-center p-5">
             <button class="bg-slate-700 text-white hover:bg-slate-900 text-lg text-nowrap px-8 md:px-10 h-12 mr-2 rounded-full transition cursor-pointer">
               <a class="p-8" href="{{ route('contact') }}">Contact Us</a>
             </button>
@@ -137,53 +137,67 @@
 
           <p class="text-lg text-left font-bold text-black pt-3 pb-2">Bedroom</p>
           <ul class="text-left list-disc py-1 md:pl-10 md:pr-3 pb-7">
-            <li>Wipe skirting boards</li>
-            <li>Wipe internal doors and frames</li>
-            <li>Dust blinds</li>
-            <li>Wash windows, window frames and ledges</li>
-            <li>Dust light fittings</li>
-            <li>Dust/wipe radiators and vents</li>
+            <li>Removal of built-up dust from skirting boards, frames and ledges</li>
+            <li>Cleaning of internal doors, frames and light switches</li>
+            <li>Dust removal from walls and accessible ceiling areas</li>
+            <li>Dusting and detailing of bedside tables, wardrobes and accessible furniture</li>
+            <li>Cleaning underneath accessible furniture</li>
+            <li>Dusting of decorative items and detailed areas</li>
+            <li>Dust removal from blinds, radiators, vents and light fittings</li>
+            <li>Window glass, frames and ledges cleaned</li>
+            <li>Attention to edges, corners and hard-to-reach areas</li>
           </ul>
 
           <p class="text-lg text-left font-bold text-black pt-3 pb-2">Living room / Dining room</p>
           <ul class="text-left list-disc py-1 md:pl-10 md:pr-3 pb-7">
-            <li>Wipe skirting boards</li>
-            <li>Wipe internal doors and frames</li>
-            <li>Dust blinds</li>
-            <li>Wash windows, window frames and ledges</li>
-            <li>Dust light fittings</li>
-            <li>Dust/wipe radiators and vents</li>
+            <li>Removal of built-up dust from skirting boards, frames and ledges</li>
+            <li>Cleaning of internal doors, frames and light switches</li>
+            <li>Dust removal from walls and accessible ceiling areas</li>
+            <li>Dusting and detailing of accessible furniture and built-in units</li>
+            <li>Cleaning underneath accessible furniture</li>
+            <li>Dusting of decorative items and detailed areas</li>
+            <li>Dust removal from blinds, radiators, vents and light fittings</li>
+            <li>Window glass, frames and ledges cleaned</li>
+            <li>Attention to edges, corners and hard-to-reach areas</li>
           </ul>
 
           <p class="text-lg text-left font-bold text-black pt-3 pb-2">Bathroom</p>
           <ul class="text-left list-disc py-1 md:pl-10 md:pr-3 pb-7">
-            <li>Wipe skirting boards</li>
-            <li>Wipe internal doors and frames</li>
-            <li>Descale taps and fixtures</li>
-            <li>Detailed cleaning of shower tiles</li>
-            <li>Clean accessible grout</li>
-            <li>Clean extractor/vent grille</li>
-            <li>Dust light fittings</li>
-            <li>Wash windows, window frames and ledges</li>
+            <li>Detailed descaling of taps, fixtures, shower areas and surrounding surfaces</li>
+            <li>Detailed cleaning around and behind the toilet base</li>
+            <li>Detailed cleaning of tiles and accessible grout</li>
+            <li>Shower glass polished for a sparkle finish</li>
+            <li>Bathroom mirrors polished</li>
+            <li>Cleaning of the extractor fan and vent areas</li>
+            <li>Cleaning of light switches, doors and frames</li>
+            <li>Removal of built-up dust from skirting boards and detailed areas</li>
+            <li>Dust removal from walls and accessible ceiling areas</li>
+            <li>Thorough vacuuming and detailed floor mopping/cleaning</li>
+            <li>Window glass, frames and ledges cleaned</li>
+            <li>Attention to edges, corners and hard-to-reach areas</li>
           </ul>
 
           <p class="text-lg text-left font-bold text-black pt-3 pb-2">Kitchen</p>
           <ul class="text-left list-disc py-1 md:pl-10 md:pr-3 pb-7">
-            <li>Wipe skirting boards</li>
-            <li>Wipe internal doors and frames</li>
-            <li>Wash windows, window frames and ledges</li>
-            <li>Descale taps and sink area</li>
-            <li>Detailed cleaning of splashback/tiles</li>
-            <li>Dust/wipe tops of cupboards and cabinets</li>
-            <li>Dust light fittings</li>
-            <li>Dust/wipe radiators and vents</li>
+            <li>Detailed cleaning and descaling of sink area, taps and surrounding surfaces</li>
+            <li>Detailed cleaning and degreasing of splashbacks, tiles and accessible cooking areas</li>
+            <li>Detailed degreasing of hob and cooker hood/extractor</li>
+            <li>Tops of cupboards and cabinets cleaned where accessible</li>
+            <li>Cleaning underneath accessible appliances where possible</li>
+            <li>Fridge cleaned internally if emptied beforehand</li>
+            <li>Removal of built-up grease, dust and residue from accessible surfaces</li>
+            <li>Cleaning of internal doors, frames and light switches</li>
+            <li>Dust removal from radiators, vents and light fittings</li>
+            <li>Thorough vacuuming and detailed floor mopping/cleaning</li>
+            <li>Window glass, frames and ledges cleaned</li>
+            <li>Attention to edges, corners and hard-to-reach areas</li>
           </ul>
 
           <p class="font-semibold pb-3">Please note: I do not offer carpet or upholstery cleaning services.</p>
 
           {{-- <p class="text-2xl font-bold text-black pt-3 pb-3">Approximate deep cleaning prices:</p> --}}
-          <p class="text-sm italic text-black pb-3 max-w-full md:max-w-2/3 mx-auto">Please note these prices are only a guide. Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
-          <table class="table-auto border-collapse w-80 mx-auto text-left">
+          <p class="font-semibold text-black pb-3 max-w-full md:max-w-2/3 mx-auto">Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
+          <table class="hidden table-auto border-collapse w-80 mx-auto text-left">
             <thead class="border-b border-cyan-900/50">
             <tr>
               <th class="pl-3">Bedrooms</th>
@@ -218,7 +232,7 @@
             </tbody>
           </table>
 
-          <div class="flex flex-col-1 justify-center pt-10 pb-5">
+          <div class="flex flex-col-1 justify-center p-5">
             <button class="bg-slate-700 text-white hover:bg-slate-900 text-lg text-nowrap px-8 md:px-10 h-12 mr-2 rounded-full transition cursor-pointer">
               <a class="p-8" href="{{ route('contact') }}">Contact Us</a>
             </button>
@@ -230,39 +244,34 @@
 
         <div class="flex flex-col w-2/3 mx-auto items-center justify-center border-t border-cyan-900/40">
           <div class="mt-5 space-y-2 text-center">
-            <h3 class="text-[27px] font-bold text-black pt-7 capitalize">End of tenancy / After Builders Cleaning</h3>
+            <h3 class="text-[27px] font-bold text-black pt-7 capitalize">Empty Property / End of Tenancy / After-Build Cleaning</h3>
             <p class="text-lg font-semibold text-black">Property must be fully emptied prior to service.</p>
             <p class="text-lg font-semibold text-black pb-10">Includes everything in Deep clean, plus the following:</p>
 
-            <p class="text-lg text-left font-bold text-black pt-3">Kitchen</p>
+            
             <ul class="text-left list-disc py-1 md:pl-10 md:pr-3">
-              <li>Clean inside cupboards and drawers</li>
-              <li>Clean inside oven</li>
-              <li>Clean inside fridge</li>
-              <li>Detailed degreasing of cooking areas</li>
+              <li>Intensive dust removal from walls, accessible ceiling areas and all accessible surfaces</li>
+              <li>Intensive dust removal from frames, skirting boards, edges and detailed areas</li>
+              <li>Thorough disinfecting of high-touch points and sanitary areas</li>
+              <li>Detailed degreasing of kitchens, cooking areas and appliances</li>
+              <li>Limescale removal from bathrooms, taps, sinks and shower areas where required</li>
+              <li>Cleaning inside cupboards, drawers and storage areas</li>
+              <li>Cleaning behind and underneath accessible appliances and furniture</li>
+              <li>Detailed vacuuming throughout the property</li>
+              <li>Detailed floor mopping/cleaning throughout the property</li>
+              <li>Removal of built-up residue, marks and renovation dust where accessible</li>
+              <li>Detailed cleaning of doors, frames, switches and fittings</li>
+              <li>Window glass, frames and ledges cleaned</li>
+              <li>Attention to corners, edges and hard-to-reach areas</li>
             </ul>
 
-            <p class="text-lg text-left font-bold text-black pt-3 pb-2">Bathrooms</p>
-            <ul class="text-left list-disc py-1 md:pl-10 md:pr-3 pb-7">
-              <li>Detailed limescale removal from taps, shower screens and tiles</li>
-              <li>More detailed grout and tile cleaning</li>
-            </ul>
-
-            <p class="text-lg text-left font-bold text-black pt-3 pb-2">Whole property</p>
-            <ul class="text-left list-disc py-1 md:pl-10 md:pr-3 pb-7">
-              <li>Cleaning inside storage areas</li>
-              <li>Cleaning behind and under appliances/furniture where accessible</li>
-              <li>More detailed overall cleaning due to empty property access</li>
-              <li>Clean inside cupboards and drawers</li>
-            </ul>
-
-            <p class="font-semibold">Please note: I do not offer carpet or upholstery cleaning services.</p>
+            <p class="font-semibold pt-8">Please note: I do not offer carpet or upholstery cleaning services.</p>
             <p class="font-semibold">Heavy build-up, mould or excessive limescale may require additional time and cost.</p>
             <p class="font-semibold pb-3">Cleaning is carried out with reasonable care, but some stains, limescale or marks may be permanent and cannot be fully removed.</p>
 
             {{-- <p class="text-2xl font-bold text-black pt-3 pb-3">Approximate end of tenancy/vacant property deep cleaning prices:</p> --}}
-            <p class="text-sm italic text-black pb-3 max-w-full md:max-w-2/3 mx-auto">Please note these prices are only a guide. Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
-            <table class="table-auto border-collapse w-80 mx-auto text-left">
+            <p class="font-semibold text-black pb-3 max-w-full md:max-w-2/3 mx-auto">Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
+            <table class="hidden table-auto border-collapse w-80 mx-auto text-left">
               <thead class="border-b border-cyan-900/50">
                 <tr>
                   <th class="pl-3">Bedrooms</th>
@@ -297,7 +306,7 @@
               </tbody>
             </table>
 
-            <div class="flex flex-col-1 justify-center pt-10 pb-5">
+            <div class="flex flex-col-1 justify-center p-5">
               <button class="bg-slate-700 text-white hover:bg-slate-900 text-lg text-nowrap px-8 md:px-10 h-12 mr-2 rounded-full transition cursor-pointer">
                 <a class="p-8" href="{{ route('contact') }}">Contact Us</a>
               </button>
