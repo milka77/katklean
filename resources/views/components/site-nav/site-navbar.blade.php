@@ -1,4 +1,4 @@
-<nav class="h-[80px] relative w-full px-6 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between z-30 bg-slate-700 transition-all sticky top-0">
+<nav class="h-20 relative w-full px-6 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between z-30 bg-slate-700 transition-all sticky top-0">
     <a href="{{ route('home') }}">
         <img  width="157" height="40" src="{{ URL::asset('/images/logo.png') }}" alt="katkelan_logo.png" srcset="">
     </a>
@@ -17,7 +17,8 @@
     <!-- End of Menu options -->
     <!-- Login / Signup buttons -->
     @guest
-        <a class="text-white md:flex hidden hover:text-white/70 transition text-lg pl-5" href="{{ route('login') }}">Login</a>
+        {{-- <a class="text-white md:flex hidden hover:text-white/70 transition text-lg pl-5" href="{{ route('login') }}">Login</a> --}}
+        <p class="text-slate-700"> </p>
     @endguest
     @auth
     <el-dropdown class="hidden md:inline-block ">
@@ -72,7 +73,7 @@
             {{-- <li><a href="{{ route('booking') }}" class="text-sm">Book Now</a></li> --}}
             <li><a href="{{ route('gallery') }}" class="text-sm">Gallery</a></li>
             @guest
-            <li><a href="{{ route('login') }}" class="text-sm">Login</a></li>
+            <li><a href="{{ route('login') }}" class="text-sm hidden">Login</a></li>
             @endguest
             @auth
             <hr class="border-slate-600 w-full">
