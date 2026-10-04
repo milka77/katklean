@@ -11,6 +11,18 @@ class SiteController extends Controller
         return view('components.site.services');
     }
 
+    public function servicesDomectic() {
+        return view('components.site.services-domestic');
+    }
+
+    public function servicesDeep() {
+        return view('components.site.services-deep');
+    }
+
+    public function servicesBuilders() {
+        return view('components.site.services-builders');
+    }
+
     public function faqs() {
         return view('components.site.faqs');
     }
