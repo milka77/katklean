@@ -31,6 +31,7 @@ class ContactMail extends Mailable
     {
         return new Envelope(
             subject: 'New contact form - katklean.co.uk',
+            replyTo: [new \Illuminate\Mail\Mailables\Address($this->details['email'], $this->details['name'])]  
         );
     }
 
