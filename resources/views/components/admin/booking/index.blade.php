@@ -3,7 +3,7 @@
     <div class="mx-auto bg-slate-50 p-8 rounded-lg shadow-md">
       <h2 class="text-2xl font-bold mb-6 pl-5">Bookings</h2>
 
-      <table class="bg-slate-100 text-center table-fixed min-w-full">
+      <table class="bg-slate-100 text-sm text-center table-fixed min-w-full">
         <thead>
           <tr class="bg-slate-400">
             <th class="no-wrap border-b border-slate-400">ID</th>
@@ -115,7 +115,21 @@
             <td class="py-2 px-4 border-b border-slate-400">{{ $booking->frequency }}</td>
             <td class="py-2 px-4 border-b border-slate-400">{{ $booking->recurring_group_id }}</td>
             <td class="py-2 px-4 border-b border-slate-400">@if ($booking->own_equipment == 0) No @else Yes @endif </td>
-            <td class="py-2 px-4 border-b border-slate-400">{{ $booking->status }}</td>
+            <td class="py-2 px-4 border-b border-slate-400">
+              @if ($booking->status == 'confirmed')
+                <span class="bg-green-500 px-2 py-1 rounded text-white">
+                  {{ $booking->status }}
+                </span>  
+              @elseif ($booking->status == 'pending')
+                <span class="bg-orange-400 px-2 py-1 rounded text-white"> 
+                  {{ $booking->status }}
+                </span>
+              @else
+                <span class="bg-red-500 px-2 py-1 rounded text-white">
+                  {{ $booking->status }} 
+                </span>
+              @endif
+            </td>
             <td class="py-2 px-4 border-b border-slate-400">
               <button command="show-modal" commandfor="admin-options" class="rounded-md  px-2.5 py-1.5 text-sm font-semibold border border-slate-400 cursor-pointer">Options</button>
               <el-dialog>
