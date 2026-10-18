@@ -1,5 +1,5 @@
 <div>
-  <nav class="side-nav w-45 pl-4 pt-4 bg-gray-800 text-white min-h-screen max-h-full">
+  <nav class="side-nav w-45 pl-4 pt-4 bg-gray-800 text-white h-full">
     <ul class="text-sm">
       <li><a href="#"><i class="fa-solid fa-chart-pie pr-1.5"></i> Dashboard</a></li>
       <li><a href="{{ route('admin.users.index') }}"><i class="fa-solid fa-users pr-1.5"></i> Users</a></li>

@@ -85,6 +85,7 @@
                                     <option value="once" @if(old('frequency') == 'once') selected @endif>Once</option>
                                     <option value="weekly" @if(old('frequency') == 'weekly') selected @endif>Weekly</option>
                                     <option value="fortnightly" @if(old('frequency') == 'fortnightly') selected @endif>Fortnightly</option>
+                                    <option value="threeweekly" @if(old('frequency') == 'threeweekly') selected @endif>Three Weekly</option>
                                     <option value="monthly" @if(old('frequency') == 'monthly') selected @endif>Monthly</option>
                                 </select>
                                 @error('frequency')

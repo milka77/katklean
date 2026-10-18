@@ -42,6 +42,7 @@ class RecurringBookingService
     $nextStart = match ($frequency) {
       'weekly' => $lastBooking->start_at->copy()->addWeek(),
       'fortnightly' => $lastBooking->start_at->copy()->addWeeks(2),
+      'threeweekly' => $lastBooking->start_at->copy()->addWeeks(3),
       'monthly' => $lastBooking->start_at->copy()->addMonth(),
       default => null,
     };
