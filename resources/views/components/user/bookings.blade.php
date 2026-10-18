@@ -18,8 +18,11 @@
                           ->sortBy('start_at')
                           ->first();
                   @endphp
+                    @if($nextBooking)
                       <p class="pb-4">Your next upcoming booking is on <span class="font-semibold">{{ $nextBooking->booking_date }}</span> at <span class="font-semibold">{{ \Illuminate\Support\Str::substr($nextBooking->start_at, 11, 5) }}</span>, booking reference <span class="font-semibold">{{ $nextBooking->reference }}</span>.</p>
-
+                    @else
+                      <p class="pb-4">You have no upcoming bookings.</p>
+                    @endif
                   @endif
               </div>
 
