@@ -121,7 +121,7 @@
             </tbody>
           </table>
 
-          <div class="flex flex-col-1 justify-center p-5">
+          <div class="flex flex-col md:flex-row gap-3 justify-center p-5">
             <button class="bg-slate-700 text-white hover:bg-slate-900 text-lg text-nowrap px-8 md:px-10 h-12 mr-2 rounded-full transition cursor-pointer">
               <a class="p-8" href="{{ route('services') }}">Services</a>
             </button>
