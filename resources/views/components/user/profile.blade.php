@@ -71,11 +71,11 @@
                         <ul class="flex flex-col px-2 pb-3">
                             <div class="flex flex-row justify-between">
                                 <li>Booking date:</li>
-                                <li> {{ $nextBooking->booking_date }} </li>
+                                <li>@if($nextBooking) {{ $nextBooking->booking_date }} @else No Booking @endif</li>
                             </div>
                             <div class="flex flex-row justify-between">
                                 <li>Booking reference</li>
-                                <li> {{ $nextBooking->reference }}</li>
+                                <li>@if($nextBooking) {{ $nextBooking->reference }} @else No Booking @endif</li>
                             </div>
 
                         </ul>
