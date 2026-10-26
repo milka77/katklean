@@ -82,10 +82,18 @@
             <li>Attention to edges, corners and hard-to-reach areas</li>
           </ul>
 
+          {{-- Services Footer --}}
           <p class="font-semibold pb-3">Please note: I do not offer carpet or upholstery cleaning services.</p>
 
           {{-- <p class="text-2xl font-bold text-black pt-3 pb-3">Approximate deep cleaning prices:</p> --}}
-          <p class="font-semibold text-black pb-3 max-w-full md:max-w-2/3 mx-auto">Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
+          <p class="font-semibold text-black pb-3 max-w-full md:max-w-2/3 mx-auto">
+            Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.
+          </p>
+          <p class="font-semibold text-black pb-3 max-w-full md:max-w-2/3 mx-auto">
+            A 15% booking fee is required to confirm your booking. This amount will be deducted from the total cleaning price.
+          </p>
+          {{-- End of Services Footer  --}}
+
           <table class="hidden table-auto border-collapse w-80 mx-auto text-left">
             <thead class="border-b border-cyan-900/50">
             <tr>

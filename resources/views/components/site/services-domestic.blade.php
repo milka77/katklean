@@ -84,10 +84,15 @@
             <li>Deep limescale, mould or heavy grease may require a deep cleaning service</li>
           </ul>
 
+          {{-- Services Footer --}}
           <p class="font-semibold pb-3">Please note: I do not offer carpet or upholstery cleaning services.</p>
           <p>For standard cleaning, a short visit may be recommended for larger properties or where additional information is needed.</p>
           {{-- <p class="text-2xl font-bold text-black pt-3 pb-3">Approximate standard cleaning prices:</p> --}}
-          <p class="font-semibold text-black max-w-full md:max-w-2/3 mx-auto">Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.</p>
+          <p class="font-semibold text-black max-w-full md:max-w-2/3 mx-auto">
+            Prices may vary depending on the size of the property, its overall condition and any additional services requested. Please contact us for an accurate quote.
+          </p>
+          {{-- End of Services Footer  --}}
+
           <table class="hidden table-auto border-collapse w-80 mx-auto  text-left">
             <thead class="border-b border-cyan-900/50">
               <tr>
