@@ -98,4 +98,12 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   Route::get('/transaction/{transaction}/edit', [TransactionController::class, 'edit'])->name('admin.transaction.edit');
   Route::put('/transaction/{transaction}/update', [TransactionController::class, 'update'])->name('admin.transaction.update');
   Route::delete('/transaction/{transaction}/delete', [TransactionController::class, 'destroy'])->name('admin.transaction.destroy');
+
+  // Contact Filter routes
+  Route::get('/contact-filter', [ContactFilterController::class, 'index'])->name('contact_filter.index');
+  Route::get('/contact-filter/create', [ContactFilterController::class, 'create'])->name('contact_filter.create');
+  Route::post('/contact-filter/store', [ContactFilterController::class, 'store'])->name('contact_filter.store');
+  Route::get('/contact-filter/{id}/edit', [ContactFilterController::class, 'edit'])->name('contact_filter.edit');
+  Route::put('/contact-filter/{id}/update', [ContactFilterController::class, 'update'])->name('contact_filter.update');
+  Route::delete('/contact-filter/{id}/delete', [ContactFilterController::class, 'destroy'])->name('contact_filter.destroy');
 });
