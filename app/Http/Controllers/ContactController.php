@@ -41,4 +41,9 @@ class ContactController extends Controller
         return back();
     }
 
+    public function contactFilter() {
+    
+
+    }
+
 }
