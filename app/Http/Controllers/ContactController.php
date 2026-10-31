@@ -8,6 +8,7 @@ use App\Mail\ContactMail;
 use App\Models\Booking;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\ContactFilter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
@@ -27,18 +28,30 @@ class ContactController extends Controller
     // }
 
     public function contactMessage(ContactRequest $request) {
+        //Get the filter details
+        $filters = ContactFilter::active()->get();
+        // dd($filters);
 
-        $content = [
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'message' => $request->input('message'),
-        ];
+        // Checking if the email address is in the filtered addresses
+        foreach($filters as $filter){
+            if ($filter->email = $request->input('email')){
+                flash()->warning('Banned email found');
+                return back();
+            } 
+            else {
+                $content = [
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'message' => $request->input('message'),
+                ];
 
-        Mail::to('info@katklean.co.uk')->send(new ContactMail($content));
+                // Mail::to('info@katklean.co.uk')->send(new ContactMail($content));
 
-        flash()->success('Thank you for your message! We will be in touch with you shortly.');
-        
-        return back();
+                flash()->success('Thank you for your message! We will be in touch with you shortly.');
+                
+                return back();
+            }
+        } 
     }
 
     public function contactFilter() {

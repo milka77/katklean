@@ -150,7 +150,7 @@
                     <!-- Contact Filters Section -->
                     <div class="space-y-1">
                         <button class="dropdown-btn w-full flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
-                            <span class="sidebar-text"><i class="fa-regular fa-user pl-1.5 pr-3"></i> Contact Filters</span>
+                            <span class="sidebar-text"><i class="fa-solid fa-envelope-circle-check pl-1.5 pr-3"></i> Contact Filters</span>
                             <svg class="ml-auto h-5 w-5 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                             </svg>
@@ -165,12 +165,6 @@
                         </div>
                     </div>
 
-                            </a>
-                            <a href="{{ route('admin.booking.add-manual-booking') }}" class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
-                                Add New Booking
-                            </a>
-                        </div>
-                    </div>
 
                     <!-- Settings -->
                     <a href="#" class="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">

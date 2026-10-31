@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('contact_filters', function (Blueprint $table) {
             $table->id();
-            $table->email('email')->unique();
+            $table->string('email')->unique();
             $table->string('text')->nullable();
             $table->string('reason')->nullable();
-            $table->is_active('is_active')->default(true);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
